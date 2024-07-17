@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+
+    <title>Alg Explorer</title>
+</head>
+<body>
+    
+    <div class="body-grid-item navbar-container">
+        {% include 'navbar.html' %}
+    </div>
+    
+    <div class="body-grid-item topcard-container">
+        {% include 'topcard.html' %}
+    </div>
+
+    <div class="body-grid-item content-container">
+        {% block content %}
+        {% endblock content %}
+    </div>
+
+</body>
+</html>

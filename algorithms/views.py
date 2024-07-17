@@ -5,4 +5,4 @@ from django.shortcuts import render
 def getAlgsMain(request):
     
     context = {}
-    return render(request, 'algorithms/index.html', context)
+    return render(request, 'algorithms/algs_main.html', context)
