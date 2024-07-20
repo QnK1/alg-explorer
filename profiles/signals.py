@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 
 from .models import Profile
 
+
+
+# deleting user on profile delete, try-catch to avoid error while deleting user first (infinite loop)
+# done this way to avoid modifying the built-in user model
 @receiver(post_delete, sender=Profile) 
 def profileDeleted(sender, instance, **kwargs):
     try:
@@ -11,7 +15,8 @@ def profileDeleted(sender, instance, **kwargs):
     except:
         pass
     
-    
+
+# creating a profile for created user   
 @receiver(post_save, sender=User)
 def userCreated(sender, instance, created, **kwargs):
     if created:
@@ -23,6 +28,7 @@ def userCreated(sender, instance, created, **kwargs):
         )
 
 
+# updating the user on profile update to make sure they are in sync
 @receiver(post_save, sender=Profile)    
 def profileUpdated(sender, instance, created, **kwargs):
     if not created:

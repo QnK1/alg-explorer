@@ -8,11 +8,13 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/footer.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/topcard.css' %}">
+
+    <link rel="icon" type="image/png" href="{% static 'favicon/favicon.png' %}">
 
     <title>Alg Explorer</title>
 </head>
-<body>
+<body data-theme="light">
     
     <div class="body-grid-item navbar-container">
         {% include 'navbar.html' %}
@@ -27,5 +29,7 @@
         {% endblock content %}
     </div>
 
+
+    <script src="{% static 'js/main.js' %}" type="module"></script>
 </body>
 </html>
