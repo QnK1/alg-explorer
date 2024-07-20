@@ -1,17 +1,17 @@
 :root {
-    --primary-color: #B8B8F3;
-    --primary-variant: #D7B8F3;
-    --secondary-color: #F397D6;
-    --on-primary: #232E21; /* or black maybe? */
-    --background: #efefef;
+    --primary-color: #FBF2ED;
+    --secondary-color: #CDD5C6;
+    --on-primary: #B7BCBF; /* or black maybe? */
+    --extra1: #E8D4C6;
+    --extra2: #FFE2C3;
 }
 
 [data-theme="dark"] {
-    --primary-color: #4A4A80;
-    --primary-variant: #644A80;
-    --secondary-color: #8A5A7A;
-    --on-primary: #E3F1DF;
-    --background: #303030;
+    --primary-color: #FBF2ED;
+    --secondary-color: #CDD5C6;
+    --on-primary: #B7BCBF; /* or black maybe? */
+    --extra1: #E8D4C6;
+    --extra2: #FFE2C3;
 }
 
 body {
@@ -29,16 +29,16 @@ body {
 
 .navbar-container{
     grid-area: 1 / 1 / 21 / 4;
-    background: var(--primary-color);
-}
-
-.topcard-container{
-    grid-area: 1 / 4 / 4 / 21;
     background: var(--secondary-color);
 }
 
+.topcard-container{
+    grid-area: 1 / 4 / 3 / 21;
+    background: var(--on-primary);
+}
+
 .content-container{
-    grid-area: 4 / 4 / 21 / 21;
-    background: var(--background);
+    grid-area: 3 / 4 / 21 / 21;
+    background: var(--primary-color);
 }
 
