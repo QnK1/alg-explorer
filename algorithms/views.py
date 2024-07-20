@@ -4,17 +4,17 @@ from django.shortcuts import render
 
 def getAlgsMain(request):
     
-    context = {}
+    context = {'title' : 'Welcome'}
     return render(request, 'algorithms/algs_main.html', context)
 
 
 def getExplore(request):
     
-    context = {}
+    context = {'title' : 'Explore'}
     return render(request, 'algorithms/explore.html', context)
 
 
 def getMyAlgs(request):
     
-    context = {}
+    context = {'title' : 'My Algorithms'}
     return render(request, 'algorithms/my_algs.html', context)

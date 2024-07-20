@@ -11,8 +11,8 @@ class Profile(models.Model):
     
     date_added = models.DateTimeField(auto_now_add=True)
     
-    username = models.CharField(max_length=200)
-    email = models.EmailField(max_length=200, blank=True, null=True)
+    username = models.CharField(max_length=150)
+    email = models.EmailField(max_length=150, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     
     

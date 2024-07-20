@@ -21,12 +21,14 @@
     </div>
     
     <div class="body-grid-item topcard-container">
-        {% include 'topcard.html' %}
+        {% include 'topcard.html' with title=title %}
     </div>
 
     <div class="body-grid-item content-container">
-        {% block content %}
-        {% endblock content %}
+        <div id="main-content">
+            {% block content %}
+            {% endblock content %}
+        </div>
     </div>
 
 
