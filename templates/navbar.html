@@ -1,5 +1,17 @@
-<div id="navbar">
-    <div class="nav-item">Explore</div>
-    <div class="nav-item">My Algs</div>
-    <div class="nav-item">Logout</div>
+{% load static %}
+<div id="navbar-content">
+    <a href="{% url 'algs-main' %}"><img id="navbar-logo" src="{% static 'img/navbar-logo.svg' %}" alt="Cube logo"></a>
+    
+    <div id="navbar-options">
+        <div class="nav-item clickable"><a href="{% url 'explore-algs' %}">Explore</a></div>
+        <div class="nav-item clickable"><a href="{% url 'my-algs' %}">My Algs</a></div>
+        
+        {% if request.user.is_authenticated %}
+            <div class="nav-item clickable"><a href="{% url 'logout' %}" id="login">Log Out</a></div>
+        {% else %}
+            <div class="nav-item clickable"><a href="{% url 'login' %}" id="login">Log In</a></div>
+        {% endif %}
+        {% comment %} <button id="theme-button">Theme</button> {% endcomment %}
+    </div>
+    
 </div>

@@ -1,5 +1,25 @@
-<div id="topcard">
-    <h1>{{title}}</h1>
+{% load static %}
+<div id="topcard-content">
     
-    <button id="theme-button">Theme</button>
+    <div id="page-title-container">
+        <h1 id="page-title">{{title}}</h1>
+    </div>
+    
+    <div id="profile-card">
+        <a href="{% url 'account' %}">
+            <img src="{% static 'img/default-profile-picture.png' %}" alt="User profile picture." class="clickable">
+        </a>
+        <div id="topcard-username" class="clickable">
+            <a href="{% url 'account' %}">
+            {% if request.user.is_authenticated %}
+                {{request.user.username}}
+            {% else %}
+                Log In
+            {% endif %}
+        </a>
+        </div>
+    </div> 
+
+    {% comment %}  {% endcomment %}
+    
 </div>

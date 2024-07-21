@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from .models import User
 
 from .forms import CustomUserCreationForm
@@ -45,3 +46,25 @@ def registerUser(request):
     
     context = {'title' : 'Register', 'form' : form}
     return render(request, "profiles/register.html", context)
+
+
+def logoutUser(request):
+    if not request.user.is_authenticated:
+        return redirect('algs-main')
+    
+    logout(request)
+    messages.success(request, "User logged out.")
+    return redirect('login')
+
+
+
+@login_required(login_url='login')
+def getUserAccount(request):
+    profile = request.user.profile
+    
+    
+    context = {
+        'title' : 'Account', 
+        'profile' : profile
+    }
+    return render(request, 'profiles/account.html', context)

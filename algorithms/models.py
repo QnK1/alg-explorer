@@ -11,7 +11,6 @@ class Algorithm(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     date_added = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.CASCADE)
-    
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     content = models.CharField(max_length=200, null=False, validators=[

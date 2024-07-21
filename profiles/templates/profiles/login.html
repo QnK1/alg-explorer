@@ -1,12 +1,25 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block includes %}
+    <link rel="stylesheet" type="text/css" href="{% static 'profiles/css/login-register.css' %}">
+{% endblock includes %}
+
 {% block content %}
 
-<form action="" method="POST">
-    {% csrf_token %}
-    
-    {{form}}
+<div class="login-register-content">
+    <div class="form-container">
+        
+        <form action="" method="POST">
+            <h2 class="login-register-title">Log In</h2>
+            {% csrf_token %}
+            
+            {{form}}
 
-    <input type="submit" value="Log In">
-</form>
+            <input type="submit" value="Log In">
+        </form>
+    </div>
+</div>
 
+<script src="{% static 'profiles/js/form-classes.js' %}"></script>
 {% endblock content %}

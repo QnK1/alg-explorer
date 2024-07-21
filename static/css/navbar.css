@@ -1,0 +1,35 @@
+#navbar-content{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    color: var(--text);
+    font-size: 1.8rem;
+}
+
+#navbar-logo{
+    margin-top: 12%;
+    
+    /* filter: invert(89%) sepia(8%) saturate(146%) hue-rotate(159deg) brightness(86%) contrast(85%); */
+    height: 5em;
+    width: 5em;
+    user-select: none;
+}
+
+#navbar-options{
+    height: 40%;
+    margin-top: auto;
+    margin-bottom: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35em;
+    align-items: center;
+    user-select: none;
+}
+
+.nav-item:hover{
+    filter: brightness(105%);
+}
