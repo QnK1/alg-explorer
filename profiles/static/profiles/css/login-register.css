@@ -38,13 +38,13 @@ form div{
     width: 21em;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], input[type="email"] {
     padding: 1em;
     width: 15em;
     height: 3em;
     background-color: var(--secondary-color);
     border: none;
-    color: var(--text);
+    color: var(--text1);
     border-radius: 1em;
     border: 0.25em solid var(--on-primary);
     margin-left: auto;
@@ -66,12 +66,12 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active{
     background-color: var(--secondary-color);
-    -webkit-text-fill-color: var(--text);
+    -webkit-text-fill-color: var(--text1);
     -webkit-box-shadow: 0 0 0px 1000px var(--secondary-color) inset;
     transition: background-color 5000s ease-in-out 0s;
 }
 
-input[type="submit"]{
+input[type="submit"], form button{
     width: 10em;
     background-color: var(--on-primary);
     border: none;
@@ -79,7 +79,7 @@ input[type="submit"]{
     padding: 0.5em;
     font-size: 1.2em;
     margin-top: 0.2em;
-    color: var(--text);
+    color: var(--text1);
     font-weight: bold;
     cursor: pointer;
 }

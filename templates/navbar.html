@@ -1,6 +1,8 @@
 {% load static %}
 <div id="navbar-content">
-    <a href="{% url 'algs-main' %}"><img id="navbar-logo" src="{% static 'img/navbar-logo.svg' %}" alt="Cube logo"></a>
+    <a href="{% url 'algs-main' %}" draggable="false">
+        <img id="navbar-logo" src="{% static 'img/navbar-logo.svg' %}" alt="Cube logo" draggable="false">
+    </a>
     
     <div id="navbar-options">
         <div class="nav-item clickable"><a href="{% url 'explore-algs' %}">Explore</a></div>
@@ -10,6 +12,7 @@
             <div class="nav-item clickable"><a href="{% url 'logout' %}" id="login">Log Out</a></div>
         {% else %}
             <div class="nav-item clickable"><a href="{% url 'login' %}" id="login">Log In</a></div>
+            <div class="nav-item clickable"><a href="{% url 'register' %}" id="login">Register</a></div>
         {% endif %}
         {% comment %} <button id="theme-button">Theme</button> {% endcomment %}
     </div>
