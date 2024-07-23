@@ -15,7 +15,7 @@ class Algorithm(models.Model):
     description = models.TextField(null=True, blank=True)
     content = models.CharField(max_length=200, null=False, validators=[
         RegexValidator(
-            regex = r"^([RLUDFBMESxyz]{1}[']? *)+$",
+            regex = r"^([RLUDFBMESxyz]{1}['2]? *)+$",
             message = "Invalid alogrithm.",
             code = "invalid_algorithm",
         )

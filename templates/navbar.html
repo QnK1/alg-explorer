@@ -6,11 +6,12 @@
     
     <div id="navbar-options">
         <div class="nav-item clickable"><a href="{% url 'explore-algs' %}">Explore</a></div>
-        <div class="nav-item clickable"><a href="{% url 'my-algs' %}">My Algs</a></div>
         
         {% if request.user.is_authenticated %}
+            <div class="nav-item clickable"><a href="{% url 'my-algs' %}">My Algs</a></div>
             <div class="nav-item clickable"><a href="{% url 'logout' %}" id="login">Log Out</a></div>
         {% else %}
+            <div class="nav-item clickable"><a href="{% url 'login' %}">My Algs</a></div>
             <div class="nav-item clickable"><a href="{% url 'login' %}" id="login">Log In</a></div>
             <div class="nav-item clickable"><a href="{% url 'register' %}" id="login">Register</a></div>
         {% endif %}
