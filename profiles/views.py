@@ -18,7 +18,13 @@ def loginUser(request):
         if form.is_valid():
             login(request, form.get_user())
             messages.success(request, "User logged in successfully!")
-            return redirect('algs-main')
+            
+            if request.GET.get('next'):
+                redirect_url = request.GET.get('next')
+            else:
+                redirect_url = 'algs-main'
+            
+            return redirect(redirect_url)
         else:
             messages.error(request, "Username or password incorrect")
         
