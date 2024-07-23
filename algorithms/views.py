@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
 
-from .utils import getMyAlgsByTag, searchMyAlgs, paginateMyAlgs
+from .utils import getAlgsByTag, searchAlgs, paginateAlgs
+from .models import Algorithm
 
 # Create your views here.
 
@@ -16,10 +18,13 @@ def getExplore(request):
     return render(request, 'algorithms/explore.html', context)
 
 
+@login_required(login_url='login')
 def getMyAlgs(request):
-    algs, tags_query = getMyAlgsByTag(request)
-    algs, search_query = searchMyAlgs(algs, request)
-    algs, custom_range = paginateMyAlgs(request, algs)
+    myAlgs = Algorithm.objects.filter(owner=request.user.profile)
+    
+    algs, tags_query = getAlgsByTag(request, myAlgs)
+    algs, search_query = searchAlgs(algs, request)
+    algs, custom_range = paginateAlgs(request, algs)
     
     # this makes search work together with pagination
     tags_url = f'&tags={tags_query}' if tags_query != '' else ''

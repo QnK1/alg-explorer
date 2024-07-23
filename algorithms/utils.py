@@ -4,23 +4,23 @@ from django.core.exceptions import ValidationError
 
 from .models import Algorithm, Tag
 
-def getMyAlgsByTag(request):
+def getAlgsByTag(request, algs):
     if not request.GET.get('tags'):
-        return Algorithm.objects.filter(owner=request.user.profile), ''
+        return algs, ''
     else:
         tags_string = request.GET.get('tags')
         tag_names = tags_string.split(',')
         tags = Tag.objects.filter(name__in=tag_names)
         
         try:
-            algs = Algorithm.objects.distinct().filter(Q(owner=request.user.profile), Q(tags__in=tags))
+            algs = algs.filter(tags__in=tags)
         except ValidationError:
-            return Algorithm.objects.filter(owner=request.user.profile), ''
+            return algs, ''
         
         return algs, tags_string
 
 
-def searchMyAlgs(filtered_algs, request):
+def searchAlgs(filtered_algs, request):
     search_query = ''
     
     if request.GET.get('search_query'):
@@ -31,7 +31,7 @@ def searchMyAlgs(filtered_algs, request):
     return algs, search_query
 
 
-def paginateMyAlgs(request, algs):
+def paginateAlgs(request, algs):
     results = 1
     page = request.GET.get('page')
     paginator = Paginator(algs, results)

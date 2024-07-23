@@ -7,7 +7,7 @@
 {% block content %}
 <div class="searchbar-container">
     <form action="{% url 'my-algs' %}" method="GET" id="search-form">
-        <input type="text" name="search_query" class="searchbar-input">
+        <input type="text" name="search_query" class="searchbar-input" value={{search_query}}>
 
         <input type="submit" value="Search">
     </form>
