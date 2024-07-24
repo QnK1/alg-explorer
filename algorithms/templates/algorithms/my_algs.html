@@ -1,34 +1,24 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block includes %}
-<link rel="stylesheet" type="text/css" href="{% static 'algorithms/css/my_algs.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'algorithms/css/my_algs.css' %}">
 {% endblock includes %}
 
 {% block content %}
-<div class="searchbar-container">
-    <form action="{% url 'my-algs' %}" method="GET" id="search-form">
-        <input type="text" name="search_query" class="searchbar-input" value={{search_query}}>
-
-        <input type="submit" value="Search">
-    </form>
+<div id="myalgs-content">
+    {% include 'algorithms/searchbar.html' with curr_url=curr_url search_query=search_query %}
     
-</div>
-
-<div id="algs-list">
-    {% for alg in algs %}
-        <div class="alg-card">
-            {{alg.name}}:
-            {{alg.content}}
-        </div>
-    {% endfor %}
-    
-</div>
-
-<div class="page-controls">
-    <ul>
-        {% for number in custom_range %}
-            <li><a href="?page={{number}}{{curr_url}}">{{number}}</a></li>
+    <div id="myalgs-list">
+        {% for alg in algs %}
+            <div class="my-alg-card">
+                {{alg.name}}:
+                {{alg.content}}
+            </div>
         {% endfor %}
-    </ul>
+
+        
+    </div>
+    
+    {% include 'algorithms/page-controls.html' with custom_range=custom_range curr_queries=curr_queries %}
 </div>
 {% endblock content %}

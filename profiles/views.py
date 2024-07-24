@@ -5,7 +5,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
 from .models import User
 
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, ProfileForm
 
 # Create your views here.
 
@@ -54,23 +54,25 @@ def registerUser(request):
     return render(request, "profiles/register.html", context)
 
 
+@login_required(login_url='login')
 def logoutUser(request):
-    if not request.user.is_authenticated:
-        return redirect('algs-main')
-    
     logout(request)
     messages.success(request, "User logged out.")
     return redirect('login')
 
 
-
 @login_required(login_url='login')
 def getUserAccount(request):
     profile = request.user.profile
+    form = ProfileForm(instance=profile)
     
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
     
     context = {
         'title' : 'Account', 
-        'profile' : profile
+        'form' : form,
     }
     return render(request, 'profiles/account.html', context)

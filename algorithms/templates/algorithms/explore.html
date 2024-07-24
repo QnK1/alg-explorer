@@ -1,5 +1,20 @@
 {% extends 'main.html' %}
 
 {% block content %}
+<div id="explore-content">
+    {% include 'algorithms/searchbar.html' with curr_url=curr_url search_query=search_query %}
+    
+    <div id="explore-list">
+        {% for alg in algs %}
+            <div class="explore-alg-card">
+                {{alg.name}}:
+                {{alg.content}}
+            </div>
+        {% endfor %}
 
+        
+    </div>
+    
+    {% include 'algorithms/page-controls.html' with custom_range=custom_range curr_url=curr_url %}
+</div>
 {% endblock content %}

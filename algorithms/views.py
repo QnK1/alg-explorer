@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 from .utils import getAlgsByTag, searchAlgs, paginateAlgs
 from .models import Algorithm
@@ -13,8 +14,28 @@ def getAlgsMain(request):
 
 
 def getExplore(request):
+    allAlgs = Algorithm.objects.all()
     
-    context = {'title' : 'Explore'}
+    algs, tags_query = getAlgsByTag(request, allAlgs)
+    algs, search_query = searchAlgs(algs, request)
+    algs, custom_range = paginateAlgs(request, algs)
+    
+    tags_url = f'&tags={tags_query}' if tags_query != '' else ''
+    search_url = f'&search_query={search_query}' if search_query != '' else ''
+    curr_queries = tags_url + search_url
+    
+    curr_url = reverse('my-algs')
+    
+    context = {
+            'title' : 'Explore',
+            'algs' : algs,
+            'search_query' : search_query,
+            'tags_query' : tags_query,
+            'custom_range' : custom_range,
+            'curr_queries' : curr_queries,
+            'curr_url' : curr_url,
+            
+    }
     return render(request, 'algorithms/explore.html', context)
 
 
@@ -29,7 +50,9 @@ def getMyAlgs(request):
     # this makes search work together with pagination
     tags_url = f'&tags={tags_query}' if tags_query != '' else ''
     search_url = f'&search_query={search_query}' if search_query != '' else ''
-    curr_url = tags_url + search_url
+    curr_queries = tags_url + search_url
+    
+    curr_url = reverse('my-algs')
     
     context = {
         'title' : 'My Algorithms',
@@ -37,6 +60,7 @@ def getMyAlgs(request):
         'search_query' : search_query,
         'tags_query' : tags_query,
         'custom_range' : custom_range,
+        'curr_queries' : curr_queries,
         'curr_url' : curr_url,
     }
     return render(request, 'algorithms/my_algs.html', context)

@@ -1,0 +1,45 @@
+#myalgs-content{
+    width: 100%;
+    height: 100%;
+}
+
+.searchbar-container{
+    width: 80%;
+    border: 2px solid black;
+    position: sticky;
+    top: 0.5em;;
+    margin-left: 10%;
+    margin-top: 0.5em;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-form{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+
+}
+
+.searchbar-input{
+    width: 80%;
+}
+
+#myalgs-list{
+    height: 100%;
+}
+
+.alg-card{
+
+}
+
+.page-controls{
+
+}

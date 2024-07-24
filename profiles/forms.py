@@ -1,8 +1,9 @@
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from django.forms import CharField, PasswordInput
 from django.utils.translation import gettext_lazy as _
+
+from .models import Profile
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta:
@@ -22,3 +23,9 @@ class CustomUserCreationForm(UserCreationForm):
             self.fields[fieldname].help_text = None
         
         self.fields['password2'].label = 'Repeat Password'
+
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ['username', 'email', 'description']

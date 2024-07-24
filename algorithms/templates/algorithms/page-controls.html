@@ -1,0 +1,7 @@
+<div class="page-controls">
+    <ul>
+        {% for number in custom_range %}
+            <li><a href="?page={{number}}{{curr_queries}}">{{number}}</a></li>
+        {% endfor %}
+    </ul>
+</div>
