@@ -4,11 +4,11 @@
 }
 
 .searchbar-container{
-    width: 80%;
+    width: 98%;
     border: 2px solid black;
     position: sticky;
-    top: 0.5em;;
-    margin-left: 10%;
+    top: 0.5em;
+    margin-left: 1%;
     margin-top: 0.5em;
 
     display: flex;

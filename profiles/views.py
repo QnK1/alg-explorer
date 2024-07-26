@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from .models import User
+from .models import User, Profile
 
 from .forms import CustomUserCreationForm, ProfileForm
 
@@ -59,6 +59,16 @@ def logoutUser(request):
     logout(request)
     messages.success(request, "User logged out.")
     return redirect('login')
+
+
+def getProfile(request, pk):
+    try:
+        profile = Profile.objects.get(id=pk)
+    except:
+        return redirect('algs-main')
+    
+    context = {'profile' : profile}
+    return render(request, "profiles/profile.html", context)
 
 
 @login_required(login_url='login')

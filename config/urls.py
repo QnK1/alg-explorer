@@ -8,9 +8,9 @@ from algorithms.views import getAlgsMain
 urlpatterns = [
     path('admin/', admin.site.urls),
     
-    path('', getAlgsMain),
-    path('algs/', include('algorithms.urls')),
+    path('', include('algorithms.urls')),
     path('users/', include('profiles.urls')),
 ]
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
