@@ -5,20 +5,36 @@
 {% endblock includes %}
 
 {% block content %}
-<div id="myalgs-content">
     {% include 'algorithms/searchbar.html' with curr_url=curr_url search_query=search_query %}
-    
+
     <div id="myalgs-list">
         {% for alg in algs %}
+        <div class="alg-card-container">
             <div class="my-alg-card">
-                {{alg.name}}:
-                {{alg.content}}
-            </div>
-        {% endfor %}
+                <div class="left">
+                    <div class="name-area">
+                        <h3>{{alg.name}}</h3>
+                    </div>
+    
+                    <hr>
+                
+                    <div class="text-area">
+                        <h5>{{ alg.content|truncatechars:50 }}</h5>
+                    </div>
+                </div>
+                
 
+                <div class="picture-area">
+                    <img src="{% static 'algorithms/img/example-cube.png' %}" alt="">
+                </div>
+                
+            </div>
+        </div>
         
+        {% endfor %}
     </div>
     
+    
     {% include 'algorithms/page-controls.html' with custom_range=custom_range curr_queries=curr_queries %}
-</div>
+    
 {% endblock content %}

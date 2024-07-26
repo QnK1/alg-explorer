@@ -32,7 +32,7 @@ def searchAlgs(filtered_algs, request):
 
 
 def paginateAlgs(request, algs):
-    results = 1
+    results = 5
     page = request.GET.get('page')
     paginator = Paginator(algs, results)
     
@@ -47,9 +47,17 @@ def paginateAlgs(request, algs):
     
     page = int(page)
     
+    PAGE_COUNT = 5
     
-    left_index = max(1, page - 4)
-    right_index = min(paginator.num_pages, page + 4)
+    if page - PAGE_COUNT // 2 < 1:
+        left_index = max(1, page - PAGE_COUNT // 2)
+        right_pages = PAGE_COUNT - (page - left_index + 1)
+        right_index = min(PAGE_COUNT + left_index - 1, paginator.num_pages)
+    else:
+        right_index = min(paginator.num_pages, page + PAGE_COUNT // 2)
+        left_pages = PAGE_COUNT - (right_index - page + 1)
+        left_index = max(1, right_index - PAGE_COUNT + 1)
+    
     custom_range = range(left_index, right_index + 1)
     
     return algs, custom_range
