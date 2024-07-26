@@ -1,9 +1,9 @@
 :root {
     --primary-color: #faf4f0;
-    --secondary-color: #CDD5C6;
-    --third: #41658A;
+    --secondary-color: #99a88c;
+    --third: #5f809e;
     --on-primary: #B7BCBF;
-    --extra1: #E8D4C6;
+    --extra1: #0D3B66;
     --extra2: #FFE2C3;
     --text1: #f5f5f5;
     --text2: #1a1a1a;
@@ -46,7 +46,7 @@ input{
 
 #navbar-container{
     grid-area: 1 / 1 / 21 / 4;
-    background: var(--secondary-color);
+    background: var(--third);
 }
 
 #topcard-container{

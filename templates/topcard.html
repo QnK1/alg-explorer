@@ -17,7 +17,7 @@
         </div>
         {% else %}
         <a href="{% url 'login' %}?next={{request.path}}">
-            <img src="{% static 'img/default-profile-picture.png' %}" alt="User profile picture." class="clickable">
+            <img src="{% static 'img/default.png' %}" alt="User profile picture." class="clickable">
         </a>
         {% endif %}
     </div> 

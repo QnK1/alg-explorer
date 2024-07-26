@@ -30,6 +30,10 @@
     user-select: none;
 }
 
+.nav-item{
+    transition: filter 0.08s;
+}
+
 .nav-item:hover{
-    filter: brightness(105%);
+    filter: brightness(107%);
 }
