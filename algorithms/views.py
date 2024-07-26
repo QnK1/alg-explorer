@@ -26,7 +26,7 @@ def getExplore(request):
     search_url = f'&search_query={search_query}' if search_query != '' else ''
     curr_queries = tags_url + search_url
     
-    curr_url = reverse('my-algs')
+    curr_url = reverse('explore-algs')
     
     context = {
             'title' : 'Explore',
