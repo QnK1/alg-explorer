@@ -9,4 +9,5 @@ urlpatterns = [
     path('add-alg/', views.addAlg, name="add-alg"),
     path('update-alg/<str:pk>/', views.updateAlg, name='update-alg'),
     path('delete-alg/<str:pk>/', views.deleteAlg, name='delete-alg'),
+    path('alg/<str:pk>/', views.getAlg, name="alg"),
 ]

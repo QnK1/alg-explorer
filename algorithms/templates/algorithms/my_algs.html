@@ -9,7 +9,7 @@
 
     <div id="myalgs-list">
         {% for alg in algs %}
-        <div class="alg-card-container">
+        <a class="alg-card-container" href={% url 'update-alg' alg.id %}>
             <div class="my-alg-card">
                 <div class="left">
                     <div class="name-area">
@@ -29,7 +29,8 @@
                 </div>
                 
             </div>
-        </div>
+        </a>
+
         
         {% endfor %}
     </div>

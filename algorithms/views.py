@@ -122,3 +122,13 @@ def deleteAlg(request, pk):
     context = {'alg' : alg}
     
     return render(request, 'algorithms/delete_alg.html', context)
+
+
+def getAlg(request, pk):
+    try:
+        alg = Algorithm.objects.get(id=pk)
+    except ObjectDoesNotExist:
+        return redirect('algs-main')
+    
+    context = {'alg' : alg}
+    return render(request, 'algorithms/alg.html', context)
