@@ -1,28 +1,13 @@
 import xml.dom.minidom
 from pathlib import Path
+from re import search
 
-from cube import Cube
-from colors import COLORS_HEX, Colors
+from .cube import Cube
+from .colors import COLORS_HEX, Colors
 
 def makeImage(cube : Cube):
     CURR_DIR = Path(__file__).resolve().parent
     DEFAULT_IMAGE_URL = CURR_DIR / 'default.svg'
-    
-    cube.moveR(0)
-    cube.moveU(0)
-    cube.moveR(1)
-    cube.moveU(1)
-    cube.moveR(1)
-    cube.moveF(0)
-    cube.moveR(2)
-    cube.moveU(1)
-    cube.moveR(1)
-    cube.moveU(1)
-    cube.moveR(0)
-    cube.moveU(0)
-    cube.moveR(1)
-    cube.moveF(1)
-    
     
     with xml.dom.minidom.parse(str(DEFAULT_IMAGE_URL)) as doc:
         tiles = doc.getElementsByTagName('path')
@@ -39,8 +24,27 @@ def makeImage(cube : Cube):
         for i, c in enumerate(cube.u):
             tiles_u[i].setAttribute('fill', COLORS_HEX[c])
         
-        doc.writexml(open(CURR_DIR / 'new.svg', 'w'))
-        
+        doc.writexml(open(CURR_DIR / "img_temp/new.svg", 'w'))
 
-cube = Cube()
-makeImage(cube)    
+
+def makeImageForAlg(alg : str):
+    cube = Cube()
+    cube.executeAlg(alg)
+    makeImage(cube)
+    
+    return Path(__file__).resolve().parent / "img_temp/new.svg"
+
+
+def reverseAlg(alg : str):
+    if not search(r"^([RLUDFBMESrludfbxyz]{1}['2]? *)+$", alg):
+        return False
+    
+    moves = alg.split()
+    
+    for i, move in enumerate(moves):
+        if "'" in move:
+            moves[i] = moves[i][0]
+        elif "2" not in move:
+            moves[i] = moves[i] + "'"
+    
+    return " ".join(moves[::-1])

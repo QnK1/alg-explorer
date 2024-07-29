@@ -78,6 +78,10 @@ def addAlg(request):
         if form.is_valid():
             alg = form.save(commit=False)
             alg.owner = profile
+            
+            # remove excessive spaces
+            alg.content = " ".join(alg.content.split())
+            
             alg.save()
             return redirect('my-algs')
     

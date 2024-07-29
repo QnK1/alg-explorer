@@ -15,12 +15,14 @@ class Algorithm(models.Model):
     description = models.TextField(null=True, blank=True)
     content = models.CharField(max_length=200, null=False, validators=[
         RegexValidator(
-            regex = r"^([RLUDFBMESxyz]{1}['2]? *)+$",
+            regex = r"^([RLUDFBMESrludfbxyz]{1}['2]? *)+$",
             message = "Invalid alogrithm.",
             code = "invalid_algorithm",
         )
     ])
     tags = models.ManyToManyField("Tag", blank=True)
+    
+    image = models.ImageField(null=True, blank=True, upload_to="algorithms/", default="/algorithms/default.png")
     
     def __str__(self):
         return self.name
