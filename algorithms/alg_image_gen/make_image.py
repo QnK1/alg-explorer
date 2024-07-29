@@ -15,14 +15,14 @@ def makeImage(cube : Cube):
         tiles_r = tiles[9:18]
         tiles_u = tiles[18:27]
 
-        for i, c in enumerate(cube.f):
-            tiles_f[i].setAttribute('fill', COLORS_HEX[c])
+        for t, c in zip(tiles_f, cube.f):
+            t.setAttribute('fill', COLORS_HEX[c])
         
-        for i, c in enumerate(cube.r):
-            tiles_r[i].setAttribute('fill', COLORS_HEX[c])
+        for t, c in zip(tiles_r, cube.r):
+            t.setAttribute('fill', COLORS_HEX[c])
         
-        for i, c in enumerate(cube.u):
-            tiles_u[i].setAttribute('fill', COLORS_HEX[c])
+        for t, c in zip(tiles_u, cube.u):
+            t.setAttribute('fill', COLORS_HEX[c])
         
         doc.writexml(open(CURR_DIR / "img_temp/new.svg", 'w'))
 
