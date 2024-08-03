@@ -1,5 +1,6 @@
 static_root/
 node_modules/
+assets/test.html
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
