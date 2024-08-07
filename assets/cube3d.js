@@ -530,23 +530,16 @@ const Cube = {
     },
 
     move_R(type) {
-        group.clear();
-        scene.remove(group);
-        this.updateFaces();
-        this.faces.R_face.forEach((p) => {
-            scene.attach(p);
-        });
         
         this.faces.R_face.forEach((p) => {
             group.attach(p);
         });
         scene.add(group);
-    
         
         switch(type){
             case 0:
                 // group.rotation.x = -Math.PI / 2;
-                this.loop_R();
+                group.rotateX(-Math.PI / 2);
                 
             break;
             case 1:
@@ -558,6 +551,12 @@ const Cube = {
         }
         
         
+        this.faces.R_face.forEach((p) => {
+            scene.attach(p);
+        });
+        this.updateFaces();
+        group.clear();
+        scene.remove(group);
         
     },
 
@@ -565,11 +564,13 @@ const Cube = {
 
 
 Cube.init();
+// console.log(Cube.pieces.RF_edge.position);
 Cube.move_R(0);
-// Cube.move_R(1);
-const vector = new THREE.Vector3();
-setTimeout(() => {Cube.pieces.URF_corner.getWorldPosition(vector); console.log(vector);}, 5000);
-console.log(vector);
+
+console.log(Cube.pieces.RF_edge.position);
+
+console.log(Cube.faces.U_face);
+
 // Cube.faces.R_face.forEach((p) => {
 //     group.attach(p);
 // });
@@ -577,3 +578,12 @@ console.log(vector);
 // Cube.loop_R();
 
 
+
+
+
+
+
+
+
+
+renderer.render(scene, camera);
