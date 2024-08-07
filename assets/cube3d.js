@@ -1,6 +1,7 @@
 import * as THREE from "three";
 
 
+
 const colors = {
     green: new THREE.Color(0x009b48),
     red: new THREE.Color(0xb90000),
@@ -46,9 +47,12 @@ const constants = {
     offset_x: -2.2,
     offset_y: 2.2,
     offset_z: 2.2,
+    rotation_step: Math.PI / 200,
 };
 
 const group = new THREE.Group();
+
+
 
 const Cube = {
     
@@ -511,26 +515,38 @@ const Cube = {
 
     self: this,
 
+    axes: {
+        X: new THREE.Vector3(1, 0, 0),
+        Y: new THREE.Vector3(0, 1, 0),
+        Z: new THREE.Vector3(0, 0, 1),
+    },
+    animating: false,
+
+
     loop_R(){
-        let self = this;
+        const self = this;
+        let totalRotaion = 0;
 
-        if(group.rotation.x > - Math.PI / 2){
-            group.rotation.x -= Math.PI / 200;
-            renderer.render(scene, camera);
-            requestAnimationFrame(function(){
-                self.loop_R();
-            });
-        }
-        else{
+        function frame(){
+            if(totalRotaion > - Math.PI / 2){
+                group.rotateOnWorldAxis(Cube.axes.X, -constants.rotation_step);
+                totalRotaion += -constants.rotation_step;
+                renderer.render(scene, camera);
             
-            group.rotation.x = - Math.PI / 2;
             
-        }
-
+                requestAnimationFrame(frame);
+            }
+            else{
+                group.rotateOnWorldAxis(Cube.axes.X, -Math.PI / 2 - totalRotaion);
+            };
+            
+        };
+        
+        requestAnimationFrame(frame);
+        
     },
 
     move_R(type) {
-        
         this.faces.R_face.forEach((p) => {
             group.attach(p);
         });
@@ -538,20 +554,248 @@ const Cube = {
         
         switch(type){
             case 0:
-                // group.rotation.x = -Math.PI / 2;
-                group.rotateX(-Math.PI / 2);
+                group.rotateOnWorldAxis(this.axes.X, -Math.PI / 2);
+            break;
+            case 1:
+                group.rotateOnWorldAxis(this.axes.X, Math.PI / 2);
+            break;
+            case 2:
+                group.rotateOnWorldAxis(this.axes.X, Math.PI);
+            break;
+        } 
+    
+        this.faces.R_face.forEach((p) => {
+            scene.attach(p);
+        });
+        this.updateFaces();
+        group.clear();
+        
+    },
+    move_U(type) {
+        this.faces.U_face.forEach((p) => {
+            group.attach(p);
+        });
+        
+        scene.add(group);
+        
+        switch(type){
+            case 0:
+                group.rotateOnWorldAxis(this.axes.Y, -Math.PI / 2);
                 
             break;
             case 1:
-                group.rotation.x = Math.PI / 2;
+                group.rotateOnWorldAxis(this.axes.Y, Math.PI / 2);
             break;
             case 2:
-                group.rotation.x = Math.PI;
+                group.rotateOnWorldAxis(this.axes.Y, Math.PI);
             break;
         }
         
         
-        this.faces.R_face.forEach((p) => {
+        this.faces.U_face.forEach((p) => {
+            scene.attach(p);
+        });
+        this.updateFaces();
+        group.clear();
+        scene.remove(group);
+        
+    },
+    move_F(type) {
+        this.faces.F_face.forEach((p) => {
+            group.attach(p);
+        });
+        
+        scene.add(group);
+        
+        switch(type){
+            case 0:
+                group.rotateOnWorldAxis(this.axes.Z, -Math.PI / 2);
+                
+            break;
+            case 1:
+                group.rotateOnWorldAxis(this.axes.Z, Math.PI / 2);
+            break;
+            case 2:
+                group.rotateOnWorldAxis(this.axes.Z, Math.PI);
+            break;
+        }
+        
+        
+        this.faces.F_face.forEach((p) => {
+            scene.attach(p);
+        });
+        this.updateFaces();
+        group.clear();
+        scene.remove(group);
+        
+    },
+    move_L(type) {
+        this.faces.L_face.forEach((p) => {
+            group.attach(p);
+        });
+        
+        scene.add(group);
+        
+        switch(type){
+            case 0:
+                group.rotateOnWorldAxis(this.axes.X, Math.PI / 2);
+                
+            break;
+            case 1:
+                group.rotateOnWorldAxis(this.axes.X, -Math.PI / 2);
+            break;
+            case 2:
+                group.rotateOnWorldAxis(this.axes.X, Math.PI);
+            break;
+        }
+        
+        
+        this.faces.L_face.forEach((p) => {
+            scene.attach(p);
+        });
+        this.updateFaces();
+        group.clear();
+        scene.remove(group);
+        
+    },
+    move_B(type) {
+        this.faces.B_face.forEach((p) => {
+            group.attach(p);
+        });
+        
+        scene.add(group);
+        
+        switch(type){
+            case 0:
+                group.rotateOnWorldAxis(this.axes.Z, Math.PI / 2);
+                
+            break;
+            case 1:
+                group.rotateOnWorldAxis(this.axes.Z, -Math.PI / 2);
+            break;
+            case 2:
+                group.rotateOnWorldAxis(this.axes.Z, Math.PI);
+            break;
+        }
+        
+        
+        this.faces.B_face.forEach((p) => {
+            scene.attach(p);
+        });
+        this.updateFaces();
+        group.clear();
+        scene.remove(group);
+        
+    },
+    move_D(type) {
+        this.faces.D_face.forEach((p) => {
+            group.attach(p);
+        });
+        
+        scene.add(group);
+        
+        switch(type){
+            case 0:
+                group.rotateOnWorldAxis(this.axes.Y, Math.PI / 2);
+                
+            break;
+            case 1:
+                group.rotateOnWorldAxis(this.axes.Y, -Math.PI / 2);
+            break;
+            case 2:
+                group.rotateOnWorldAxis(this.axes.Y, Math.PI);
+            break;
+        }
+        
+        
+        this.faces.D_face.forEach((p) => {
+            scene.attach(p);
+        });
+        this.updateFaces();
+        group.clear();
+        scene.remove(group);
+        
+    },
+    move_M(type) {
+        this.faces.M_face.forEach((p) => {
+            group.attach(p);
+        });
+        
+        scene.add(group);
+        
+        switch(type){
+            case 0:
+                group.rotateOnWorldAxis(this.axes.X, Math.PI / 2);
+                
+            break;
+            case 1:
+                group.rotateOnWorldAxis(this.axes.X, -Math.PI / 2);
+            break;
+            case 2:
+                group.rotateOnWorldAxis(this.axes.X, Math.PI);
+            break;
+        }
+        
+        
+        this.faces.M_face.forEach((p) => {
+            scene.attach(p);
+        });
+        this.updateFaces();
+        group.clear();
+        scene.remove(group);
+        
+    },
+    move_S(type) {
+        this.faces.S_face.forEach((p) => {
+            group.attach(p);
+        });
+        
+        scene.add(group);
+        
+        switch(type){
+            case 0:
+                group.rotateOnWorldAxis(this.axes.Z, -Math.PI / 2);
+                
+            break;
+            case 1:
+                group.rotateOnWorldAxis(this.axes.Z, Math.PI / 2);
+            break;
+            case 2:
+                group.rotateOnWorldAxis(this.axes.Z, Math.PI);
+            break;
+        }
+        
+        
+        this.faces.S_face.forEach((p) => {
+            scene.attach(p);
+        });
+        this.updateFaces();
+        group.clear();
+        scene.remove(group);
+        
+    },
+    move_E(type) {
+        this.faces.E_face.forEach((p) => {
+            group.attach(p);
+        });
+        
+        scene.add(group);
+        
+        switch(type){
+            case 0:
+                group.rotateOnWorldAxis(this.axes.Y, Math.PI / 2);
+                
+            break;
+            case 1:
+                group.rotateOnWorldAxis(this.axes.Y, -Math.PI / 2);
+            break;
+            case 2:
+                group.rotateOnWorldAxis(this.axes.Y, Math.PI);
+            break;
+        }
+        
+        
+        this.faces.E_face.forEach((p) => {
             scene.attach(p);
         });
         this.updateFaces();
@@ -564,16 +808,12 @@ const Cube = {
 
 
 Cube.init();
-// console.log(Cube.pieces.RF_edge.position);
 Cube.move_R(0);
+console.log(Cube.pieces.URF_corner.position);
 
-console.log(Cube.pieces.RF_edge.position);
 
-console.log(Cube.faces.U_face);
 
-// Cube.faces.R_face.forEach((p) => {
-//     group.attach(p);
-// });
+
 // scene.add(group);
 // Cube.loop_R();
 
