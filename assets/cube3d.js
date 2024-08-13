@@ -419,15 +419,15 @@ const Cube = {
 
             if(Math.abs(piece.position.y - constants.offset_y) < constants.eps)
                 this.faces.U_face.push(piece);
-            if(Math.abs(piece.position.y - (-(2 * (constants.piece_len + constants.piece_dist)) + constants.offset_y)) < constants.eps)
+            else if(Math.abs(piece.position.y - (-(2 * (constants.piece_len + constants.piece_dist)) + constants.offset_y)) < constants.eps)
                 this.faces.D_face.push(piece);
             if(Math.abs(piece.position.x - constants.offset_x) < constants.eps)
                 this.faces.L_face.push(piece);
-            if(Math.abs(piece.position.x - ((2 * (constants.piece_len + constants.piece_dist)) + constants.offset_x)) < constants.eps)
+            else if(Math.abs(piece.position.x - ((2 * (constants.piece_len + constants.piece_dist)) + constants.offset_x)) < constants.eps)
                 this.faces.R_face.push(piece);
             if(Math.abs(piece.position.z - (-(2 * (constants.piece_len + constants.piece_dist)) + constants.offset_z)) < constants.eps)
                 this.faces.B_face.push(piece);
-            if(Math.abs(piece.position.z - constants.offset_z) < constants.eps)
+            else if(Math.abs(piece.position.z - constants.offset_z) < constants.eps)
                 this.faces.F_face.push(piece);
             if(Math.abs(piece.position.x - ((constants.piece_len + constants.piece_dist) + constants.offset_x)) < constants.eps)
                 this.faces.M_face.push(piece);
