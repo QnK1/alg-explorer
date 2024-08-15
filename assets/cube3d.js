@@ -687,7 +687,7 @@ const Cube = {
 
 
     loadAlg(alg){
-        const regex = /^([RLUDFBMESrludfbxyz]{1}['2]? *)+$/;
+        const regex = /^([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? +)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? *){1}$/;
 
         if((typeof alg != "string") || alg.match(regex) === null)
             return;

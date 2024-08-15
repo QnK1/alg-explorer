@@ -36,15 +36,17 @@ def makeImageForAlg(alg : str):
 
 
 def reverseAlg(alg : str):
-    if not search(r"^([RLUDFBMESrludfbxyz]{1}['2]? *)+$", alg):
+    if not search(r"^([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? +)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? *){1}$", alg):
         return False
     
     moves = alg.split()
     
     for i, move in enumerate(moves):
-        if "'" in move:
+        if "2" in move:
+            moves[i] = moves[i][0:2]        
+        elif "'" in move:
             moves[i] = moves[i][0]
-        elif "2" not in move:
-            moves[i] = moves[i] + "'"
+        else:
+            moves[i] = f"{moves[i]}'"
     
     return " ".join(moves[::-1])
