@@ -611,10 +611,17 @@ const Cube = {
         });
         scene.add(group);
 
-        function frame(){
+        let prevTimeStamp;
+        let currRotation;
+        function frame(timeStamp){
+            if(prevTimeStamp === undefined)
+                prevTimeStamp = timeStamp;
+            
             if(totalRotaion < maxAbsRotation){
-                group.rotateOnWorldAxis(self.move_steps[type].axis, self.move_steps[type].step);
-                totalRotaion += Math.abs(self.move_steps[type].step);
+                currRotation = 144 * self.move_steps[type].step * ((timeStamp - prevTimeStamp) / 1000);
+                
+                group.rotateOnWorldAxis(self.move_steps[type].axis, currRotation);
+                totalRotaion += Math.abs(currRotation);
                 renderer.render(scene, camera);
 
                 requestAnimationFrame(frame);
@@ -634,6 +641,8 @@ const Cube = {
                 if(ex_next && self.stack.length > 0)
                     self.move(self.stack.pop(), true);
             };
+
+            prevTimeStamp = timeStamp;
         };
 
         requestAnimationFrame(frame);
@@ -659,6 +668,6 @@ const Cube = {
 
 Cube.init();
 renderer.render(scene, camera);
-Cube.execute("y x' R U' R' D R U R' D' R U R' D R U' R' D' x");
+Cube.execute("R U");
 
 
