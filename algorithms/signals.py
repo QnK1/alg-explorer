@@ -4,7 +4,7 @@ from django.core.files import File
 from pathlib import Path
 
 from .models import Algorithm
-from .alg_image_gen.make_image import makeImageForAlg, reverseAlg
+from .alg_image_gen.make_image import getAlgData, reverseAlg
 
 
 @receiver(post_save, sender=Algorithm)
@@ -16,7 +16,10 @@ def algorithmCreated(sender, instance, created, **kwargs):
         content = instance.content
         target = reverseAlg(content)
         
-        p = makeImageForAlg(target)
+        p, data = getAlgData(target)
+        
+        instance.cube_state = data
+        instance.save()
         
         with open(p, 'r') as file:
             image_file = File(file)

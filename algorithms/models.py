@@ -22,6 +22,7 @@ class Algorithm(models.Model):
     ])
     tags = models.ManyToManyField("Tag", blank=True)
     
+    cube_state = models.CharField(max_length=54, default="wwwwwwwwwyyyyyyyyyrrrrrrrrrooooooooogggggggggbbbbbbbbb")
     image = models.ImageField(null=True, blank=True, upload_to="algorithms/", default="/algorithms/default.png")
     
     def __str__(self):

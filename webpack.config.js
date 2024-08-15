@@ -4,7 +4,7 @@ module.exports = {
     entry: './assets/cube3d.js',  // path to our input file
     output: {
         filename: 'cube3d-bundle.js',  // output bundle file name
-        path: path.resolve(__dirname, './static/js'),  // path to our Django static directory
+        path: path.resolve(__dirname, './algorithms/static//algorithms/js'),  // path to our Django static directory
     },
     module: {
         rules: [

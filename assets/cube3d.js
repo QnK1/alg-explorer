@@ -11,12 +11,12 @@ const colors = {
 };
 
 const materials = {
-    green: new THREE.MeshPhongMaterial({color: colors.green}),
-    red: new THREE.MeshPhongMaterial({color: colors.red}),
-    blue: new THREE.MeshPhongMaterial({color: colors.blue}),
-    orange: new THREE.MeshPhongMaterial({color: colors.orange}),
-    white: new THREE.MeshPhongMaterial({color: colors.white}),
-    yellow: new THREE.MeshPhongMaterial({color: colors.yellow}),
+    g: new THREE.MeshPhongMaterial({color: colors.green}),
+    r: new THREE.MeshPhongMaterial({color: colors.red}),
+    b: new THREE.MeshPhongMaterial({color: colors.blue}),
+    o: new THREE.MeshPhongMaterial({color: colors.orange}),
+    w: new THREE.MeshPhongMaterial({color: colors.white}),
+    y: new THREE.MeshPhongMaterial({color: colors.yellow}),
     inner: new THREE.MeshPhongMaterial({color: colors.inner}),
 };
 
@@ -29,8 +29,10 @@ camera.lookAt( scene.position );
 
 const renderer = new THREE.WebGLRenderer( {antialias: true, alpha: true} );
 renderer.setSize( innerWidth, innerHeight );
-document.body.appendChild( renderer.domElement );
+// document.body.appendChild( renderer.domElement );
 			
+const content = document.getElementById("main-content");
+content.appendChild(renderer.domElement);
 
 const ambientLight = new THREE.AmbientLight( 'white', 3);
     scene.add( ambientLight );
@@ -58,325 +60,7 @@ const group = new THREE.Group();
 const Cube = {
     
     pieces: {
-        ULF_corner: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.orange,
-                materials.white,
-                materials.inner,
-                materials.green,
-                materials.inner,
-            ]
-        ),
-        UF_edge: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.inner,
-                materials.white,
-                materials.inner,
-                materials.green,
-                materials.inner,
-            ]
-        ),
-        URF_corner: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.red,
-                materials.inner,
-                materials.white,
-                materials.inner,
-                materials.green,
-                materials.inner,
-            ]
-        ),
-        URF_corner: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.red,
-                materials.inner,
-                materials.white,
-                materials.inner,
-                materials.green,
-                materials.inner,
-            ]
-        ),
-        LF_edge: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.orange,
-                materials.inner,
-                materials.inner,
-                materials.green,
-                materials.inner,
-            ]
-        ),
-        F_center: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.green,
-                materials.inner,
-            ]
-        ),
-        LF_edge: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.orange,
-                materials.inner,
-                materials.inner,
-                materials.green,
-                materials.inner,
-            ]
-        ),
-        F_center: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.green,
-                materials.inner,
-            ]
-        ),
-        RF_edge: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.red,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.green,
-                materials.inner,
-            ]
-        ),
-        DLF_corner: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.orange,
-                materials.inner,
-                materials.yellow,
-                materials.green,
-                materials.inner,
-            ]
-        ),
-        DRF_corner: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.red,
-                materials.inner,
-                materials.inner,
-                materials.yellow,
-                materials.green,
-                materials.inner,
-            ]
-        ),
-        DF_edge: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.yellow,
-                materials.green,
-                materials.inner,
-            ]
-        ),
-        UL_edge: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.orange,
-                materials.white,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-            ]
-        ),
-        U_center: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.inner,
-                materials.white,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-            ]
-        ),
-        UR_edge: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.red,
-                materials.inner,
-                materials.white,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-            ]
-        ),
-        L_center: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.orange,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-            ]
-        ),
-        R_center: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.red,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-            ]
-        ),
-        DL_edge: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.orange,
-                materials.inner,
-                materials.yellow,
-                materials.inner,
-                materials.inner,
-            ]
-        ),
-        D_center: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.yellow,
-                materials.inner,
-                materials.inner,
-            ]
-        ),
-        ULB_corner: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.orange,
-                materials.white,
-                materials.inner,
-                materials.inner,
-                materials.blue,
-            ]
-        ),
-        DR_edge: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.red,
-                materials.inner,
-                materials.inner,
-                materials.yellow,
-                materials.inner,
-                materials.inner,
-            ]
-        ),
-        UB_edge: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.inner,
-                materials.white,
-                materials.inner,
-                materials.inner,
-                materials.blue,
-            ]
-        ),
-        URB_corner: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.red,
-                materials.inner,
-                materials.white,
-                materials.inner,
-                materials.inner,
-                materials.blue,
-            ]
-        ),
-        LB_edge: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.orange,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.blue,
-            ]
-        ),
-        B_center: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.blue,
-            ]
-        ),
-        RB_edge: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.red,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.blue,
-            ]
-        ),
-        DLB_corner:  new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.orange,
-                materials.inner,
-                materials.yellow,
-                materials.inner,
-                materials.blue,
-            ]
-        ),
-        DB_edge: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.inner,
-                materials.inner,
-                materials.inner,
-                materials.yellow,
-                materials.inner,
-                materials.blue,
-            ]
-        ),
-        DRB_corner: new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
-            [
-                materials.red,
-                materials.inner,
-                materials.inner,
-                materials.yellow,
-                materials.inner,
-                materials.blue,
-            ]
-        ),
+        
     },
     
     faces: {
@@ -443,6 +127,320 @@ const Cube = {
         this.faces.l_face = [...this.faces.L_face, ...this.faces.M_face];
         this.faces.f_face = [...this.faces.F_face, ...this.faces.S_face];
         this.faces.b_face = [...this.faces.B_face, ...this.faces.S_face];
+    },
+
+    loadState(state){
+        this.pieces.ULF_corner = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials[state[29]],
+                materials[state[6]],
+                materials.inner,
+                materials[state[36]],
+                materials.inner,
+            ]
+        );
+
+        this.pieces.UF_edge = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials.inner,
+                materials[state[7]],
+                materials.inner,
+                materials[state[37]],
+                materials.inner,
+            ]
+        );
+
+        this.pieces.URF_corner = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials[state[18]],
+                materials.inner,
+                materials[state[8]],
+                materials.inner,
+                materials[state[38]],
+                materials.inner,
+            ]
+        );
+
+        this.pieces.LF_edge = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials[state[32]],
+                materials.inner,
+                materials.inner,
+                materials[state[39]],
+                materials.inner,
+            ]
+        );
+
+        this.pieces.F_center = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials[state[40]],
+                materials.inner,
+            ]
+        );
+
+        this.pieces.RF_edge = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials[state[21]],
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials[state[41]],
+                materials.inner,
+            ]
+        );
+
+        this.pieces.DLF_corner = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials[state[35]],
+                materials.inner,
+                materials[state[9]],
+                materials[state[42]],
+                materials.inner,
+            ]
+        );
+
+        this.pieces.DRF_corner = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials[state[24]],
+                materials.inner,
+                materials.inner,
+                materials[state[11]],
+                materials[state[44]],
+                materials.inner,
+            ]
+        );
+
+        this.pieces.DF_edge = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials[state[10]],
+                materials[state[43]],
+                materials.inner,
+            ]
+        );
+
+        this.pieces.UL_edge = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials[state[28]],
+                materials[state[3]],
+                materials.inner,
+                materials.inner,
+                materials.inner,
+            ]
+        );
+
+        this.pieces.U_center = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials.inner,
+                materials[state[4]],
+                materials.inner,
+                materials.inner,
+                materials.inner,
+            ]
+        );
+
+        this.pieces.UR_edge = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials[state[19]],
+                materials.inner,
+                materials[state[5]],
+                materials.inner,
+                materials.inner,
+                materials.inner,
+            ]
+        );
+
+        this.pieces.L_center = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials[state[31]],
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials.inner,
+            ]
+        );
+
+        this.pieces.R_center = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials[state[22]],
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials.inner,
+            ]
+        );
+
+        this.pieces.DL_edge = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials[state[34]],
+                materials.inner,
+                materials[state[12]],
+                materials.inner,
+                materials.inner,
+            ]
+        );
+
+        this.pieces.D_center = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials[state[13]],
+                materials.inner,
+                materials.inner,
+            ]
+        );
+
+        this.pieces.ULB_corner = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials[state[27]],
+                materials[state[0]],
+                materials.inner,
+                materials.inner,
+                materials[state[47]],
+            ]
+        );
+
+        this.pieces.DR_edge = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials[state[25]],
+                materials.inner,
+                materials.inner,
+                materials[state[14]],
+                materials.inner,
+                materials.inner,
+            ]
+        );
+
+        this.pieces.UB_edge = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials.inner,
+                materials[state[1]],
+                materials.inner,
+                materials.inner,
+                materials[state[46]],
+            ]
+        );
+
+        this.pieces.URB_corner = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials[state[20]],
+                materials.inner,
+                materials[state[2]],
+                materials.inner,
+                materials.inner,
+                materials[state[45]],
+            ]
+        );
+        
+        this.pieces.LB_edge = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials[state[30]],
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials[state[50]],
+            ]
+        );
+
+        this.pieces.B_center = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials[state[49]],
+            ]
+        );
+
+        this.pieces.RB_edge = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials[state[23]],
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials[state[48]],
+            ]
+        );
+
+        this.pieces.DLB_corner = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials[state[33]],
+                materials.inner,
+                materials[state[15]],
+                materials.inner,
+                materials[state[53]],
+            ]
+        );
+
+        this.pieces.DB_edge = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials.inner,
+                materials.inner,
+                materials.inner,
+                materials[state[16]],
+                materials.inner,
+                materials[state[52]],
+            ]
+        );
+
+        this.pieces.DRB_corner = new THREE.Mesh(
+            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            [
+                materials[state[26]],
+                materials.inner,
+                materials.inner,
+                materials[state[17]],
+                materials.inner,
+                materials[state[51]],
+            ]
+        );
     },
 
     init(){
@@ -720,12 +718,11 @@ const Cube = {
 
 };
 
+Cube.loadState(cubeState);
 Cube.init();
+Cube.loadAlg(algContent);
+
 renderer.render(scene, camera);
-
-Cube.loadAlg("x R' U R' D2 R U' R' D2 R2 x'");
-
-
 
 const forwardBtn = document.querySelector('.forward');
 const backBtn = document.querySelector('.back');

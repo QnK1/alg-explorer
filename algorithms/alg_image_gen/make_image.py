@@ -1,6 +1,7 @@
 import xml.dom.minidom
 from pathlib import Path
 from re import search
+import numpy as np
 
 from .cube import Cube
 from .colors import COLORS_HEX, Colors
@@ -27,12 +28,30 @@ def makeImage(cube : Cube):
         doc.writexml(open(CURR_DIR / "img_temp/new.svg", 'w'))
 
 
-def makeImageForAlg(alg : str):
+def generateStateString(cube : Cube):
+    color_map = {
+        Colors.WHITE : "w",
+        Colors.YELLOW : "y",
+        Colors.RED : "r",
+        Colors.ORANGE : "o",
+        Colors.GREEN : "g",
+        Colors.BLUE : "b",
+    }
+    
+    output = ""
+    
+    for c in np.hstack((cube.u, cube.d, cube.r, cube.l, cube.f, cube.b)):
+        output += color_map[c]
+    
+    return output
+
+
+def getAlgData(alg : str):
     cube = Cube()
     cube.executeAlg(alg)
     makeImage(cube)
     
-    return Path(__file__).resolve().parent / "img_temp/new.svg"
+    return Path(__file__).resolve().parent / "img_temp/new.svg", generateStateString(cube)
 
 
 def reverseAlg(alg : str):

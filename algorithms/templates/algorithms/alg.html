@@ -1,8 +1,33 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block includes %}
+<script>
+    const cubeState = "{{alg.cube_state}}";
+    const algContent = "{{alg.content|escapejs}}";
+</script>
+
+<link rel="stylesheet" href="{% static 'algorithms/css/alg.css' %}">
+{% endblock includes %}
 
 {% block content %}
+
+
+
 <p>Name: {{alg.name}}</p>
 <p>Owner: {{alg.owner}}</p>
 <p>Content: {{alg.content}}</p>
 <p>Description: {{alg.description}}</p>
+
+<button class="back"><-</button>
+    <button class="play">>></button>
+    <button class="pause">||</button>
+    <button class="forward">-></button>
+
+<script src="{% static 'algorithms/js/cube3d-bundle.js' %}"></script>
+
+
 {% endblock content %}
+
+
+
