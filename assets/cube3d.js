@@ -592,6 +592,7 @@ const Cube = {
     },
 
     animating: false,
+    isPaused: false,
     stack: [],
 
     move(type, ex_next){
@@ -630,15 +631,16 @@ const Cube = {
                 group.rotateOnWorldAxis(self.move_steps[type].axis, 
                     Math.sign(self.move_steps[type].step) * (maxAbsRotation - totalRotaion));
                 renderer.render(scene, camera);
-                self.animating = false;
-
+    
                 curr_face.forEach((p) => {
                     scene.attach(p);
                 });
                 self.updateFaces();
                 group.clear();
+                self.animating = false;
+                self.currFrame = null;
 
-                if(ex_next && self.stack.length > 0)
+                if(ex_next && self.stack.length > 0 && !self.paused)
                     self.move(self.stack.pop(), true);
             };
 
@@ -650,24 +652,43 @@ const Cube = {
         
     },
 
-    execute(alg){
+    play(){
+        this.paused = false;
+        
+        if(this.stack.length > 0)
+            this.move(this.stack.pop(), true);
+    },
+
+    pause(){
+        this.paused = true;
+    },
+
+    loadAlg(alg){
         const regex = /^([RLUDFBMESrludfbxyz]{1}['2]? *)+$/;
 
         if((typeof alg != "string") || alg.match(regex) === null)
             return;
 
         this.stack = alg.trim().split(/[\s]/).reverse();
-
-        if(this.stack.length > 0)
-            this.move(this.stack.pop(), true);
     },
 
+    execute(alg){
+        this.loadAlg(alg);
+        this.play();
+    },
 
 
 };
 
 Cube.init();
 renderer.render(scene, camera);
-Cube.execute("R U");
+// Cube.execute("R U R' U' R' F R2 U' R' U' R U R' F'");
+
+// setTimeout(() => {Cube.pause();}, 2000);
+// setTimeout(() => {Cube.play();}, 3000);
+// setTimeout(() => {Cube.pause();}, 6000);
+// setTimeout(() => {Cube.play();}, 8000);
+
+
 
 
