@@ -130,6 +130,11 @@ const Cube = {
     },
 
     loadState(state){
+        const regex = /^[wyrogb]{54}$/;
+
+        if(state.match(regex) === null)
+            state = "wwwwwwwwwyyyyyyyyyrrrrrrrrrooooooooogggggggggbbbbbbbbb";
+        
         this.pieces.ULF_corner = new THREE.Mesh(
             new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
             [
