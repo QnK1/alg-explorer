@@ -538,57 +538,75 @@ const Cube = {
         "R" : {axis: constants.axes.X, step: -constants.rotation_step},
         "R'" : {axis: constants.axes.X, step: constants.rotation_step},
         "R2" : {axis: constants.axes.X, step: -1.2 * constants.rotation_step},
+        "R2'" : {axis: constants.axes.X, step: 1.2 * constants.rotation_step},
         "U" : {axis: constants.axes.Y, step: -constants.rotation_step},
         "U'" : {axis: constants.axes.Y, step: constants.rotation_step},
         "U2" : {axis: constants.axes.Y, step: -1.2 * constants.rotation_step},
+        "U2'" : {axis: constants.axes.Y, step: 1.2 * constants.rotation_step},
         "F" : {axis: constants.axes.Z, step: -constants.rotation_step},
         "F'" : {axis: constants.axes.Z, step: constants.rotation_step},
         "F2" : {axis: constants.axes.Z, step: -1.2 * constants.rotation_step},
+        "F2'" : {axis: constants.axes.Z, step: 1.2 * constants.rotation_step},
         "L" : {axis: constants.axes.X, step: constants.rotation_step},
         "L'" : {axis: constants.axes.X, step: -constants.rotation_step},
         "L2" : {axis: constants.axes.X, step: 1.2 * constants.rotation_step},
+        "L2'" : {axis: constants.axes.X, step: -1.2 * constants.rotation_step},
         "D" : {axis: constants.axes.Y, step: constants.rotation_step},
         "D'" : {axis: constants.axes.Y, step: -constants.rotation_step},
         "D2" : {axis: constants.axes.Y, step: 1.2 * constants.rotation_step},
+        "D2'" : {axis: constants.axes.Y, step: -1.2 * constants.rotation_step},
         "B" : {axis: constants.axes.Z, step: constants.rotation_step},
         "B'" : {axis: constants.axes.Z, step: -constants.rotation_step},
         "B2" : {axis: constants.axes.Z, step: 1.2 * constants.rotation_step},
+        "B2'" : {axis: constants.axes.Z, step: -1.2 * constants.rotation_step},
         "M" : {axis: constants.axes.X, step: constants.rotation_step},
         "M'" : {axis: constants.axes.X, step: -constants.rotation_step},
         "M2" : {axis: constants.axes.X, step: 1.2 * constants.rotation_step},
+        "M2'" : {axis: constants.axes.X, step: -1.2 * constants.rotation_step},
         "S" : {axis: constants.axes.Z, step: -constants.rotation_step},
         "S'" : {axis: constants.axes.Z, step: constants.rotation_step},
         "S2" : {axis: constants.axes.Z, step: -1.2 * constants.rotation_step},
+        "S2'" : {axis: constants.axes.Z, step: 1.2 * constants.rotation_step},
         "E" : {axis: constants.axes.Y, step: constants.rotation_step},
         "E'" : {axis: constants.axes.Y, step: -constants.rotation_step},
         "E2" : {axis: constants.axes.Y, step: 1.2 * constants.rotation_step},
+        "E2'" : {axis: constants.axes.Y, step: -1.2 * constants.rotation_step},
         "x" : {axis: constants.axes.X, step: -constants.rotation_step},
         "x'" : {axis: constants.axes.X, step: constants.rotation_step},
         "x2" : {axis: constants.axes.X, step: -1.2 * constants.rotation_step},
+        "x2'" : {axis: constants.axes.X, step: 1.2 * constants.rotation_step},
         "y" : {axis: constants.axes.Y, step: -constants.rotation_step},
         "y'" : {axis: constants.axes.Y, step: constants.rotation_step},
         "y2" : {axis: constants.axes.Y, step: -1.2 * constants.rotation_step},
+        "y2'" : {axis: constants.axes.Y, step: 1.2 * constants.rotation_step},
         "z" : {axis: constants.axes.Z, step: -constants.rotation_step},
         "z'" : {axis: constants.axes.Z, step: constants.rotation_step},
         "z2" : {axis: constants.axes.Z, step: -1.2 * constants.rotation_step},
+        "z2'" : {axis: constants.axes.Z, step: 1.2 * constants.rotation_step},
         "r" : {axis: constants.axes.X, step: -constants.rotation_step},
         "r'" : {axis: constants.axes.X, step: constants.rotation_step},
         "r2" : {axis: constants.axes.X, step: -1.2 * constants.rotation_step},
+        "r2" : {axis: constants.axes.X, step: 1.2 * constants.rotation_step},
         "u" : {axis: constants.axes.Y, step: -constants.rotation_step},
         "u'" : {axis: constants.axes.Y, step: constants.rotation_step},
         "u2" : {axis: constants.axes.Y, step: -1.2 * constants.rotation_step},
+        "u2" : {axis: constants.axes.Y, step: 1.2 * constants.rotation_step},
         "f" : {axis: constants.axes.Z, step: -constants.rotation_step},
         "f'" : {axis: constants.axes.Z, step: constants.rotation_step},
         "f2" : {axis: constants.axes.Z, step: -1.2 * constants.rotation_step},
+        "f2" : {axis: constants.axes.Z, step: 1.2 * constants.rotation_step},
         "l" : {axis: constants.axes.X, step: constants.rotation_step},
         "l'" : {axis: constants.axes.X, step: -constants.rotation_step},
         "l2" : {axis: constants.axes.X, step: 1.2 * constants.rotation_step},
+        "l2'" : {axis: constants.axes.X, step: -1.2 * constants.rotation_step},
         "d" : {axis: constants.axes.Y, step: constants.rotation_step},
         "d'" : {axis: constants.axes.Y, step: -constants.rotation_step},
         "d2" : {axis: constants.axes.Y, step: 1.2 * constants.rotation_step},
+        "d2'" : {axis: constants.axes.Y, step: -1.2 * constants.rotation_step},
         "b" : {axis: constants.axes.Z, step: constants.rotation_step},
         "b'" : {axis: constants.axes.Z, step: -constants.rotation_step},
         "b2" : {axis: constants.axes.Z, step: 1.2 * constants.rotation_step},
+        "b2'" : {axis: constants.axes.Z, step: -1.2 * constants.rotation_step},
     },
 
     animating: false,
@@ -656,9 +674,7 @@ const Cube = {
 
     reverseMoveSign(move){
         if(move.includes("'"))
-            return move[0];
-        else if(move.includes("2"))
-            return move;
+            return move.slice(0, -1);
         else
             return `${move}'`;
     },
@@ -707,7 +723,7 @@ const Cube = {
 Cube.init();
 renderer.render(scene, camera);
 
-Cube.loadAlg("R U R' U' R' F R2 U' R' U' R U R' F'");
+Cube.loadAlg("x R' U R' D2 R U' R' D2 R2 x'");
 
 
 
