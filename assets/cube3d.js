@@ -594,6 +594,7 @@ const Cube = {
     animating: false,
     isPaused: false,
     stack: [],
+    currTop: -1,
 
     move(type, ex_next){
         if(this.animating || (typeof type !== "string") || !(type in this.move_steps))
@@ -638,10 +639,11 @@ const Cube = {
                 self.updateFaces();
                 group.clear();
                 self.animating = false;
-                self.currFrame = null;
 
-                if(ex_next && self.stack.length > 0 && !self.paused)
-                    self.move(self.stack.pop(), true);
+                if(ex_next && self.currTop >= 0 && !self.isPaused){
+                    self.move(self.stack[self.currTop--], true);
+                }
+                    
             };
 
             prevTimeStamp = timeStamp;
@@ -652,16 +654,37 @@ const Cube = {
         
     },
 
+    reverseMoveSign(move){
+        if(move.includes("'"))
+            return move[0];
+        else if(move.includes("2"))
+            return move;
+        else
+            return `${move}'`;
+    },
+
+    forward(){
+        if(this.currTop >= 0 && !this.animating)
+            this.move(this.stack[this.currTop--], false);
+    },
+
+    back(){
+        if(this.currTop < this.stack.length - 1 && !this.animating)
+            this.move(this.reverseMoveSign(this.stack[++this.currTop]), false);
+    },
+
     play(){
-        this.paused = false;
+        this.isPaused = false;
         
-        if(this.stack.length > 0)
-            this.move(this.stack.pop(), true);
+        if(this.currTop >= 0 && !this.animating)
+            this.move(this.stack[this.currTop--], true);
     },
 
     pause(){
-        this.paused = true;
+        this.isPaused = true;
     },
+
+
 
     loadAlg(alg){
         const regex = /^([RLUDFBMESrludfbxyz]{1}['2]? *)+$/;
@@ -670,6 +693,7 @@ const Cube = {
             return;
 
         this.stack = alg.trim().split(/[\s]/).reverse();
+        this.currTop = this.stack.length - 1;
     },
 
     execute(alg){
@@ -682,12 +706,36 @@ const Cube = {
 
 Cube.init();
 renderer.render(scene, camera);
-// Cube.execute("R U R' U' R' F R2 U' R' U' R U R' F'");
 
-// setTimeout(() => {Cube.pause();}, 2000);
-// setTimeout(() => {Cube.play();}, 3000);
-// setTimeout(() => {Cube.pause();}, 6000);
-// setTimeout(() => {Cube.play();}, 8000);
+Cube.loadAlg("R U R' U' R' F R2 U' R' U' R U R' F'");
+
+
+
+const forwardBtn = document.querySelector('.forward');
+const backBtn = document.querySelector('.back');
+const playBtn = document.querySelector('.play');
+const pauseBtn = document.querySelector('.pause');
+
+forwardBtn.addEventListener('click', () => {
+    console.log("forward clicked");
+    Cube.forward();
+});
+
+backBtn.addEventListener('click', () => {
+    console.log("back clicked");
+    Cube.back();
+});
+
+playBtn.addEventListener('click', () => {
+    console.log("play clicked");
+    Cube.play();
+});
+
+pauseBtn.addEventListener('click', () => {
+    console.log("pause clicked");
+    Cube.pause();
+});
+
 
 
 
