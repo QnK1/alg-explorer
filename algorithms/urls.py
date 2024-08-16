@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.getAlgsMain, name="algs-main"),
+    path('home/', views.getAlgsMain, name="algs-main"),
     path('myalgs/', views.getMyAlgs, name="my-algs"),
     path('explore/', views.getExplore, name="explore-algs"),
     path('add-alg/', views.addAlg, name="add-alg"),

@@ -8,6 +8,8 @@ from algorithms.views import getAlgsMain
 urlpatterns = [
     path('admin/', admin.site.urls),
     
+    path('api/', include('api.urls')),
+    
     path('', include('algorithms.urls')),
     path('users/', include('profiles.urls')),
 ]

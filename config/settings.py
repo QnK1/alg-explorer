@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     
     'algorithms.apps.AlgorithmsConfig',
     'profiles.apps.ProfilesConfig',
+    
+    'rest_framework',
 ]
 
 MIDDLEWARE = [

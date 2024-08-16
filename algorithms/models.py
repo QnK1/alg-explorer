@@ -24,6 +24,7 @@ class Algorithm(models.Model):
     
     cube_state = models.CharField(editable=False, max_length=54, default="wwwwwwwwwyyyyyyyyyrrrrrrrrrooooooooogggggggggbbbbbbbbb")
     image = models.ImageField(editable=False, null=True, blank=True, upload_to="algorithms/", default="/algorithms/default.png")
+    users_hearts = models.ManyToManyField(Profile, blank=True, related_name="hearts")
     
     def __str__(self):
         return self.name
