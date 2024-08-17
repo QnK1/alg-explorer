@@ -8,6 +8,8 @@ from algorithms.models import Algorithm
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
 def heartAlg(request, pk):
+    profile = request.user.profile
+    
     try:
         alg = Algorithm.objects.get(id=pk)
     except:
@@ -15,37 +17,43 @@ def heartAlg(request, pk):
         "errors" : "Invalid ID.",
     })
 
-    profile = request.user.profile
+    if 'heart' not in request.data or request.data['heart'] not in {'yes', 'no'}:
+        return Response({
+            "errors" : "Invalid PUT data.",
+        })
     
-    if profile in alg.users_hearts.all():
-        return Response({
-            "errors" : "Alg already hearted by user.",
-        })
-    else:
+    if request.data['heart'] == "yes" and profile not in alg.users_hearts.all():
         alg.users_hearts.add(profile)
-        return Response({
-            "errors" : "None.",
-        })
+    elif request.data['heart'] == "no" and profile in alg.users_hearts.all():
+        alg.users_hearts.remove(profile)
+    
+    return Response({
+        "errors" : "None.",
+    })
 
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def unheartAlg(request, pk):
+def markAlgAsLearned(request, pk):
+    profile = request.user.profile
+    
     try:
         alg = Algorithm.objects.get(id=pk)
     except:
         return Response({
         "errors" : "Invalid ID.",
     })
-        
-    profile = request.user.profile
+
+    if 'learned' not in request.data or request.data['learned'] not in {'yes', 'no'}:
+        return Response({
+            "errors" : "Invalid PUT data.",
+        })
     
-    if profile in alg.users_hearts.all():
-        alg.users_hearts.remove(profile)
-        return Response({
-            "errors" : "None.",
-        })
-    else:
-        return Response({
-            "errors" : "Alg not previously hearted by user.",
-        })
+    if request.data['learned'] == "yes" and profile not in alg.users_learned.all():
+        alg.users_learned.add(profile)
+    elif request.data['learned'] == "no" and profile in alg.users_learned.all():
+        alg.users_learned.remove(profile)
+    
+    return Response({
+        "errors" : "None.",
+    })
