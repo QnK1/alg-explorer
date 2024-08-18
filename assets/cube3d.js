@@ -54,11 +54,10 @@ const constants = {
 };
 
 const group = new THREE.Group();
-
+let speedFactor = 1;
 
 
 const Cube = {
-    
     pieces: {
         
     },
@@ -538,85 +537,85 @@ const Cube = {
     self: this,
 
     move_steps: {
-        "R" : {axis: constants.axes.X, step: -constants.rotation_step},
-        "R'" : {axis: constants.axes.X, step: constants.rotation_step},
-        "R2" : {axis: constants.axes.X, step: -1.15 * constants.rotation_step},
-        "R2'" : {axis: constants.axes.X, step: 1.15 * constants.rotation_step},
-        "U" : {axis: constants.axes.Y, step: -constants.rotation_step},
-        "U'" : {axis: constants.axes.Y, step: constants.rotation_step},
-        "U2" : {axis: constants.axes.Y, step: -1.15 * constants.rotation_step},
-        "U2'" : {axis: constants.axes.Y, step: 1.15 * constants.rotation_step},
-        "F" : {axis: constants.axes.Z, step: -constants.rotation_step},
-        "F'" : {axis: constants.axes.Z, step: constants.rotation_step},
-        "F2" : {axis: constants.axes.Z, step: -1.15 * constants.rotation_step},
-        "F2'" : {axis: constants.axes.Z, step: 1.15 * constants.rotation_step},
-        "L" : {axis: constants.axes.X, step: constants.rotation_step},
-        "L'" : {axis: constants.axes.X, step: -constants.rotation_step},
-        "L2" : {axis: constants.axes.X, step: 1.15 * constants.rotation_step},
-        "L2'" : {axis: constants.axes.X, step: -1.15 * constants.rotation_step},
-        "D" : {axis: constants.axes.Y, step: constants.rotation_step},
-        "D'" : {axis: constants.axes.Y, step: -constants.rotation_step},
-        "D2" : {axis: constants.axes.Y, step: 1.15 * constants.rotation_step},
-        "D2'" : {axis: constants.axes.Y, step: -1.15 * constants.rotation_step},
-        "B" : {axis: constants.axes.Z, step: constants.rotation_step},
-        "B'" : {axis: constants.axes.Z, step: -constants.rotation_step},
-        "B2" : {axis: constants.axes.Z, step: 1.15 * constants.rotation_step},
-        "B2'" : {axis: constants.axes.Z, step: -1.15 * constants.rotation_step},
-        "M" : {axis: constants.axes.X, step: constants.rotation_step},
-        "M'" : {axis: constants.axes.X, step: -constants.rotation_step},
-        "M2" : {axis: constants.axes.X, step: 1.15 * constants.rotation_step},
-        "M2'" : {axis: constants.axes.X, step: -1.15 * constants.rotation_step},
-        "S" : {axis: constants.axes.Z, step: -constants.rotation_step},
-        "S'" : {axis: constants.axes.Z, step: constants.rotation_step},
-        "S2" : {axis: constants.axes.Z, step: -1.15 * constants.rotation_step},
-        "S2'" : {axis: constants.axes.Z, step: 1.15 * constants.rotation_step},
-        "E" : {axis: constants.axes.Y, step: constants.rotation_step},
-        "E'" : {axis: constants.axes.Y, step: -constants.rotation_step},
-        "E2" : {axis: constants.axes.Y, step: 1.15 * constants.rotation_step},
-        "E2'" : {axis: constants.axes.Y, step: -1.15 * constants.rotation_step},
-        "x" : {axis: constants.axes.X, step: -constants.rotation_step},
-        "x'" : {axis: constants.axes.X, step: constants.rotation_step},
-        "x2" : {axis: constants.axes.X, step: -1.15 * constants.rotation_step},
-        "x2'" : {axis: constants.axes.X, step: 1.15 * constants.rotation_step},
-        "y" : {axis: constants.axes.Y, step: -constants.rotation_step},
-        "y'" : {axis: constants.axes.Y, step: constants.rotation_step},
-        "y2" : {axis: constants.axes.Y, step: -1.15 * constants.rotation_step},
-        "y2'" : {axis: constants.axes.Y, step: 1.15 * constants.rotation_step},
-        "z" : {axis: constants.axes.Z, step: -constants.rotation_step},
-        "z'" : {axis: constants.axes.Z, step: constants.rotation_step},
-        "z2" : {axis: constants.axes.Z, step: -1.15 * constants.rotation_step},
-        "z2'" : {axis: constants.axes.Z, step: 1.15 * constants.rotation_step},
-        "r" : {axis: constants.axes.X, step: -constants.rotation_step},
-        "r'" : {axis: constants.axes.X, step: constants.rotation_step},
-        "r2" : {axis: constants.axes.X, step: -1.15 * constants.rotation_step},
-        "r2" : {axis: constants.axes.X, step: 1.15 * constants.rotation_step},
-        "u" : {axis: constants.axes.Y, step: -constants.rotation_step},
-        "u'" : {axis: constants.axes.Y, step: constants.rotation_step},
-        "u2" : {axis: constants.axes.Y, step: -1.15 * constants.rotation_step},
-        "u2" : {axis: constants.axes.Y, step: 1.15 * constants.rotation_step},
-        "f" : {axis: constants.axes.Z, step: -constants.rotation_step},
-        "f'" : {axis: constants.axes.Z, step: constants.rotation_step},
-        "f2" : {axis: constants.axes.Z, step: -1.15 * constants.rotation_step},
-        "f2" : {axis: constants.axes.Z, step: 1.15 * constants.rotation_step},
-        "l" : {axis: constants.axes.X, step: constants.rotation_step},
-        "l'" : {axis: constants.axes.X, step: -constants.rotation_step},
-        "l2" : {axis: constants.axes.X, step: 1.15 * constants.rotation_step},
-        "l2'" : {axis: constants.axes.X, step: -1.15 * constants.rotation_step},
-        "d" : {axis: constants.axes.Y, step: constants.rotation_step},
-        "d'" : {axis: constants.axes.Y, step: -constants.rotation_step},
-        "d2" : {axis: constants.axes.Y, step: 1.15 * constants.rotation_step},
-        "d2'" : {axis: constants.axes.Y, step: -1.15 * constants.rotation_step},
-        "b" : {axis: constants.axes.Z, step: constants.rotation_step},
-        "b'" : {axis: constants.axes.Z, step: -constants.rotation_step},
-        "b2" : {axis: constants.axes.Z, step: 1.15 * constants.rotation_step},
-        "b2'" : {axis: constants.axes.Z, step: -1.15 * constants.rotation_step},
+        "R" : {axis: constants.axes.X, step: (-constants.rotation_step)},
+        "R'" : {axis: constants.axes.X, step: (constants.rotation_step)},
+        "R2" : {axis: constants.axes.X, step: (-1.15 * constants.rotation_step)},
+        "R2'" : {axis: constants.axes.X, step: (1.15 * constants.rotation_step)},
+        "U" : {axis: constants.axes.Y, step: (-constants.rotation_step)},
+        "U'" : {axis: constants.axes.Y, step: (constants.rotation_step)},
+        "U2" : {axis: constants.axes.Y, step: (-1.15 * constants.rotation_step)},
+        "U2'" : {axis: constants.axes.Y, step: (1.15 * constants.rotation_step)},
+        "F" : {axis: constants.axes.Z, step: (-constants.rotation_step)},
+        "F'" : {axis: constants.axes.Z, step: (constants.rotation_step)},
+        "F2" : {axis: constants.axes.Z, step: (-1.15 * constants.rotation_step)},
+        "F2'" : {axis: constants.axes.Z, step: (1.15 * constants.rotation_step)},
+        "L" : {axis: constants.axes.X, step: (constants.rotation_step)},
+        "L'" : {axis: constants.axes.X, step: (-constants.rotation_step)},
+        "L2" : {axis: constants.axes.X, step: (1.15 * constants.rotation_step)},
+        "L2'" : {axis: constants.axes.X, step: (-1.15 * constants.rotation_step)},
+        "D" : {axis: constants.axes.Y, step: (constants.rotation_step)},
+        "D'" : {axis: constants.axes.Y, step: (-constants.rotation_step)},
+        "D2" : {axis: constants.axes.Y, step: (1.15 * constants.rotation_step)},
+        "D2'" : {axis: constants.axes.Y, step: (-1.15 * constants.rotation_step)},
+        "B" : {axis: constants.axes.Z, step: (constants.rotation_step)},
+        "B'" : {axis: constants.axes.Z, step: (-constants.rotation_step)},
+        "B2" : {axis: constants.axes.Z, step: (1.15 * constants.rotation_step)},
+        "B2'" : {axis: constants.axes.Z, step: (-1.15 * constants.rotation_step)},
+        "M" : {axis: constants.axes.X, step: (constants.rotation_step)},
+        "M'" : {axis: constants.axes.X, step: (-constants.rotation_step)},
+        "M2" : {axis: constants.axes.X, step: (1.15 * constants.rotation_step)},
+        "M2'" : {axis: constants.axes.X, step: (-1.15 * constants.rotation_step)},
+        "S" : {axis: constants.axes.Z, step: (-constants.rotation_step)},
+        "S'" : {axis: constants.axes.Z, step: (constants.rotation_step)},
+        "S2" : {axis: constants.axes.Z, step: (-1.15 * constants.rotation_step)},
+        "S2'" : {axis: constants.axes.Z, step: (1.15 * constants.rotation_step)},
+        "E" : {axis: constants.axes.Y, step: (constants.rotation_step)},
+        "E'" : {axis: constants.axes.Y, step: (-constants.rotation_step)},
+        "E2" : {axis: constants.axes.Y, step: (1.15 * constants.rotation_step)},
+        "E2'" : {axis: constants.axes.Y, step: (-1.15 * constants.rotation_step)},
+        "x" : {axis: constants.axes.X, step: (-constants.rotation_step)},
+        "x'" : {axis: constants.axes.X, step: (constants.rotation_step)},
+        "x2" : {axis: constants.axes.X, step: (-1.15 * constants.rotation_step)},
+        "x2'" : {axis: constants.axes.X, step: (1.15 * constants.rotation_step)},
+        "y" : {axis: constants.axes.Y, step: (-constants.rotation_step)},
+        "y'" : {axis: constants.axes.Y, step: (constants.rotation_step)},
+        "y2" : {axis: constants.axes.Y, step: (-1.15 * constants.rotation_step)},
+        "y2'" : {axis: constants.axes.Y, step: (1.15 * constants.rotation_step)},
+        "z" : {axis: constants.axes.Z, step: (-constants.rotation_step)},
+        "z'" : {axis: constants.axes.Z, step: (constants.rotation_step)},
+        "z2" : {axis: constants.axes.Z, step: (-1.15 * constants.rotation_step)},
+        "z2'" : {axis: constants.axes.Z, step: (1.15 * constants.rotation_step)},
+        "r" : {axis: constants.axes.X, step: (-constants.rotation_step)},
+        "r'" : {axis: constants.axes.X, step: (constants.rotation_step)},
+        "r2" : {axis: constants.axes.X, step: (-1.15 * constants.rotation_step)},
+        "r2" : {axis: constants.axes.X, step: (1.15 * constants.rotation_step)},
+        "u" : {axis: constants.axes.Y, step: (-constants.rotation_step)},
+        "u'" : {axis: constants.axes.Y, step: (constants.rotation_step)},
+        "u2" : {axis: constants.axes.Y, step: (-1.15 * constants.rotation_step)},
+        "u2" : {axis: constants.axes.Y, step: (1.15 * constants.rotation_step)},
+        "f" : {axis: constants.axes.Z, step: (-constants.rotation_step)},
+        "f'" : {axis: constants.axes.Z, step: (constants.rotation_step)},
+        "f2" : {axis: constants.axes.Z, step: (-1.15 * constants.rotation_step)},
+        "f2" : {axis: constants.axes.Z, step: (1.15 * constants.rotation_step)},
+        "l" : {axis: constants.axes.X, step: (constants.rotation_step)},
+        "l'" : {axis: constants.axes.X, step: (-constants.rotation_step)},
+        "l2" : {axis: constants.axes.X, step: (1.15 * constants.rotation_step)},
+        "l2'" : {axis: constants.axes.X, step: (-1.15 * constants.rotation_step)},
+        "d" : {axis: constants.axes.Y, step: (constants.rotation_step)},
+        "d'" : {axis: constants.axes.Y, step: (-constants.rotation_step)},
+        "d2" : {axis: constants.axes.Y, step: (1.15 * constants.rotation_step)},
+        "d2'" : {axis: constants.axes.Y, step: (-1.15 * constants.rotation_step)},
+        "b" : {axis: constants.axes.Z, step: (constants.rotation_step)},
+        "b'" : {axis: constants.axes.Z, step: (-constants.rotation_step)},
+        "b2" : {axis: constants.axes.Z, step: (1.15 * constants.rotation_step)},
+        "b2'" : {axis: constants.axes.Z, step: (-1.15 * constants.rotation_step)},
     },
 
     animating: false,
     isPaused: false,
     stack: [],
     currTop: -1,
-
+    
     move(type, ex_next){
         if(this.animating || (typeof type !== "string") || !(type in this.move_steps))
             return;
@@ -641,7 +640,7 @@ const Cube = {
                 prevTimeStamp = timeStamp;
             
             if(totalRotaion < maxAbsRotation){
-                currRotation = 144 * self.move_steps[type].step * ((timeStamp - prevTimeStamp) / 1000);
+                currRotation = speedFactor * 144 * self.move_steps[type].step * ((timeStamp - prevTimeStamp) / 1000);
                 
                 group.rotateOnWorldAxis(self.move_steps[type].axis, currRotation);
                 totalRotaion += Math.abs(currRotation);
@@ -661,8 +660,13 @@ const Cube = {
                 group.clear();
                 self.animating = false;
 
-                if(ex_next && self.currTop >= 0 && !self.isPaused){
-                    self.move(self.stack[self.currTop--], true);
+                if(!self.isPaused && ex_next){
+                    if(ex_next === "forward" && self.currTop >= 0){
+                        self.move(self.stack[self.currTop--], "forward");
+                    }
+                    else if(ex_next === "back" && self.currTop < self.stack.length - 1){
+                        self.move(self.reverseMoveSign(self.stack[++self.currTop]), "back");
+                    }
                 }
                     
             };
@@ -683,20 +687,31 @@ const Cube = {
     },
 
     forward(){
+        speedFactor = 1;
         if(this.currTop >= 0 && !this.animating)
             this.move(this.stack[this.currTop--], false);
     },
 
     back(){
+        speedFactor = 1;
         if(this.currTop < this.stack.length - 1 && !this.animating)
             this.move(this.reverseMoveSign(this.stack[++this.currTop]), false);
     },
 
     play(){
+        speedFactor = 1;
         this.isPaused = false;
         
         if(this.currTop >= 0 && !this.animating)
-            this.move(this.stack[this.currTop--], true);
+            this.move(this.stack[this.currTop--], "forward");
+    },
+
+    playBack(){
+        speedFactor = 8;
+        this.isPaused = false;
+
+        if(this.currTop < this.stack.length - 1 && !this.animating)
+            this.move(this.reverseMoveSign(this.stack[++this.currTop]), "back");
     },
 
     pause(){
@@ -733,6 +748,7 @@ const forwardBtn = document.querySelector('.forward');
 const backBtn = document.querySelector('.back');
 const playBtn = document.querySelector('.play');
 const pauseBtn = document.querySelector('.pause');
+const playBackBtn = document.querySelector('.playBack');
 
 forwardBtn.addEventListener('click', () => {
     console.log("forward clicked");
@@ -752,6 +768,11 @@ playBtn.addEventListener('click', () => {
 pauseBtn.addEventListener('click', () => {
     console.log("pause clicked");
     Cube.pause();
+});
+
+playBackBtn.addEventListener('click', () => {
+    console.log("play back clicked");
+    Cube.playBack();
 });
 
 
