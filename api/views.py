@@ -1,6 +1,7 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
+from django.core.exceptions import ObjectDoesNotExist
 
 from algorithms.models import Algorithm
 
@@ -12,7 +13,7 @@ def heartAlg(request, pk):
     
     try:
         alg = Algorithm.objects.get(id=pk)
-    except:
+    except ObjectDoesNotExist:
         return Response({
         "errors" : "Invalid ID.",
     })
@@ -39,7 +40,7 @@ def markAlgAsLearned(request, pk):
     
     try:
         alg = Algorithm.objects.get(id=pk)
-    except:
+    except ObjectDoesNotExist:
         return Response({
         "errors" : "Invalid ID.",
     })

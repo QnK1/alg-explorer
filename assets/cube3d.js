@@ -44,7 +44,7 @@ const constants = {
     offset_x: -2.2,
     offset_y: 2.2,
     offset_z: 2.2,
-    rotation_step: Math.PI / 200,
+    rotation_step: Math.PI / 180,
     axes: {
         X: new THREE.Vector3(1, 0, 0),
         Y: new THREE.Vector3(0, 1, 0),
