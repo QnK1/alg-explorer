@@ -27,6 +27,24 @@ class Algorithm(models.Model):
     users_hearts = models.ManyToManyField(Profile, blank=True, related_name="hearted_algs")
     users_learned = models.ManyToManyField(Profile, blank=True, related_name="learned_algs")
     
+    heart_count = models.IntegerField(default=0, blank=True, null=True)
+    learned_count = models.IntegerField(default=0, blank=True, null=True)
+    
+    
+    def updateHeartCount(self):
+        users = self.users_hearts.all()
+        count = users.count()
+        self.heart_count = count
+        self.save()
+    
+    
+    def updateLearnedCount(self):
+        users = self.users_learned.all()
+        count = users.count()
+        self.learned_count = count
+        self.save()
+        
+    
     def __str__(self):
         return self.name
     

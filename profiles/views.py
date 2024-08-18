@@ -3,8 +3,9 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.decorators import login_required
-from .models import User, Profile
+from django.core.exceptions import ObjectDoesNotExist
 
+from .models import User, Profile
 from .forms import CustomUserCreationForm, ProfileForm
 
 # Create your views here.
@@ -64,7 +65,7 @@ def logoutUser(request):
 def getProfile(request, pk):
     try:
         profile = Profile.objects.get(id=pk)
-    except:
+    except ObjectDoesNotExist:
         return redirect('algs-main')
     
     context = {'profile' : profile}
