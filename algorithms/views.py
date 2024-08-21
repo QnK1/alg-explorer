@@ -4,7 +4,7 @@ from django.urls import reverse
 from django.core.exceptions import ObjectDoesNotExist
 
 from .utils import getAlgsByTag, searchAlgs, paginateAlgs
-from .models import Algorithm
+from .models import Algorithm, Tag
 from .forms import AlgorithmForm
 
 # Create your views here.
@@ -83,9 +83,12 @@ def addAlg(request):
             alg.content = " ".join(alg.content.split())
             
             alg.save()
+            form.save_m2m()
+            
             return redirect('my-algs')
     
-    context = {'form' : form}
+    allTags = Tag.objects.all()
+    context = {'form' : form, 'alltags' : allTags}
     return render(request, "algorithms/alg_form.html", context)
 
 
@@ -106,7 +109,8 @@ def updateAlg(request, pk):
             alg = form.save()
             return redirect('my-algs')
     
-    context = {'form' : form, 'alg' : alg}
+    allTags = Tag.objects.all()
+    context = {'form' : form, 'alg' : alg, 'alltags' : allTags}
     return render(request, 'algorithms/alg_form.html', context)
 
 

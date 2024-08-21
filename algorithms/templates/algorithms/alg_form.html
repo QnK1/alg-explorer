@@ -7,6 +7,12 @@
 
     {{form}}
 
+    {% comment %} {% for tag in alltags %}
+    <label for="{{tag.name}}box">{{tag.name}}</label>
+    <input name="{{tag.name}}box" type="checkbox" value="{{tag.name}}">
+    {% endfor %} {% endcomment %}
+
+    <br>
     <input type="submit" value="Submit">
 </form>
 

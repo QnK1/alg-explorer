@@ -21,10 +21,10 @@ class Algorithm(models.Model):
             code = "invalid_algorithm",
         )
     ])
-    tags = models.ManyToManyField("Tag", blank=True)
+    tags = models.ManyToManyField("Tag", blank=True, related_name="algs")
     
     cube_state = models.CharField(editable=False, max_length=54, default="wwwwwwwwwyyyyyyyyyrrrrrrrrrooooooooogggggggggbbbbbbbbb")
-    image = models.ImageField(editable=False, null=True, blank=True, upload_to="algorithms/")
+    image = models.ImageField(editable=False, null=True, blank=True, upload_to="algorithms/", default="algorithms/default.svg")
     users_hearts = models.ManyToManyField(Profile, blank=True, related_name="hearted_algs")
     users_learned = models.ManyToManyField(Profile, blank=True, related_name="learned_algs")
     
