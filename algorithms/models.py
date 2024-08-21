@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
+from pathlib import Path
 
 import uuid
 from profiles.models import Profile
@@ -23,7 +24,7 @@ class Algorithm(models.Model):
     tags = models.ManyToManyField("Tag", blank=True)
     
     cube_state = models.CharField(editable=False, max_length=54, default="wwwwwwwwwyyyyyyyyyrrrrrrrrrooooooooogggggggggbbbbbbbbb")
-    image = models.ImageField(editable=False, null=True, blank=True, upload_to="algorithms/", default="/algorithms/default.png")
+    image = models.ImageField(editable=False, null=True, blank=True, upload_to="algorithms/")
     users_hearts = models.ManyToManyField(Profile, blank=True, related_name="hearted_algs")
     users_learned = models.ManyToManyField(Profile, blank=True, related_name="learned_algs")
     
