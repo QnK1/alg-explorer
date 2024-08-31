@@ -721,12 +721,13 @@ const Cube = {
 
 
     loadAlg(alg){
-        const regex = /^([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? +)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? *){1}$/;
+        const regex = /^( |\n|\/\/[^\n]*)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')?( |\n|\/\/[^\n]*)+)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')?( |\n|\/\/[^\n]*)*){1}$/m;
 
         if((typeof alg != "string") || alg.match(regex) === null)
             return;
 
-        this.stack = alg.trim().split(/[\s]/).reverse();
+        this.stack = alg.trim().replace(/\/\*[\s\S]*?\*\/|(?<=[^:])\/\/.*|^\/\/.*/g, '').trim().split(/[\s]+/).reverse();
+        console.log(this.stack);
         this.currTop = this.stack.length - 1;
     },
 

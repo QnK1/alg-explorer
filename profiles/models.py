@@ -14,13 +14,13 @@ class Profile(models.Model):
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(null=True, blank=True, upload_to="profiles/", default="/profiles/default.png")
     
-    learned_count = models.IntegerField(default=0, blank=True, null=True)
+    saved_count = models.IntegerField(default=0, blank=True, null=True)
     
     
-    def updateLearnedCount(self):
-        learned_algs = self.learned_algs.all()
-        count = learned_algs.count()
-        self.learned_count = count
+    def updateSavedCount(self):
+        saved_algs = self.saved_algs.all()
+        count = saved_algs.count()
+        self.saved_count = count
         self.save()
     
     def __str__(self):

@@ -1,6 +1,6 @@
 import xml.dom.minidom
 from pathlib import Path
-from re import search
+from re import search, sub
 import numpy as np
 
 from .cube import Cube
@@ -55,10 +55,10 @@ def getAlgData(alg : str):
 
 
 def reverseAlg(alg : str):
-    if not search(r"^([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? +)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? *){1}$", alg):
+    if not search(r"^( |\n|\/\/[^\n]*)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')?( |\n|\/\/[^\n]*)+)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')?( |\n|\/\/[^\n]*)*){1}$", alg):
         return False
     
-    moves = alg.split()
+    moves = sub(r'(?m)^ *(//).*\n?', '', alg).split()
     
     for i, move in enumerate(moves):
         if "2" in move:

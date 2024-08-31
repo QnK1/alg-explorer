@@ -34,14 +34,14 @@ def algHeartsChanged(sender, instance, **kwargs):
     instance.updateHeartCount()
     
 
-@receiver(m2m_changed, sender=Algorithm.users_learned.through)
+@receiver(m2m_changed, sender=Algorithm.users_saved.through)
 def algsLearnedchanged(sender, instance, action, reverse, model, pk_set, **kwargs):
-    instance.updateLearnedCount()
+    instance.updateSavedCount()
     
     for pk in pk_set:
         try:
             profile = Profile.objects.get(id=pk)
-            profile.updateLearnedCount()
+            profile.updateSavedCount()
         except ObjectDoesNotExist:
             pass
             

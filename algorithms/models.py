@@ -2,6 +2,7 @@ from django.db import models
 from django.core.exceptions import ValidationError
 from django.core.validators import RegexValidator
 from pathlib import Path
+from re import M
 
 import uuid
 from profiles.models import Profile
@@ -14,11 +15,12 @@ class Algorithm(models.Model):
     owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    content = models.CharField(max_length=200, null=False, validators=[
+    content = models.TextField(max_length=200, null=False, validators=[
         RegexValidator(
-            regex = r"^([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? +)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? *){1}$",
+            regex = r"^( |\n|//[^\n]*)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')?( |\n|//[^\n]*)+)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')?( |\n|//[^\n]*)*){1}$",
             message = "Invalid alogrithm.",
             code = "invalid_algorithm",
+            flags = M
         )
     ])
     tags = models.ManyToManyField("Tag", blank=True, related_name="algs")
@@ -26,10 +28,10 @@ class Algorithm(models.Model):
     cube_state = models.CharField(editable=False, max_length=54, default="wwwwwwwwwyyyyyyyyyrrrrrrrrrooooooooogggggggggbbbbbbbbb")
     image = models.ImageField(editable=False, null=True, blank=True, upload_to="algorithms/", default="algorithms/default.svg")
     users_hearts = models.ManyToManyField(Profile, blank=True, related_name="hearted_algs")
-    users_learned = models.ManyToManyField(Profile, blank=True, related_name="learned_algs")
+    users_saved = models.ManyToManyField(Profile, blank=True, related_name="saved_algs")
     
     heart_count = models.IntegerField(default=0, blank=True, null=True)
-    learned_count = models.IntegerField(default=0, blank=True, null=True)
+    saved_count = models.IntegerField(default=0, blank=True, null=True)
     
     
     def updateHeartCount(self):
@@ -39,10 +41,10 @@ class Algorithm(models.Model):
         self.save()
     
     
-    def updateLearnedCount(self):
-        users = self.users_learned.all()
+    def updateSavedCount(self):
+        users = self.users_saved.all()
         count = users.count()
-        self.learned_count = count
+        self.saved_count = count
         self.save()
         
     
