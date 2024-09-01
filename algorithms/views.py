@@ -79,9 +79,6 @@ def addAlg(request):
             alg = form.save(commit=False)
             alg.owner = profile
             
-            # remove excessive spaces
-            alg.content = " ".join(alg.content.split())
-            
             alg.save()
             form.save_m2m()
             

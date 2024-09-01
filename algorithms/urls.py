@@ -4,11 +4,10 @@ from . import views
 
 urlpatterns = [
     path('', views.getAlgsMain, name="algs-main"),
-    path('home/', views.getAlgsMain, name="algs-main"),
-    path('mysolves/', views.getMyAlgs, name="my-algs"),
-    path('explore/', views.getExplore, name="explore-algs"),
-    path('solves/add', views.addAlg, name="add-alg"),
-    path('update-alg/<str:pk>/', views.updateAlg, name='update-alg'),
-    path('delete-alg/<str:pk>/', views.deleteAlg, name='delete-alg'),
-    path('alg/<str:pk>/', views.getAlg, name="alg"),
+    path('solves/mysolves/', views.getMyAlgs, name="my-algs"),
+    path('solves/explore/', views.getExplore, name="explore-algs"),
+    path('solves/add/', views.addAlg, name="add-alg"),
+    path('solves/update/<str:pk>/', views.updateAlg, name='update-alg'),
+    path('solves/delete/<str:pk>/', views.deleteAlg, name='delete-alg'),
+    path('solves/<str:pk>/', views.getAlg, name="alg"),
 ]
