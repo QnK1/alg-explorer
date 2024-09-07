@@ -15,7 +15,7 @@ class Algorithm(models.Model):
     owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    content = models.TextField(max_length=200, null=False, validators=[
+    content = models.TextField(max_length=1000, null=False, validators=[
         RegexValidator(
             regex = r"^( |\n|//[^\n]*)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')?( |\n|//[^\n]*)+)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')?( |\n|//[^\n]*)*){1}$",
             message = "Invalid alogrithm.",
