@@ -1,0 +1,17 @@
+{% load static %}
+<div id="navbar-content">
+    <div id="navbar-left">
+        <img id="logo" src="{% static 'img/navbar-logo.svg' %}" alt="Alg Explorer">
+    </div>
+    <div id="navbar-right">
+        <div>Home</div>
+        <div>Explore</div>
+        {% if request.user.is_authenticated %}
+        <div>Log Out</div>
+        {% else %}
+        <div>Log In</div>
+        {% endif %}
+        <div id="searchbar-container">{% include 'searchbar.html' with curr_url=curr_url search_query=search_query %}</div>
+    </div>
+    
+</div>

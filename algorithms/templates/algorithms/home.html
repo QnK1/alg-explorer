@@ -1,0 +1,52 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block includes %}
+    <link rel="stylesheet" type="text/css" href="{% static 'algorithms/css/home.css' %}">
+{% endblock includes %}
+
+{% block content %}
+
+<div id="content">
+    <div id="slider-controls-container">
+        <div id="slider-controls">
+            <i class="fa-solid fa-circle"></i>
+            <i class="fa-regular fa-circle"></i>
+            <i class="fa-regular fa-circle"></i>
+            <i class="fa-regular fa-circle"></i>
+            <i class="fa-regular fa-circle"></i>
+            <img src="{% static 'algorithms/img/home-arrow.svg' %}" alt="">
+        </div>
+    </div>
+    
+    <div id="home-slider">
+        <div class="slide slide1">
+            <div class="slide1-content">
+                <p>
+                    /Explore <br>
+                    Rubik's Cube <br>
+                    <span>Solves</span>
+                </p>
+
+                <img src="{% static 'algorithms/img/home-cube.svg' %}" alt="Colorful Rubik's Cube Logo">
+            </div>
+            
+            
+        </div>
+    
+        <div class="slide slide2">
+            
+        </div>
+    
+        <div class="slide slide3">
+            
+        </div>
+    
+        <div class="slide slide4">
+            
+        </div>
+    
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,6 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/navbar.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/topcard.css' %}">
 
     <link rel="icon" type="image/png" href="{% static 'favicon/favicon.png' %}">
 
@@ -20,16 +18,20 @@
 
     <title>Alg Explorer</title>
 </head>
-<body data-theme="light">
+<body>
     
-    {% include 'navbar.html' %}
+    <div id="navbar-container">
+        {% include 'navbar.html' %}
+    </div>
     
     
+    <div id="content-container">
+        {% block content %}
+
+        {% endblock content %}
+    </div>
 
    
-
-
     <script src="https://kit.fontawesome.com/27d2a5390a.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/main.js' %}" type="module"></script>
 </body>
 </html>

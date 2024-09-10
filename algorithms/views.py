@@ -12,7 +12,7 @@ from .forms import AlgorithmForm
 def getAlgsMain(request):
     
     context = {'title' : 'Welcome'}
-    return render(request, 'algorithms/algs_main.html', context)
+    return render(request, 'algorithms/home.html', context)
 
 
 def getExplore(request):

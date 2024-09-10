@@ -1,12 +1,5 @@
 :root {
-    --primary-color: #faf4f0;
-    --secondary-color: #99a88c;
-    --third: #5f809e;
-    --on-primary: #B7BCBF;
-    --extra1: #0D3B66;
-    --extra2: #FFE2C3;
-    --text1: #f5f5f5;
-    --text2: #1a1a1a;
+    --text1: #fff;
 }
 
 *{
@@ -21,4 +14,17 @@ body {
 
     height: 100vh;
     width: 100vw;
+
+    display: grid;
+    grid-template-rows: repeat(9, 1fr);
+    grid-template-columns: 100%;
+}
+
+#navbar-container{
+    grid-area: 1 / 1 / 2 / 2;
+    width: 100%;
+}
+
+#content-container{
+    grid-area: 2 / 1 / 10 / 2;
 }
