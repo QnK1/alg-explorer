@@ -15,11 +15,18 @@ class Algorithm(models.Model):
     owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
+    scramble = models.CharField(default="", max_length=100, null=False, validators=[
+        RegexValidator(
+            regex = r"^([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? +)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? *){1}$",
+            message = "Invalid scramble.",
+            code = "invalid_scramble"
+        )
+    ])
     content = models.TextField(max_length=1000, null=False, validators=[
         RegexValidator(
             regex = r"^( |\n|//[^\n]*)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')?( |\n|//[^\n]*)+)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')?( |\n|//[^\n]*)*){1}$",
-            message = "Invalid alogrithm.",
-            code = "invalid_algorithm",
+            message = "Invalid solve.",
+            code = "invalid_solve",
             flags = M
         )
     ])
