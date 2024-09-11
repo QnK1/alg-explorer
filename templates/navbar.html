@@ -4,12 +4,24 @@
         <img id="logo" src="{% static 'img/navbar-logo.svg' %}" alt="Alg Explorer">
     </div>
     <div id="navbar-right">
-        <div>Home</div>
-        <div>Explore</div>
-        {% if request.user.is_authenticated %}
-        <div>Log Out</div>
+        {% if request.resolver_match.url_name == 'algs-main' %}
+        <div class="navbar-item navbar-selected">Home</div>
         {% else %}
-        <div>Log In</div>
+        <div class="navbar-item">Home</div>
+        {% endif %}
+        {% if request.resolver_match.url_name == 'explore-algs' %}
+        <div class="navbar-item navbar-selected">Explore</div>
+        {% else %}
+        <div class="navbar-item">Explore</div>
+        {% endif %}
+        {% if request.user.is_authenticated %}
+        <div class="navbar-item">Log Out</div>
+        {% else %}
+            {% if request.resolver_match.url_name == 'login' %}
+            <div class="navbar-item navbar-selected">Log In</div>
+            {% else %}
+            <div class="navbar-item">Log In</div>
+            {% endif %}
         {% endif %}
         <div id="searchbar-container">{% include 'searchbar.html' with curr_url=curr_url search_query=search_query %}</div>
     </div>

@@ -1,5 +1,6 @@
 body {
     background: no-repeat 0% 0% / cover url("/static/algorithms/backgrounds/home-bg.svg");
+    overflow-x: hidden;
 }
 
 #content{
@@ -9,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-x: hidden;
+    overflow: visible;
 
     color: var(--text1);
 }
@@ -24,7 +25,7 @@ body {
 }
 
 #home-slider{
-    width: 400%;
+    width: 500%;
     height: 93%;
     
     display: flex;
@@ -33,7 +34,7 @@ body {
     justify-content: left;
 
     position: relative;
-    left: 155%;
+    left: 205%;
 }
 
 #slider-controls{
@@ -41,7 +42,7 @@ body {
     align-items: center;
     gap: 0.3rem;
     width: 10rem;
-    margin-right: 2%;
+    margin-right: 8%;
 
     font-size: 0.7rem;
 }
@@ -50,14 +51,36 @@ body {
     opacity: 0.59;
 }
 
-#slider-controls img{
+#slider-controls .right-arrow{
     margin-left: auto;
 }
 
+#slider-controls .left-arrow{
+    margin-right: auto;
+    transform: rotate(180deg);
+    visibility: hidden;
+}
+
+#slider-controls .left-arrow-visible{
+    visibility: visible;
+}
+
+#slider-controls .right-arrow-invisible{
+    visibility: hidden;
+}
+
+.dots{
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
 .slide{
-    width: 22.5%;
+    width: 18%;
     height: 100%;
-    /* border: 1px solid red; */
+    border: 1px solid red;
 
     display: flex;
     flex-direction: column;
@@ -89,4 +112,34 @@ body {
 
 .slide1 img{
     width: 28%;
+    filter: drop-shadow(0 4px 246.1px rgba(135, 143, 39, 0.35));
+}
+
+.slide1-active{
+    transform: translate(0%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide2-active{
+    transform: translate(-18%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide3-active{
+    transform: translate(-36%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide4-active{
+    transform: translate(-54%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide5-active{
+    transform: translate(-72%);
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide2-content{
+    
 }

@@ -9,16 +9,20 @@
 <div id="content">
     <div id="slider-controls-container">
         <div id="slider-controls">
-            <i class="fa-solid fa-circle"></i>
-            <i class="fa-regular fa-circle"></i>
-            <i class="fa-regular fa-circle"></i>
-            <i class="fa-regular fa-circle"></i>
-            <i class="fa-regular fa-circle"></i>
-            <img src="{% static 'algorithms/img/home-arrow.svg' %}" alt="">
+            <img class="left-arrow" src="{% static 'algorithms/img/home-arrow.svg' %}" alt="">
+            <div class="dots">
+                <i class="fa-solid fa-circle" data-dot="1"></i>
+                <i class="fa-regular fa-circle" data-dot="2"></i>
+                <i class="fa-regular fa-circle" data-dot="3"></i>
+                <i class="fa-regular fa-circle" data-dot="4"></i>
+                <i class="fa-regular fa-circle" data-dot="5"></i>
+            </div>
+            
+            <img class="right-arrow" src="{% static 'algorithms/img/home-arrow.svg' %}" alt="">
         </div>
     </div>
     
-    <div id="home-slider">
+    <div id="home-slider" data-curr-slide="1">
         <div class="slide slide1">
             <div class="slide1-content">
                 <p>
@@ -34,7 +38,9 @@
         </div>
     
         <div class="slide slide2">
-            
+            <div class="slide2-content">
+                
+            </div>
         </div>
     
         <div class="slide slide3">
@@ -44,9 +50,17 @@
         <div class="slide slide4">
             
         </div>
+
+        <div class="slide slide5">
+            
+        </div>
     
     </div>
 </div>
 
 
 {% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'algorithms/js/home.js' %}"></script>
+{% endblock scripts %}
