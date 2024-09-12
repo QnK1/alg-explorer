@@ -44,6 +44,17 @@
     border-radius: 1rem;
 }
 
+@property --input-color1{
+    syntax: '<color>';
+    initial-value: rgba(24, 24, 24, 64%);
+    inherits: false;
+}
+
+@property --input-color2{
+    syntax: '<color>';
+    initial-value: rgb(41, 41, 41, 64%);
+    inherits: false;
+}
 .searchbar-input{
     width: 18rem;
     height: 1.60rem;
@@ -52,7 +63,7 @@
 
     border-radius: 0.6rem;
     border: none;
-    background: linear-gradient(30deg, rgba(24, 24, 24, 54%), rgb(41, 41, 41, 54%) 82%);
+    background: linear-gradient(30deg, var(--input-color1) 0%, var(--input-color2) 82%);
 
     -webkit-box-shadow: -1.54px -0.77px 9.86px 0px rgba(255, 255, 255, 0.19),
                 -2.31px -0.77px 3.08px 0px rgba(255, 255, 255, 0.25),
