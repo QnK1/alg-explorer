@@ -2,6 +2,7 @@ window.addEventListener('load', () => {
     const rightArrow = document.querySelector('.right-arrow');
     const leftArrow = document.querySelector('.left-arrow');
     const slider = document.getElementById('home-slider');
+    const bgSlider = document.getElementById('home-bg-slider');
     const dots = [...document.querySelectorAll('#slider-controls i')];
     const lastSlide = 5;
 
@@ -11,9 +12,11 @@ window.addEventListener('load', () => {
 
         for(let i = 1; i <= lastSlide; ++i){
             slider.classList.remove(`slide${i}-active`);
+            bgSlider.classList.remove(`bg${i}-active`);
         }
 
         slider.classList.add(`slide${n}-active`);
+        bgSlider.classList.add(`bg${n}-active`);
 
         for(let i = 1; i <= lastSlide; ++i){
             if(i <= n)

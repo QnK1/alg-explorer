@@ -2,16 +2,29 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib import messages
+from django.contrib.auth import login
 
 from .utils import getAlgsByTag, searchAlgs, paginateAlgs
 from .models import Algorithm, Tag
 from .forms import AlgorithmForm
+from profiles.forms import CustomUserCreationForm
 
 # Create your views here.
 
 def getAlgsMain(request):
-    
-    context = {'title' : 'Welcome'}
+    if request.method == "POST":
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            login(request, form.save())
+            messages.success(request, "User account was created!")
+            return redirect("algs-main")
+        else:
+            messages.error(request, "Error")
+    else:
+        form = CustomUserCreationForm()
+
+    context = {'form' : form}
     return render(request, 'algorithms/home.html', context)
 
 

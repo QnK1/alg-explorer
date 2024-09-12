@@ -1,5 +1,4 @@
 body {
-    background: no-repeat 0% 0% / cover url("/static/algorithms/backgrounds/home-bg.svg");
     overflow-x: hidden;
 }
 
@@ -13,6 +12,16 @@ body {
     overflow: visible;
 
     color: var(--text1);
+}
+
+#home-bg{
+    background: no-repeat 0% 0% / cover url("/static/algorithms/backgrounds/home-bg-lines.svg");
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    z-index: -4;
 }
 
 #slider-controls-container{
@@ -53,12 +62,14 @@ body {
 
 #slider-controls .right-arrow{
     margin-left: auto;
+    cursor: pointer;
 }
 
 #slider-controls .left-arrow{
     margin-right: auto;
     transform: rotate(180deg);
     visibility: hidden;
+    cursor: pointer;
 }
 
 #slider-controls .left-arrow-visible{
@@ -77,15 +88,113 @@ body {
     margin-right: 5%;
 }
 
+.dots i{
+    cursor: pointer;
+}
+
 .slide{
     width: 18%;
     height: 100%;
-    border: 1px solid red;
 
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+#home-bg-slider{
+    z-index: -5;
+    position: absolute;
+    left: 0;
+    top:0;
+    height: 100vh;
+    width: 500vw;
+}
+
+#slide1-bg{
+    position: absolute;
+    z-index: -5;
+    background: no-repeat 0% 0% / cover url("/static/algorithms/backgrounds/home-slide1-gradient.svg");
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#slide2-bg{
+    position: fixed;
+    z-index: -5;
+    background: no-repeat 0% 0% / cover url("/static/algorithms/backgrounds/home-slide2-gradient.svg");
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 100vw;
+    margin: 0;
+    padding: 0;
+}
+
+#slide3-bg{
+    position: fixed;
+    z-index: -5;
+    background: no-repeat 0% 0% / cover url("/static/algorithms/backgrounds/home-slide3-gradient.svg");
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 200vw;
+    margin: 0;
+    padding: 0;
+}
+
+#slide4-bg{
+    position: fixed;
+    z-index: -5;
+    background: no-repeat 0% 0% / cover url("/static/algorithms/backgrounds/home-slide4-gradient.svg");
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 300vw;
+    margin: 0;
+    padding: 0;
+}
+
+#slide5-bg{
+    position: fixed;
+    z-index: -5;
+    background: no-repeat 0% 0% / cover url("/static/algorithms/backgrounds/home-slide5-gradient.svg");
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 400vw;
+    margin: 0;
+    padding: 0;
+}
+
+.bg1-active{
+    transform: translate(0);
+    transition: transform 0.5s ease-in-out;
+}
+
+.bg2-active{
+    transform: translate(-100vw);
+    transition: transform 0.5s ease-in-out;
+}
+
+.bg3-active{
+    transform: translate(-200vw);
+    transition: transform 0.5s ease-in-out;
+}
+
+.bg4-active{
+    transform: translate(-300vw);
+    transition: transform 0.5s ease-in-out;
+}
+
+.bg5-active{
+    transform: translate(-400vw);
+    transition: transform 0.5s ease-in-out;
 }
 
 .slide1-content{
@@ -140,6 +249,90 @@ body {
     transition: transform 0.5s ease-in-out;
 }
 
-.slide2-content{
-    
+.slide2-content, .slide3-content, .slide4-content, .slide5-content{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
+
+
+.slide2-content h2, .slide3-content h2, .slide4-content h2{
+    font-size: 2.8rem;
+    font-weight: 500;
+
+    text-align: center;
+    
+} 
+
+.slide2-content h2, .slide4-content h2{
+    margin-top: 3%;
+}
+
+.slide2-content p, .slide3-content p, .slide4-content p{
+    font-size: 1.6rem;
+    font-weight: 100;
+    text-align: center;
+    width: 80%;
+
+    
+} 
+
+.slide2-content p, .slide4-content p{
+    margin-bottom: 3%;
+    margin-top: 0.25%;
+}
+
+.slide3-content p{
+    margin-bottom: 3%;
+    margin-top: 0.25%;
+}
+
+.slide3-content img{
+    margin-bottom: 2.5%;
+}
+
+.home-card{
+    width: 45%;
+}
+
+#register-form{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#register-form input[type="text"], #register-form input[type="password"], #register-form input[type="email"]{
+    height: 1.60rem;
+
+    font-size: 1em;
+    padding: 0.2rem;
+    border-radius: 0.6rem;
+    border: none;
+    background: linear-gradient(30deg, rgba(24, 24, 24, 54%), rgb(41, 41, 41, 54%) 82%);
+    
+    margin-bottom: 3%;
+
+    -webkit-box-shadow: -1.54px -0.77px 9.86px 0px rgba(255, 255, 255, 0.19),
+                -2.31px -0.77px 3.08px 0px rgba(255, 255, 255, 0.25),
+                4.62px 5.39px 8.09px 0px rgba(0, 0, 0, 0.25),
+                4.62px 3.85px 11.09px 0px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: -1.54px -0.77px 9.86px 0px rgba(255, 255, 255, 0.19),
+                -2.31px -0.77px 3.08px 0px rgba(255, 255, 255, 0.25),
+                4.62px 5.39px 8.09px 0px rgba(0, 0, 0, 0.25),
+                4.62px 3.85px 11.09px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: -1.54px -0.77px 9.86px 0px rgba(255, 255, 255, 0.19),
+                -2.31px -0.77px 3.08px 0px rgba(255, 255, 255, 0.25),
+                4.62px 5.39px 8.09px 0px rgba(0, 0, 0, 0.25),
+                4.62px 3.85px 11.09px 0px rgba(0, 0, 0, 0.25);
+}
+
+#register-form input[type="text"]::placeholder, #register-form input[type="password"]::placeholder, #register-form input[type="email"]::placeholder{
+    font-weight: 100;
+    opacity: 40%;
+}
+

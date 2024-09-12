@@ -36,6 +36,7 @@
 
 .navbar-item{
     padding: 0.2rem 0.4rem 0.4rem 0.4rem;
+    cursor: pointer;
 }
 
 .navbar-selected{
@@ -47,7 +48,7 @@
     width: 18rem;
     height: 1.60rem;
 
-    font-size: 1em;
+    font-size: 1rem;
 
     border-radius: 0.6rem;
     border: none;

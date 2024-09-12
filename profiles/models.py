@@ -10,6 +10,8 @@ class Profile(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     
     username = models.CharField(max_length=150)
+    first_name = models.CharField(max_length=150, default="")
+    last_name = models.CharField(max_length=150, null=True, blank=True)
     email = models.EmailField(max_length=150, blank=True, null=True)
     description = models.TextField(blank=True, null=True)
     image = models.ImageField(null=True, blank=True, upload_to="profiles/", default="/profiles/default.png")

@@ -6,6 +6,10 @@
 
 {% block content %}
 
+<div id="home-bg">
+
+</div>
+
 <div id="content">
     <div id="slider-controls-container">
         <div id="slider-controls">
@@ -22,8 +26,34 @@
         </div>
     </div>
     
+    <div id="home-bg-slider">
+        <div id="slide1-bg">
+                
+        </div>
+
+        <div id="slide2-bg">
+                
+        </div>
+
+        <div id="slide3-bg">
+                
+        </div>
+
+        <div id="slide4-bg">
+                
+        </div>
+
+        <div id="slide5-bg">
+                
+        </div>
+    </div>
+
     <div id="home-slider" data-curr-slide="1">
+        
+        
         <div class="slide slide1">
+            
+            
             <div class="slide1-content">
                 <p>
                     /Explore <br>
@@ -39,20 +69,55 @@
     
         <div class="slide slide2">
             <div class="slide2-content">
+                <img src="{% static 'algorithms/img/home-card1.svg' %}" alt="" class="home-card">
                 
+                <h2>Trending Solves</h2>
+                <p>Our platform offers access to trending reconstructions shared by the community, perfect for both beginners and speedcubers.</p>
             </div>
         </div>
     
         <div class="slide slide3">
-            
+            <div class="slide3-content">
+                <h2>Daily generator</h2>
+                <p>Our platform provides new reconstructions every day, offering you a constant stream of innovative solutions to explore.</p>
+                
+                <img src="{% static 'algorithms/img/home-card2.svg' %}" alt="" class="home-card">
+            </div>
         </div>
     
         <div class="slide slide4">
-            
+            <div class="slide4-content">
+                <img src="{% static 'algorithms/img/home-card3.svg' %}" alt="" class="home-card">
+                
+                <h2>Solves History & Saving</h2>
+                <p>Our platform offers access to trending reconstructions shared by the community, perfect for both beginners and speedcubers.</p>
+            </div>
         </div>
 
         <div class="slide slide5">
-            
+            <div class="slide5-content">
+                <form id="register-form" action="" method="POST">
+                    <h2 class="login-register-title">join us</h2>
+                    {% csrf_token %}
+                    
+                    <div class="form-line">
+                        {{form.first_name}}
+                        {{form.last_name}}
+                    </div>
+                    <div class="form-line">
+                        {{form.username}}
+                    </div>
+                    <div class="form-line">
+                        {{form.email}}
+                    </div>
+                    <div class="form-line">
+                        {{form.password1}}
+                        {{form.password2}}
+                    </div>
+                    
+                    <input type="submit" value="Get Started">
+                </form>
+            </div>
         </div>
     
     </div>
