@@ -20,7 +20,9 @@ def getAlgsMain(request):
             messages.success(request, "User account was created!")
             return redirect("algs-main")
         else:
-            messages.error(request, "Error")
+            messages.error(request, "Registration failed")
+            
+            
     else:
         form = CustomUserCreationForm()
 

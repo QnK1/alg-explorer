@@ -132,4 +132,10 @@
 
 {% block scripts %}
 <script src="{% static 'algorithms/js/home.js' %}"></script>
+
+{% if form.errors %}
+<script src="{% static 'algorithms/js/form-error.js' %}"></script>
+{% endif %}
+
 {% endblock scripts %}
+

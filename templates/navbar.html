@@ -1,7 +1,9 @@
 {% load static %}
 <div id="navbar-content">
     <div id="navbar-left">
-        <img id="logo" src="{% static 'img/navbar-logo.svg' %}" alt="Alg Explorer">
+        <a id="logo-a" href="{% url 'algs-main' %}">
+            <img id="logo" src="{% static 'img/navbar-logo.svg' %}" alt="Alg Explorer">
+        </a>
     </div>
     <div id="navbar-right">
         {% if request.resolver_match.url_name == 'algs-main' %}
@@ -12,15 +14,21 @@
         {% if request.resolver_match.url_name == 'explore-algs' %}
         <div class="navbar-item navbar-selected">Explore</div>
         {% else %}
+        <a href="{% url 'explore-algs' %}">
         <div class="navbar-item">Explore</div>
+        </a>
         {% endif %}
         {% if request.user.is_authenticated %}
-        <div class="navbar-item">Log Out</div>
+        <a href="{% url 'logout' %}">
+            <div class="navbar-item">Log Out</div>
+        </a>
         {% else %}
             {% if request.resolver_match.url_name == 'login' %}
             <div class="navbar-item navbar-selected">Log In</div>
             {% else %}
-            <div class="navbar-item">Log In</div>
+            <a href="{% url 'login' %}">
+                <div class="navbar-item">Log In</div>
+            </a>
             {% endif %}
         {% endif %}
         <div id="searchbar-container">{% include 'searchbar.html' with curr_url=curr_url search_query=search_query %}</div>

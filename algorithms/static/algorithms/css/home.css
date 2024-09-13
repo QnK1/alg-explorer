@@ -323,8 +323,10 @@ body {
     min-width: 0;
     flex: 1;
 
-    font-size: 1em;
-    padding: 0.3rem;
+    font-family: "Fellix", sans-serif;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.8em;
+    padding: 0.3rem 0.3rem 0.5rem 0.3rem;
     border-radius: 0.6rem;
     border: none;
     background: linear-gradient(30deg, var(--input-color1) 0%, var(--input-color2) 82%);
@@ -347,7 +349,8 @@ body {
 
 #register-form input[type="text"]::placeholder, #register-form input[type="password"]::placeholder, #register-form input[type="email"]::placeholder{
     font-weight: 100;
-    opacity: 40%;
+    opacity: 60%;
+    font-size: 1em;
 }
 
 
@@ -449,5 +452,13 @@ body {
 #have-account-text span:hover{
     opacity: 1;
     transition: opacity 0.05s ease-in-out;
+}
+
+.slider-error{
+    transform: translate(-72%);
+}
+
+.bg-error{
+    transform: translate(-400vw);
 }
 
