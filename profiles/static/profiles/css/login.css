@@ -36,7 +36,6 @@ body{
     font-size: 2.74rem;
     font-weight: 100;
     letter-spacing: 1rem;
-    opacity: 0.9;
     margin-bottom: 5%;
 }
 
@@ -114,7 +113,7 @@ body{
 
 #login-form img{
     width: 30%;
-    opacity: 0.8;
+    opacity: 0.95;
     margin-bottom: 2%;
     filter: drop-shadow(0 4px 246.1px rgba(135, 143, 39, 0.35));
 }

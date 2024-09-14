@@ -6,4 +6,4 @@ from .models import Algorithm, Tag
 class AlgorithmForm(ModelForm):
     class Meta:
         model = Algorithm
-        fields = ['name', 'description', 'content', 'tags']
+        fields = ['solver', 'description', 'scramble', 'content', 'tags']

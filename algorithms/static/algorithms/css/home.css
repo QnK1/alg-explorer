@@ -16,6 +16,7 @@ body {
 
 #home-bg{
     background: no-repeat 0% 0% / cover url("/static/backgrounds/bg-lines.svg");
+    overflow: hidden;
     position: absolute;
     width: 100vw;
     height: 100vh;

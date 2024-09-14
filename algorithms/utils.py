@@ -26,7 +26,7 @@ def searchAlgs(filtered_algs, request):
     if request.GET.get('search_query'):
         search_query = request.GET.get('search_query')
     
-    algs = filtered_algs.distinct().filter(Q(name__icontains=search_query) | Q(description__icontains=search_query))
+    algs = filtered_algs.distinct().filter(Q(solver__icontains=search_query) | Q(description__icontains=search_query))
     
     return algs, search_query
 

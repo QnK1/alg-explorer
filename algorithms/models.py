@@ -13,8 +13,8 @@ class Algorithm(models.Model):
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     date_added = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.CASCADE)
-    name = models.CharField(max_length=200)
-    description = models.TextField(null=True, blank=True)
+    solver = models.CharField(max_length=50)
+    description = models.CharField(null=True, blank=True, max_length=50)
     scramble = models.CharField(default="", max_length=100, null=False, validators=[
         RegexValidator(
             regex = r"^([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? +)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? *){1}$",
@@ -56,7 +56,7 @@ class Algorithm(models.Model):
         
     
     def __str__(self):
-        return self.name
+        return self.solver
     
 
 class Tag(models.Model):
