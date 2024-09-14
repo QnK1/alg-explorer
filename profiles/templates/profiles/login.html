@@ -1,26 +1,39 @@
 {% extends 'main.html' %}
 {% load static %}
-
 {% block includes %}
-    <link rel="stylesheet" type="text/css" href="{% static 'profiles/css/login-register.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'profiles/css/login.css' %}">
 {% endblock includes %}
 
 {% block content %}
 
-<div class="login-register-content">
-    <div class="form-container">
-        
-        <form action="" method="POST">
-            <h2 class="login-register-title">Log In</h2>
-            {% csrf_token %}
-            
-            {{form}}
+<div id="login-bg-lines"></div>
 
-            
-            <input type="submit" value="Log In">
-        </form>
-    </div>
+<div id="content">
+    <form id="login-form" action="" method="POST" autocomplete="off">
+        {% csrf_token %}
+        <img src="{% static 'profiles/img/cube-logo.svg' %}" alt="Colorful cube logo">
+                    <h2 class="login-title">Log in</h2>
+        
+                    <div class="form-line">
+                        {{form.username}}
+                    </div>
+                    <div class="form-line">
+                        {{form.password}}
+                    </div>
+                    <div id="have-account-text" class="form-line">
+                        <span><a href="{% url 'algs-main' %}?load_register=true">i don't have an account</a></span>
+                    </div>
+                    <div class="form-line" id="submit-line">
+                        <button id="submit-button" type="submit">Start</button>
+                    </div>
+    </form>
 </div>
 
-<script src="{% static 'profiles/js/form-classes.js' %}"></script>
 {% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'profiles/js/login-inputs.js' %}"></script>
+{% endblock scripts %}
+
+
+

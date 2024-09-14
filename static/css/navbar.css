@@ -44,11 +44,11 @@
     cursor: default;
 }
 
-:not(.navbar-selected).navbar-item{
+.navbar-item{
     cursor: pointer;
 }
 
-:not(.navbar-selected).navbar-item:hover{
+.navbar-item:hover{
     text-shadow: calc(1.5 * -0.06ex) 0 0 var(--text1),
                                calc(1.5 * 0.06ex) 0 0 var(--text1); 
     transition: text-shadow 0.05s ease-in-out;

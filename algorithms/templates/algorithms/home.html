@@ -96,7 +96,7 @@
 
         <div class="slide slide5">
             <div class="slide5-content">
-                <form id="register-form" action="" method="POST">
+                <form id="register-form" action="" method="POST" autocomplete="off">
                     <h2 class="login-register-title">join us</h2>
                     {% csrf_token %}
                     
@@ -115,7 +115,7 @@
                         {{form.password2}}
                     </div>
                     <div id="have-account-text" class="form-line">
-                    <span>i have an account</span>
+                    <span><a href="{% url 'login' %}">i have an account</a></span>
                     </div>
                     <div class="form-line">
                         <button id="submit-button" type="submit">Get Started</button>
@@ -127,14 +127,12 @@
     </div>
 </div>
 
-
 {% endblock content %}
 
 {% block scripts %}
 <script src="{% static 'algorithms/js/home.js' %}"></script>
-
-{% if form.errors %}
-<script src="{% static 'algorithms/js/form-error.js' %}"></script>
+{% if form.errors or request.GET.load_register %}
+<script src="{% static 'algorithms/js/load-register.js' %}"></script>
 {% endif %}
 
 {% endblock scripts %}

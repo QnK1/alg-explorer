@@ -1,0 +1,25 @@
+body{
+    background: no-repeat 0% 0% / cover url("/static/algorithms/backgrounds/explore-bg-gradient.svg");
+}
+
+#explore-bg-lines{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -5;
+    width: 100vw;
+    height: 100vh;
+    background: no-repeat 0% 0% / cover url("/static/backgrounds/bg-lines.svg");
+}
+
+#content{
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--text1);
+}

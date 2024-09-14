@@ -15,7 +15,7 @@ body {
 }
 
 #home-bg{
-    background: no-repeat 0% 0% / cover url("/static/algorithms/backgrounds/home-bg-lines.svg");
+    background: no-repeat 0% 0% / cover url("/static/backgrounds/bg-lines.svg");
     position: absolute;
     width: 100vw;
     height: 100vh;

@@ -9,11 +9,11 @@ class Colors(Enum):
     YELLOW = 5
 
 COLORS_HEX = {
-    Colors.GREEN : '#009B48',
-    Colors.RED :'#B90000',
-    Colors.BLUE : '#0045AD',
-    Colors.ORANGE : '#FF5900',
-    Colors.WHITE : '#FFFFFF',
-    Colors.YELLOW : '#FFD500',
+    Colors.GREEN : '#2F663E',
+    Colors.RED :'#C8102E',
+    Colors.BLUE : '#003366',
+    Colors.ORANGE : '#FF6F00',
+    Colors.WHITE : '#F5F5DC',
+    Colors.YELLOW : '#FFD700',
 }
     

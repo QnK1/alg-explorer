@@ -1,20 +1,22 @@
 {% extends 'main.html' %}
+{% load static %}
+{% block includes %}
+    <link rel="stylesheet" type="text/css" href="{% static 'algorithms/css/explore.css' %}">
+{% endblock includes %}
 
 {% block content %}
-<div id="explore-content">
-    {% include 'algorithms/searchbar.html' with curr_url=curr_url search_query=search_query %}
-    
-    <div id="explore-list">
-        {% for alg in algs %}
-            <div class="explore-alg-card">
-                {{alg.name}}:
-                {{alg.content}}
-            </div>
-        {% endfor %}
 
-        
-    </div>
+<div id="explore-bg-lines"></div>
+
+<div id="content">
     
-    {% include 'algorithms/page-controls.html' with custom_range=custom_range curr_url=curr_url %}
 </div>
+
 {% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'profiles/js/login-inputs.js' %}"></script>
+{% endblock scripts %}
+
+
+

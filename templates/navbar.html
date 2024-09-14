@@ -7,12 +7,18 @@
     </div>
     <div id="navbar-right">
         {% if request.resolver_match.url_name == 'algs-main' %}
+        <a href="{% url 'algs-main' %}">
         <div class="navbar-item navbar-selected">Home</div>
+        </a>
         {% else %}
+        <a href="{% url 'algs-main' %}">
         <div class="navbar-item">Home</div>
+        </a>
         {% endif %}
         {% if request.resolver_match.url_name == 'explore-algs' %}
+        <a href="{% url 'explore-algs' %}">
         <div class="navbar-item navbar-selected">Explore</div>
+        </a>
         {% else %}
         <a href="{% url 'explore-algs' %}">
         <div class="navbar-item">Explore</div>
@@ -24,7 +30,9 @@
         </a>
         {% else %}
             {% if request.resolver_match.url_name == 'login' %}
-            <div class="navbar-item navbar-selected">Log In</div>
+            <a href="{% url 'login' %}">
+                <div class="navbar-item navbar-selected">Log In</div>
+            </a>
             {% else %}
             <a href="{% url 'login' %}">
                 <div class="navbar-item">Log In</div>
