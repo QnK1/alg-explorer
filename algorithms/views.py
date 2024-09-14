@@ -43,15 +43,16 @@ def getExplore(request):
     
     curr_url = reverse('explore-algs')
     
+    
+    curr_page = int(request.GET.get('page')) if request.GET.get('page') is not None else 1
     context = {
-            'title' : 'Explore',
             'algs' : algs,
             'search_query' : search_query,
             'tags_query' : tags_query,
             'custom_range' : custom_range,
             'curr_queries' : curr_queries,
             'curr_url' : curr_url,
-            
+            'curr_page' : curr_page,
     }
     return render(request, 'algorithms/explore.html', context)
 

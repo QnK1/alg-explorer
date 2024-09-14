@@ -32,7 +32,7 @@ def searchAlgs(filtered_algs, request):
 
 
 def paginateAlgs(request, algs):
-    results = 5
+    results = 2
     page = request.GET.get('page')
     paginator = Paginator(algs, results)
     

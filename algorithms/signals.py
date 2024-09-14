@@ -16,10 +16,9 @@ def saveAlgData(sender, instance, created, **kwargs):
         CURR_DIR = Path(__file__).resolve().parent
         
         algorithm = instance
-        content = instance.content
-        target = reverseAlg(content)
+        scramble = instance.scramble
         
-        p, data = getAlgData(target)
+        p, data = getAlgData(scramble)
         
         instance.cube_state = data
         instance.save()

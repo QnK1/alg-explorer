@@ -31,7 +31,7 @@ const renderer = new THREE.WebGLRenderer( {antialias: true, alpha: true} );
 renderer.setSize( innerWidth, innerHeight );
 // document.body.appendChild( renderer.domElement );
 			
-const content = document.getElementById("main-content");
+const content = document.getElementById("content-container");
 content.appendChild(renderer.domElement);
 
 const ambientLight = new THREE.AmbientLight( 'white', 3);
@@ -727,7 +727,7 @@ const Cube = {
             return;
 
         this.stack = alg.trim().replace(/\/\*[\s\S]*?\*\/|(?<=[^:])\/\/.*|^\/\/.*/g, '').trim().split(/[\s]+/).reverse();
-        console.log(this.stack);
+        console.log(this.stack.join(" "));
         this.currTop = this.stack.length - 1;
     },
 

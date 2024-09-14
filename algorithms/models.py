@@ -14,7 +14,7 @@ class Algorithm(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
     owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.CASCADE)
     solver = models.CharField(max_length=50)
-    description = models.CharField(null=True, blank=True, max_length=50)
+    description = models.CharField(null=True, blank=True, max_length=50, default="-")
     scramble = models.CharField(default="", max_length=100, null=False, validators=[
         RegexValidator(
             regex = r"^([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? +)*([RLUDFBMESrludfbxyz]{1}([2]|[']|2')? *){1}$",

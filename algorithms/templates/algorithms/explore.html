@@ -12,13 +12,40 @@
     
     <h2 id="explore-title">Explore/</h2>
 
-    <div class="alg-card">
-        
-    </div>
+    {% for alg in algs %}
+        <div class="alg-card">
+            <a href="{% url 'alg' alg.id %}">
+            <div class="alg-card-content">
+                <div class="alg-card-text">
+                    <div class="alg-title-row">
+                        <h3 class="solver-name">{{alg.solver}}</h3>
+                        {% for tag in alg.tags.all|slice:":3" %}
+                            <h5 class="alg-tag">#{{tag}}</h5>
+                        {% endfor %}
+                    </div>
+                    
+                    <h4 class="alg-description">{{alg.description}}</h4>
+                    <p class="alg-content">
+                        {{alg.scramble}} <br>
+                        {{alg.content|truncatechars:140|linebreaksbr}}
+                    </p>
+                </div>
 
-    <div class="alg-card">
+                <div class="alg-card-views">
 
-    </div>
+                </div>
+
+                <div class="alg-card-cube">
+                    <img class="alg-cube" src="{{alg.image.url}}" alt="">
+                </div>
+            </div>
+            </a>
+        </div>
+    {% endfor %}
+
+
+
+    {% include 'algorithms/page-controls.html' with custom_range=custom_range curr_queries=curr_queries curr_page=curr_page %}
     
 </div>
 

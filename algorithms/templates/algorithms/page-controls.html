@@ -1,7 +1,14 @@
 <div class="page-controls-container">
-    <ul class="page-controls">
+    <div class="page-controls">
         {% for number in custom_range %}
-            <li><a href="?page={{number}}{{curr_queries}}">{{number}}</a></li>
+            <a href="?page={{number}}{{curr_queries}}">
+                {% if number == curr_page %}
+                
+                <i class="fa-solid fa-circle" data-dot="1"></i>
+                {% else %}
+                <i class="fa-regular fa-circle" data-dot="1"></i>
+                {% endif %}
+            </a>
         {% endfor %}
-    </ul>
+    </div>
 </div>
