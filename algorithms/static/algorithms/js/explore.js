@@ -19,11 +19,26 @@ window.addEventListener('load', () => {
     const heartBtns = [...document.querySelectorAll('.heart-info')];
     const savedBtns = [...document.querySelectorAll('.saved-info')];
 
+    const disableEvents = () => {
+        heartBtns.forEach((el) => {el.style.pointerEvents = "none";});
+        savedBtns.forEach((el) => {el.style.pointerEvents = "none";});
+    };
+
+    const enableEvents = () => {
+        heartBtns.forEach((el) => {el.style.pointerEvents = "auto";});
+        savedBtns.forEach((el) => {el.style.pointerEvents = "auto";});
+    };
+
     const url = window.location.origin;
 
     heartBtns.forEach((heartBtn) => {
         heartBtn.addEventListener('click', async (e) => {
-            const hearted = !!parseInt(e.target.dataset.hearted);
+            disableEvents();
+            
+            const target = e.currentTarget;
+            const hearted = !!parseInt(target.dataset.hearted);
+            
+
             
             const algId = e.target.closest('.alg-card').dataset.id;
             const data = hearted ? {"heart" : "no"} : {"heart" : "yes"};
@@ -42,7 +57,6 @@ window.addEventListener('load', () => {
                 const res = await response.json();
     
                 if(res.errors && res.errors == "None."){
-                    e.target.dataset.hearted = hearted ? "0" : "1";
     
                     const heartIcon = heartBtn.querySelector('i');
                     heartIcon.classList.toggle('fa-solid');
@@ -51,18 +65,27 @@ window.addEventListener('load', () => {
                     const heartCount = heartBtn.querySelector('span');
                     const heartCountNumber = parseInt(heartCount.textContent);
                     heartCount.textContent = hearted ? heartCountNumber - 1 : heartCountNumber + 1;
+
+                    target.dataset.hearted = hearted ? "0" : "1";
+                }
+                else{
+                    console.log(res);
                 }
                 
+                enableEvents();
             }
             catch{
-    
+                
             }
         });
     });
 
     savedBtns.forEach((savedBtn) => {
         savedBtn.addEventListener('click', async (e) => {
-            const saved = !!parseInt(e.target.dataset.saved);
+            disableEvents();
+            
+            const target = e.currentTarget;
+            const saved = !!parseInt(target.dataset.saved);
             
             const algId = e.target.closest('.alg-card').dataset.id;
             const data = saved ? {"saved" : "no"} : {"saved" : "yes"};
@@ -81,8 +104,6 @@ window.addEventListener('load', () => {
                 const res = await response.json();
     
                 if(res.errors && res.errors == "None."){
-                    e.target.dataset.saved = saved ? "0" : "1";
-    
                     const savedIcon = savedBtn.querySelector('i');
                     savedIcon.classList.toggle('fa-solid');
                     savedIcon.classList.toggle('fa-regular');
@@ -90,11 +111,14 @@ window.addEventListener('load', () => {
                     const savedCount = savedBtn.querySelector('span');
                     const savedCountNumber = parseInt(savedCount.textContent);
                     savedCount.textContent = saved ? savedCountNumber - 1 : savedCountNumber + 1;
+
+                    
+                    target.dataset.saved = saved ? "0" : "1";
                 }
-                
+                enableEvents();
             }
-            catch{
-    
+            catch(err){
+                console.log(err);
             }
         });
     });
