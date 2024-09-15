@@ -25,8 +25,13 @@ def getAlgsMain(request):
             
     else:
         form = CustomUserCreationForm()
+        
+    search_url = reverse('explore-algs')
 
-    context = {'form' : form}
+    context = {
+        'form' : form,
+        'curr_url' : search_url,
+    }
     return render(request, 'algorithms/home.html', context)
 
 
