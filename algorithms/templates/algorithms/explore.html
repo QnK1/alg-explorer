@@ -13,8 +13,7 @@
     <h2 id="explore-title">Explore/</h2>
 
     {% for alg in algs %}
-        <div class="alg-card">
-            <a href="{% url 'alg' alg.id %}">
+        <div class="alg-card" data-id="{{alg.id}}">
             <div class="alg-card-content">
                 <div class="alg-card-text">
                     <div class="alg-title-row">
@@ -32,14 +31,41 @@
                 </div>
 
                 <div class="alg-card-views">
-
+                    <div class="info-line">
+                        {% if not request.user.is_authenticated or request.user.profile not in alg.users_hearts.all %}
+                            <div class="heart-info" data-hearted="0">
+                                <i class="fa-regular fa-heart"></i>
+                                <span>{{alg.heart_count}}</span>
+                            </div>
+                        {% else %}
+                            <div class="heart-info" data-hearted="1">
+                                <i class="fa-solid fa-heart"></i>
+                                <span>{{alg.heart_count}}</span>
+                            </div>
+                        {% endif %}
+                        
+                        {% if not request.user.is_authenticated or request.user.profile not in alg.users_saved.all %}
+                        <div class="saved-info" data-saved="0">
+                            <i class="fa-regular fa-bookmark"></i>
+                            <span>{{alg.saved_count}}</span>
+                        </div>
+                        {% else %}
+                        <div class="saved-info" data-saved="1">
+                            <i class="fa-solid fa-bookmark"></i>
+                            <span>{{alg.saved_count}}</span>
+                        
+                        </div>
+                        {% endif %}
+    
+                        
+                    </div>
+                    
                 </div>
 
                 <div class="alg-card-cube">
                     <img class="alg-cube" src="{{alg.image.url}}" alt="">
                 </div>
             </div>
-            </a>
         </div>
     {% endfor %}
 
@@ -52,7 +78,7 @@
 {% endblock content %}
 
 {% block scripts %}
-
+<script src="{% static 'algorithms/js/explore.js' %}"></script>
 {% endblock scripts %}
 
 

@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path("heart-alg/<str:pk>/", views.heartAlg),
-    path("learned-alg/<str:pk>/", views.markAlgAsLearned),
+    path("saved-alg/<str:pk>/", views.markAlgAsSaved),
 ]

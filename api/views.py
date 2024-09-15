@@ -35,7 +35,7 @@ def heartAlg(request, pk):
 
 @api_view(['PUT'])
 @permission_classes([IsAuthenticated])
-def markAlgAsLearned(request, pk):
+def markAlgAsSaved(request, pk):
     profile = request.user.profile
     
     try:
@@ -45,15 +45,15 @@ def markAlgAsLearned(request, pk):
         "errors" : "Invalid ID.",
     })
 
-    if 'learned' not in request.data or request.data['learned'] not in {'yes', 'no'}:
+    if 'saved' not in request.data or request.data['saved'] not in {'yes', 'no'}:
         return Response({
             "errors" : "Invalid PUT data.",
         })
     
-    if request.data['learned'] == "yes" and profile not in alg.users_learned.all():
-        alg.users_learned.add(profile)
-    elif request.data['learned'] == "no" and profile in alg.users_learned.all():
-        alg.users_learned.remove(profile)
+    if request.data['saved'] == "yes" and profile not in alg.users_saved.all():
+        alg.users_saved.add(profile)
+    elif request.data['saved'] == "no" and profile in alg.users_saved.all():
+        alg.users_saved.remove(profile)
     
     return Response({
         "errors" : "None.",

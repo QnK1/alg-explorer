@@ -115,6 +115,29 @@ body{
 
 .alg-card-views{
     grid-area: 1 / 3 / 2 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: end;
+}
+
+.info-line{
+    color: #d9d9d9;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+}
+
+.heart-info, .saved-info{
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.heart-info:hover, .saved-info:hover{
+    opacity: 1;
 }
 
 .alg-card-cube{
