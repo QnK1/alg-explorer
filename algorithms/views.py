@@ -40,7 +40,7 @@ def getExplore(request):
     
     algs, tags_query = getAlgsByTag(request, allAlgs)
     algs, search_query = searchAlgs(algs, request)
-    algs, custom_range = paginateAlgs(request, algs)
+    algs, custom_range, last_page = paginateAlgs(request, algs)
     
     tags_url = f'&tags={tags_query}' if tags_query != '' else ''
     search_url = f'&search_query={search_query}' if search_query != '' else ''
@@ -58,6 +58,9 @@ def getExplore(request):
             'curr_queries' : curr_queries,
             'curr_url' : curr_url,
             'curr_page' : curr_page,
+            'last_page' : last_page,
+            'next_page' : curr_page + 1,
+            'prev_page' : curr_page - 1,
     }
     return render(request, 'algorithms/explore.html', context)
 
@@ -68,7 +71,7 @@ def getMyAlgs(request):
     
     algs, tags_query = getAlgsByTag(request, myAlgs)
     algs, search_query = searchAlgs(algs, request)
-    algs, custom_range = paginateAlgs(request, algs)
+    algs, custom_range, last_page = paginateAlgs(request, algs)
     
     # this makes search work together with pagination
     tags_url = f'&tags={tags_query}' if tags_query != '' else ''
@@ -157,4 +160,4 @@ def getAlg(request, pk):
         return redirect('algs-main')
     
     context = {'alg' : alg}
-    return render(request, 'algorithms/alg.html', context)
+    return render(request, 'algorithms/alg1.html', context)

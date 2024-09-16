@@ -619,6 +619,7 @@ const Cube = {
     move(type, ex_next){
         if(this.animating || (typeof type !== "string") || !(type in this.move_steps))
             return;
+            
         
         this.animating = true;
         const self = this;

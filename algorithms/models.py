@@ -56,7 +56,7 @@ class Algorithm(models.Model):
         
     
     def __str__(self):
-        return self.solver
+        return f"{self.solver} {self.description}"
     
 
 class Tag(models.Model):

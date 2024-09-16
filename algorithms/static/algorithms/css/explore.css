@@ -36,6 +36,11 @@ body{
     margin-top: 0;
 }
 
+#explore-title span{
+    opacity: 0.4;
+    font-size: 0.9em;
+}
+
 .alg-card{
     position: relative;
     width: 93%; 
@@ -78,6 +83,8 @@ body{
     flex-direction: column;
     justify-content: start;
     align-items: left;
+    height: 100%;
+
 }
 
 .alg-title-row{
@@ -94,7 +101,6 @@ body{
     font-size: 2.26rem;
     font-style: italic;
     font-weight: 400;
-    vertical-align:top;
 }
 
 .alg-tag{
@@ -105,6 +111,9 @@ body{
 .alg-content{
     font-size: 0.94rem;
     font-weight: 300;
+    overflow: hidden;
+    line-height: 1.15rem;
+    height: 5.75rem;
 }
 
 .alg-description{
@@ -167,4 +176,14 @@ body{
     font-size: 0.8rem;
 }
 
+.page-controls .fa-arrow-left-long, .page-controls .fa-arrow-right-long{
+    font-size: 1rem;
+}
 
+.page-controls .fa-arrow-left-long{
+    margin-right: 0.2rem;
+}
+
+.page-controls .fa-arrow-right-long{
+    margin-left: 0.2rem;
+}

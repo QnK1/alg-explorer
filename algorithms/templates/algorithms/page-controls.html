@@ -1,14 +1,36 @@
+{% load static %}
 <div class="page-controls-container">
     <div class="page-controls">
+        
+        {% if curr_page > 1 %}
+        <a href="?page={{prev_page}}{{curr_queries}}">
+        <i class="fa-solid fa-arrow-left-long"></i>
+        </a>
+        {% else %}
+        <a style="visibility: hidden;" href="?page={{prev_page}}{{curr_queries}}">
+        <i class="fa-solid fa-arrow-left-long"></i>
+        </a>
+        {% endif %}
+        
         {% for number in custom_range %}
             <a href="?page={{number}}{{curr_queries}}">
                 {% if number == curr_page %}
                 
-                <i class="fa-solid fa-circle" data-dot="1"></i>
+                <i class="fa-solid fa-circle"></i>
                 {% else %}
-                <i class="fa-regular fa-circle" data-dot="1"></i>
+                <i class="fa-regular fa-circle"></i>
                 {% endif %}
             </a>
         {% endfor %}
+
+        {% if curr_page < last_page %}
+        <a href="?page={{next_page}}{{curr_queries}}">
+        <i class="fa-solid fa-arrow-right-long"></i>
+        </a>
+        {% else %}
+        <a style="visibility: hidden;" href="?page={{next_page}}{{curr_queries}}">
+        <i class="fa-solid fa-arrow-right-long"></i>
+        </a>
+        {% endif %}
     </div>
 </div>

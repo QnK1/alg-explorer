@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block includes %}
-    <link rel="stylesheet" type="text/css" href="{% static 'algorithms/css/explore.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'algorithms/css/alg.css' %}">
 {% endblock includes %}
 
 {% block content %}
@@ -10,10 +10,10 @@
 
 <div id="content">
     
-    <h2 id="explore-title">Explore/<span>{{curr_page}}</span></h2>
+    <h2 id="explore-title">Explore/</h2>
 
-    {% for alg in algs %}
-        <a href="{% url 'alg' alg.id %}" class="alg-card" data-id="{{alg.id}}">
+    
+        <div href="{% url 'alg' alg.id %}" class="alg-card" data-id="{{alg.id}}">
             <div class="alg-card-content">
                 <div class="alg-card-text">
                     <div class="alg-title-row">
@@ -82,13 +82,8 @@
                 </div>
             
             </div>
-        </a>
+        </div>
         
-    {% endfor %}
-
-
-
-    {% include 'algorithms/page-controls.html' with custom_range=custom_range curr_queries=curr_queries curr_page=curr_page %}
     
 </div>
 

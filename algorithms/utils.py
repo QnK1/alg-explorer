@@ -60,5 +60,5 @@ def paginateAlgs(request, algs):
     
     custom_range = range(left_index, right_index + 1)
     
-    return algs, custom_range
+    return algs, custom_range, paginator.num_pages
         

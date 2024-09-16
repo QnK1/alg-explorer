@@ -120,14 +120,14 @@ body{
 
 #login-form button{
     position: relative;
-    margin-top: 6%;
+    margin-top: 7%;
 
     font-family: "Fellix", sans-serif;
     color: var(--text-color1);
     font-weight: 400;
     font-size: 1.1em;
     letter-spacing: 0.05rem;
-    height: 2rem;
+    height: 1.8rem;
     width: 50%;
     border: none;
 
