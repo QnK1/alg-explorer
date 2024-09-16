@@ -160,4 +160,4 @@ def getAlg(request, pk):
         return redirect('algs-main')
     
     context = {'alg' : alg}
-    return render(request, 'algorithms/alg1.html', context)
+    return render(request, 'algorithms/alg.html', context)

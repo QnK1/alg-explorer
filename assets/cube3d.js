@@ -41,7 +41,7 @@ const constants = {
     offset_x: -52,
     offset_y: 52,
     offset_z: 52,
-    rotation_step: Math.PI / 180,
+    rotation_step: Math.PI / 170,
     axes: {
         X: new THREE.Vector3(1, 0, 0),
         Y: new THREE.Vector3(0, 1, 0),
@@ -638,7 +638,21 @@ const Cube = {
                 prevTimeStamp = timeStamp;
             
             if(totalRotaion < maxAbsRotation){
-                currRotation = speedFactor * 144 * self.move_steps[type].step * ((timeStamp - prevTimeStamp) / 1000);
+                if(totalRotaion < 0.1 * maxAbsRotation)
+                    currRotation = 0.735 * speedFactor * 144 * self.move_steps[type].step * ((timeStamp - prevTimeStamp) / 1000);
+                else if(totalRotaion < 0.125 * maxAbsRotation)
+                    currRotation = 0.805 * speedFactor * 144 * self.move_steps[type].step * ((timeStamp - prevTimeStamp) / 1000);
+                else if(totalRotaion < 0.15 * maxAbsRotation)
+                    currRotation = 0.835 * speedFactor * 144 * self.move_steps[type].step * ((timeStamp - prevTimeStamp) / 1000);
+                else if(totalRotaion < 0.175 * maxAbsRotation)
+                    currRotation = 0.905 * speedFactor * 144 * self.move_steps[type].step * ((timeStamp - prevTimeStamp) / 1000);
+                else if(totalRotaion < 0.2 * maxAbsRotation)
+                    currRotation = 0.955 * speedFactor * 144 * self.move_steps[type].step * ((timeStamp - prevTimeStamp) / 1000);
+                else if(totalRotaion < 0.225 * maxAbsRotation)
+                    currRotation = 0.985 * speedFactor * 144 * self.move_steps[type].step * ((timeStamp - prevTimeStamp) / 1000);
+                else
+                    currRotation = 1 * speedFactor * 144 * self.move_steps[type].step * ((timeStamp - prevTimeStamp) / 1000);
+                // currRotation = speedFactor * 144 * self.move_steps[type].step * ((timeStamp - prevTimeStamp) / 1000);
                 
                 group.rotateOnWorldAxis(self.move_steps[type].axis, currRotation);
                 totalRotaion += Math.abs(currRotation);
@@ -705,7 +719,7 @@ const Cube = {
     },
 
     playBack(){
-        speedFactor = 9;
+        speedFactor = 12;
         this.isPaused = false;
 
         if(this.currTop < this.stack.length - 1 && !this.animating)
