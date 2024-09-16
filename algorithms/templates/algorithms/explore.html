@@ -34,12 +34,10 @@
                 <div class="alg-card-views">
                     <div class="info-line">
                         {% if not request.user.is_authenticated %}
-                            <a href="{% url 'login' %}">
-                            <div class="heart-info" data-hearted="0">
+                            <div class="heart-info logged-out" data-hearted="0">
                                 <i class="fa-regular fa-heart"></i>
                                 <span>{{alg.heart_count}}</span>
                             </div>
-                        </a>
                         {% elif request.user.profile not in alg.users_hearts.all %}
                             <div class="heart-info" data-hearted="0">
                                 <i class="fa-regular fa-heart"></i>
@@ -53,12 +51,12 @@
                         {% endif %}
                         
                         {% if not request.user.is_authenticated %}    
-                        <a href="{% url 'login' %}">
-                        <div class="saved-info" data-saved="0">
+                        
+                        <div  class="saved-info logged-out" data-saved="0">
                             <i class="fa-regular fa-bookmark"></i>
                             <span>{{alg.saved_count}}</span>
                         </div>
-                    </a>
+                    
                         {% elif request.user.profile not in alg.users_saved.all %}
                         <div class="saved-info" data-saved="0">
                             <i class="fa-regular fa-bookmark"></i>
@@ -97,7 +95,23 @@
 {% block scripts %}
 {% if request.user.is_authenticated %}
     <script src="{% static 'algorithms/js/explore.js' %}"></script>
+{% else %}
+    <script>
+        const heartBtns = document.querySelectorAll('.heart-info');
+        const savedBtns = document.querySelectorAll('.saved-info');
+
+        const requestBtns = [...heartBtns, ...savedBtns];
+
+        requestBtns.forEach((el) => {
+            el.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                window.location = "{% url 'login' %}";
+            });
+        });
+    </script>
 {% endif %}
+<script src="{% static 'algorithms/js/fit-alg-lines.js' %}"></script>
 {% endblock scripts %}
 
 

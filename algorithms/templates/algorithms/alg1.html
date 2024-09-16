@@ -100,7 +100,23 @@
 {% block scripts %}
 {% if request.user.is_authenticated %}
     <script src="{% static 'algorithms/js/explore.js' %}"></script>
+{% else %}
+<script>
+    const heartBtns = document.querySelectorAll('.heart-info');
+    const savedBtns = document.querySelectorAll('.saved-info');
+
+    const requestBtns = [...heartBtns, ...savedBtns];
+
+    requestBtns.forEach((el) => {
+        el.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            window.location = "{% url 'login' %}";
+        });
+    });
+</script>
 {% endif %}
+    <script src="{% static 'algorithms/js/fit-alg-lines.js' %}"></script>
     <script>const algContent = "{{alg.content|escapejs}}";</script>
     <script src="{% static 'algorithms/js/cube3d-bundle.js' %}"></script>
 {% endblock scripts %}
