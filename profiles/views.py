@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import ObjectDoesNotExist
 
 from .models import User, Profile
+from algorithms.models import Tag
 from .forms import CustomUserCreationForm, ProfileForm
 
 # Create your views here.
@@ -32,7 +33,10 @@ def loginUser(request):
     else:
         form = AuthenticationForm()
     
-    context = {'title' : 'Log In', 'form' : form}
+    context = {'title' : 'Log In',
+            'form' : form, 
+            'alltags' : Tag.objects.all(),
+        }
     return render(request, "profiles/login.html", context)
 
 
@@ -68,7 +72,10 @@ def getProfile(request, pk):
     except ObjectDoesNotExist:
         return redirect('algs-main')
     
-    context = {'profile' : profile}
+    context = {
+        'profile' : profile,
+        'alltags' : Tag.objects.all(),
+    }
     return render(request, "profiles/profile.html", context)
 
 
@@ -85,5 +92,6 @@ def getUserAccount(request):
     context = {
         'title' : 'Account', 
         'form' : form,
+        'alltags' : Tag.objects.all(),
     }
     return render(request, 'profiles/account.html', context)

@@ -1,8 +1,22 @@
 <div class="searchbar-card">
     <form action="{{curr_url}}" method="GET" class="search-form">
-        <input type="text" name="search_query" class="searchbar-input" value={{search_query}}>
+        <input type="text" name="search_query" class="searchbar-input" value="{{search_query}}" autocomplete="off">
+        <input type="hidden" name="tags" class="tags-input">
 
         {% comment %} <input class="searchbar-button" type="submit" value="Search"> {% endcomment %}
     </form>
+
+    <div class="tags-filter display-none">
+        <h4 class="tags-title">tags//</h4>
+        <div id="search-tags">
+            {% for tag in alltags %}
+            <div class="search-tag" data-tag-name="{{tag.name}}" data-selected="0">
+                #{{tag.name}}
+            </div>
+            
+            {% endfor %}
+        </div>
+        
+    </div>
     
 </div>

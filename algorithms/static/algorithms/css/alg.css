@@ -194,6 +194,13 @@ canvas{
     color: #d9d9d9;
     opacity: 0.9;
 
+    -webkit-box-shadow: -2px -1px 12.83px 0px rgba(255, 255, 255, 0.19),
+                        -3.01px -1px 4.01px 0px rgba(255, 255, 255, 0.25);
+    -moz-box-shadow: -2px -1px 12.83px 0px rgba(255, 255, 255, 0.19),
+                    -3.01px -1px 4.01px 0px rgba(255, 255, 255, 0.25);
+    box-shadow: -2px -1px 12.83px 0px rgba(255, 255, 255, 0.19),
+                -3.01px -1px 4.01px 0px rgba(255, 255, 255, 0.25);
+
 }
 
 .cube-controls .fa-pause{

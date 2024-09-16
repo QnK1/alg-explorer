@@ -31,6 +31,7 @@ def getAlgsMain(request):
     context = {
         'form' : form,
         'curr_url' : search_url,
+        'alltags' : Tag.objects.all(),
     }
     return render(request, 'algorithms/home.html', context)
 
@@ -61,6 +62,7 @@ def getExplore(request):
             'last_page' : last_page,
             'next_page' : curr_page + 1,
             'prev_page' : curr_page - 1,
+            'alltags' : Tag.objects.all(),
     }
     return render(request, 'algorithms/explore.html', context)
 
@@ -88,6 +90,7 @@ def getMyAlgs(request):
         'custom_range' : custom_range,
         'curr_queries' : curr_queries,
         'curr_url' : curr_url,
+        'alltags' : Tag.objects.all(),
     }
     return render(request, 'algorithms/my_algs.html', context)
 
@@ -109,7 +112,10 @@ def addAlg(request):
             return redirect('my-algs')
     
     allTags = Tag.objects.all()
-    context = {'form' : form, 'alltags' : allTags}
+    context = {
+        'form' : form,
+        'alltags' : Tag.objects.all(),
+    }
     return render(request, "algorithms/alg_form.html", context)
 
 
@@ -131,7 +137,7 @@ def updateAlg(request, pk):
             return redirect('my-algs')
     
     allTags = Tag.objects.all()
-    context = {'form' : form, 'alg' : alg, 'alltags' : allTags}
+    context = {'form' : form, 'alg' : alg, 'alltags' : Tag.objects.all(),}
     return render(request, 'algorithms/alg_form.html', context)
 
 
@@ -148,7 +154,7 @@ def deleteAlg(request, pk):
         alg.delete()
         return redirect('my-algs')
 
-    context = {'alg' : alg}
+    context = {'alg' : alg, 'alltags' : Tag.objects.all(),}
     
     return render(request, 'algorithms/delete_alg.html', context)
 
@@ -159,5 +165,7 @@ def getAlg(request, pk):
     except ObjectDoesNotExist:
         return redirect('algs-main')
     
-    context = {'alg' : alg}
+    curr_url = reverse('explore-algs')
+    
+    context = {'alg' : alg, 'curr_url' : curr_url, 'alltags' : Tag.objects.all(),}
     return render(request, 'algorithms/alg.html', context)
