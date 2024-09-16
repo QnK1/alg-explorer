@@ -41,7 +41,7 @@ const constants = {
     offset_x: -52,
     offset_y: 52,
     offset_z: 52,
-    rotation_step: Math.PI / 170,
+    rotation_step: Math.PI / 175,
     axes: {
         X: new THREE.Vector3(1, 0, 0),
         Y: new THREE.Vector3(0, 1, 0),
@@ -699,31 +699,37 @@ const Cube = {
     },
 
     forward(){
-        speedFactor = 1;
-        if(this.currTop >= 0 && !this.animating)
+        if(this.currTop >= 0 && !this.animating){
+            speedFactor = 1;
             this.move(this.stack[this.currTop--], false);
+        }
+            
     },
 
     back(){
-        speedFactor = 1;
-        if(this.currTop < this.stack.length - 1 && !this.animating)
+        if(this.currTop < this.stack.length - 1 && !this.animating){
+            speedFactor = 1;
             this.move(this.reverseMoveSign(this.stack[++this.currTop]), false);
+        }
+            
     },
 
     play(){
-        speedFactor = 1;
-        this.isPaused = false;
-        
-        if(this.currTop >= 0 && !this.animating)
+        if(this.currTop >= 0 && !this.animating){
+            speedFactor = 1;
+            this.isPaused = false;
             this.move(this.stack[this.currTop--], "forward");
+        }
+            
     },
 
     playBack(){
-        speedFactor = 12;
+        if(this.currTop < this.stack.length - 1 && !this.animating){
+            speedFactor = 12;
         this.isPaused = false;
-
-        if(this.currTop < this.stack.length - 1 && !this.animating)
             this.move(this.reverseMoveSign(this.stack[++this.currTop]), "back");
+        }
+            
     },
 
     pause(){
