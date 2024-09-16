@@ -101,11 +101,13 @@ body{
     font-size: 2.26rem;
     font-style: italic;
     font-weight: 400;
+    vertical-align: center;
 }
 
 .alg-tag{
     font-size: 0.94rem;
     font-weight: 300;
+    margin-top: 0.65rem;
 }
 
 .alg-content{

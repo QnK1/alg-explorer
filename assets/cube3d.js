@@ -1,13 +1,16 @@
 import * as THREE from "three";
+import { RoundedBoxGeometry } from "three/examples/jsm/geometries/RoundedBoxGeometry.js";
+
+
 
 const colors = {
-    green: new THREE.Color(0x009b48),
-    red: new THREE.Color(0xb90000),
-    blue: new THREE.Color(0x0045ad),
-    orange: new THREE.Color(0xff5900),
-    white: new THREE.Color(0xffffff),
-    yellow: new THREE.Color(0xffd500),
-    inner: new THREE.Color(0xd9d9d9),
+    green: new THREE.Color(0x2f663e),
+    red: new THREE.Color(0xc8102e),
+    blue: new THREE.Color(0x003366),
+    orange: new THREE.Color(0xff6f00),
+    white: new THREE.Color(0xf5f5dc),
+    yellow: new THREE.Color(0xffd700),
+    inner: new THREE.Color(0x777777),
 };
 
 const materials = {
@@ -23,16 +26,10 @@ const materials = {
 
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera( 30, innerWidth/innerHeight);
-camera.position.set( 10, 10, 25 );
-camera.lookAt( scene.position );
 
-const renderer = new THREE.WebGLRenderer( {antialias: true, alpha: true} );
-renderer.setSize( innerWidth, innerHeight );
-// document.body.appendChild( renderer.domElement );
 			
-const content = document.getElementById("content-container");
-content.appendChild(renderer.domElement);
+
+
 
 const ambientLight = new THREE.AmbientLight( 'white', 3);
     scene.add( ambientLight );
@@ -739,6 +736,21 @@ const Cube = {
 
 
 };
+
+const camera = new THREE.PerspectiveCamera( 28, 1);
+camera.position.set( 16, 16, 18 );
+camera.lookAt( scene.position );
+
+const cubeContainer = document.querySelector('.alg-cube');
+
+const renderer = new THREE.WebGLRenderer( {antialias: true, alpha: true} );
+renderer.setSize( innerWidth, innerHeight );
+
+cubeContainer.appendChild(renderer.domElement);
+
+const algCard = document.querySelector('.alg-card');
+
+const cubeState = algCard.dataset.cubeState;
 
 Cube.loadState(cubeState);
 Cube.init();

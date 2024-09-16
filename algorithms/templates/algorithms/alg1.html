@@ -13,7 +13,7 @@
     <h2 id="explore-title">Explore/</h2>
 
     
-        <div href="{% url 'alg' alg.id %}" class="alg-card" data-id="{{alg.id}}">
+        <div href="{% url 'alg' alg.id %}" class="alg-card" data-id="{{alg.id}}" data-cube-state="{{alg.cube_state}}">
             <div class="alg-card-content">
                 <div class="alg-card-text">
                     <div class="alg-title-row">
@@ -31,7 +31,7 @@
                     </div>
                 </div>
 
-                <div class="alg-card-views">
+                <div class="alg-card-cube">
                     <div class="info-line">
                         {% if not request.user.is_authenticated %}
                             <a href="{% url 'login' %}">
@@ -75,10 +75,9 @@
                         
                     </div>
                     
-                </div>
+                    <div class="alg-cube">
 
-                <div class="alg-card-cube">
-                    <img class="alg-cube" src="{{alg.image.url}}" alt="">
+                    </div>
                 </div>
             
             </div>
@@ -93,6 +92,8 @@
 {% if request.user.is_authenticated %}
     <script src="{% static 'algorithms/js/explore.js' %}"></script>
 {% endif %}
+    <script>const algContent = "{{alg.content|escapejs}}";</script>
+    <script src="{% static 'algorithms/js/cube3d-bundle.js' %}"></script>
 {% endblock scripts %}
 
 
