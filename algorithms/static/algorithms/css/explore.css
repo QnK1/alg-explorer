@@ -30,7 +30,7 @@ body{
 #explore-title{
     font-weight: 300;
     font-size: 3.2rem;
-    width: 93%;
+    width: 95%;
     text-align: left;
     letter-spacing: 0.4rem;
     margin-top: 0;
@@ -43,10 +43,10 @@ body{
 
 .alg-card{
     position: relative;
-    width: 93%; 
-    height: 38%;
-    padding: 0.5% 1.2%;
-    background: linear-gradient(121deg, rgba(88,88,88,1) 0%, rgba(48,48,48,1) 25%, rgba(24,24,24,1) 54%, rgba(8,8,8,1) 75%);
+    width: 95%; 
+    height: 38.5%;
+    padding: 0.6% 1.5%;
+    background: linear-gradient(121deg, rgba(78,78,78,1) 0%, rgba(40,40,40,1) 25%, rgba(20,20,20,1) 54%, rgba(6,6,6,1) 75%);
     border-radius: 2rem;
 
     display: flex;
@@ -164,7 +164,7 @@ body{
 
 .page-controls-container{
     margin-top: auto;
-    margin-bottom: 1%;
+    margin-bottom: 0.85%;
 }
 
 .page-controls{

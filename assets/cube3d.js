@@ -10,7 +10,7 @@ const colors = {
     orange: new THREE.Color(0xff6f00),
     white: new THREE.Color(0xf5f5dc),
     yellow: new THREE.Color(0xffd700),
-    inner: new THREE.Color(0x777777),
+    inner: new THREE.Color(0x101010),
 };
 
 const materials = {
@@ -36,11 +36,11 @@ const ambientLight = new THREE.AmbientLight( 'white', 3);
 
 const constants = {
     eps: 0.0001,
-    piece_len: 2,
-    piece_dist: 0.2,
-    offset_x: -2.2,
-    offset_y: 2.2,
-    offset_z: 2.2,
+    piece_len: 50,
+    piece_dist: 2,
+    offset_x: -52,
+    offset_y: 52,
+    offset_z: 52,
     rotation_step: Math.PI / 180,
     axes: {
         X: new THREE.Vector3(1, 0, 0),
@@ -132,7 +132,7 @@ const Cube = {
             state = "wwwwwwwwwyyyyyyyyyrrrrrrrrrooooooooogggggggggbbbbbbbbb";
         
         this.pieces.ULF_corner = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials[state[29]],
@@ -144,7 +144,7 @@ const Cube = {
         );
 
         this.pieces.UF_edge = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials.inner,
@@ -156,7 +156,7 @@ const Cube = {
         );
 
         this.pieces.URF_corner = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials[state[18]],
                 materials.inner,
@@ -168,7 +168,7 @@ const Cube = {
         );
 
         this.pieces.LF_edge = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials[state[32]],
@@ -180,7 +180,7 @@ const Cube = {
         );
 
         this.pieces.F_center = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials.inner,
@@ -192,7 +192,7 @@ const Cube = {
         );
 
         this.pieces.RF_edge = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials[state[21]],
                 materials.inner,
@@ -204,7 +204,7 @@ const Cube = {
         );
 
         this.pieces.DLF_corner = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials[state[35]],
@@ -216,7 +216,7 @@ const Cube = {
         );
 
         this.pieces.DRF_corner = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials[state[24]],
                 materials.inner,
@@ -228,7 +228,7 @@ const Cube = {
         );
 
         this.pieces.DF_edge = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials.inner,
@@ -240,7 +240,7 @@ const Cube = {
         );
 
         this.pieces.UL_edge = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials[state[28]],
@@ -252,7 +252,7 @@ const Cube = {
         );
 
         this.pieces.U_center = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials.inner,
@@ -264,7 +264,7 @@ const Cube = {
         );
 
         this.pieces.UR_edge = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials[state[19]],
                 materials.inner,
@@ -276,7 +276,7 @@ const Cube = {
         );
 
         this.pieces.L_center = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials[state[31]],
@@ -288,7 +288,7 @@ const Cube = {
         );
 
         this.pieces.R_center = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials[state[22]],
                 materials.inner,
@@ -300,7 +300,7 @@ const Cube = {
         );
 
         this.pieces.DL_edge = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials[state[34]],
@@ -312,7 +312,7 @@ const Cube = {
         );
 
         this.pieces.D_center = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials.inner,
@@ -324,7 +324,7 @@ const Cube = {
         );
 
         this.pieces.ULB_corner = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials[state[27]],
@@ -336,7 +336,7 @@ const Cube = {
         );
 
         this.pieces.DR_edge = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials[state[25]],
                 materials.inner,
@@ -348,7 +348,7 @@ const Cube = {
         );
 
         this.pieces.UB_edge = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials.inner,
@@ -360,7 +360,7 @@ const Cube = {
         );
 
         this.pieces.URB_corner = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials[state[20]],
                 materials.inner,
@@ -372,7 +372,7 @@ const Cube = {
         );
         
         this.pieces.LB_edge = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials[state[30]],
@@ -384,7 +384,7 @@ const Cube = {
         );
 
         this.pieces.B_center = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials.inner,
@@ -396,7 +396,7 @@ const Cube = {
         );
 
         this.pieces.RB_edge = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials[state[23]],
                 materials.inner,
@@ -408,7 +408,7 @@ const Cube = {
         );
 
         this.pieces.DLB_corner = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials[state[33]],
@@ -420,7 +420,7 @@ const Cube = {
         );
 
         this.pieces.DB_edge = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials.inner,
                 materials.inner,
@@ -432,7 +432,7 @@ const Cube = {
         );
 
         this.pieces.DRB_corner = new THREE.Mesh(
-            new THREE.BoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len),
+            new RoundedBoxGeometry( constants.piece_len, constants.piece_len, constants.piece_len, constants.piece_len * 0.1, 7),
             [
                 materials[state[26]],
                 materials.inner,
@@ -705,7 +705,7 @@ const Cube = {
     },
 
     playBack(){
-        speedFactor = 8;
+        speedFactor = 9;
         this.isPaused = false;
 
         if(this.currTop < this.stack.length - 1 && !this.animating)
@@ -737,14 +737,14 @@ const Cube = {
 
 };
 
-const camera = new THREE.PerspectiveCamera( 28, 1);
-camera.position.set( 16, 16, 18 );
+const camera = new THREE.PerspectiveCamera( 29, 1);
+camera.position.set( 300, 300, 300 );
 camera.lookAt( scene.position );
 
 const cubeContainer = document.querySelector('.alg-cube');
 
 const renderer = new THREE.WebGLRenderer( {antialias: true, alpha: true} );
-renderer.setSize( innerWidth, innerHeight );
+renderer.setSize( 800, 800 );
 
 cubeContainer.appendChild(renderer.domElement);
 
@@ -758,11 +758,15 @@ Cube.loadAlg(algContent);
 
 renderer.render(scene, camera);
 
+// Cube.play();
+
 const forwardBtn = document.querySelector('.forward');
 const backBtn = document.querySelector('.back');
 const playBtn = document.querySelector('.play');
 const pauseBtn = document.querySelector('.pause');
 const playBackBtn = document.querySelector('.playBack');
+
+
 
 forwardBtn.addEventListener('click', () => {
     console.log("forward clicked");
@@ -788,7 +792,6 @@ playBackBtn.addEventListener('click', () => {
     console.log("play back clicked");
     Cube.playBack();
 });
-
 
 
 

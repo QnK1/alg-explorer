@@ -23,6 +23,7 @@
                         {% endfor %}
                     </div>
                     
+                    <h4 class="owner-name">added by <a href="">{{alg.owner.username}}</a></h4>
                     <h4 class="alg-description">{{alg.description}}</h4>
                     <div class="alg-content">
                         {{alg.scramble}} <br>
@@ -77,6 +78,14 @@
                     
                     <div class="alg-cube">
 
+                    </div>
+
+                    <div class="cube-controls">
+                        <i class="fa-solid fa-rotate-left playBack"></i>
+                        <i class="fa-solid fa-play back" style="transform: scaleX(-1); -webkit-transform: scaleX(-1);"></i>
+                        <i class="fa-solid fa-pause pause"></i>
+                        <i class="fa-solid fa-play forward"></i>
+                        <i class="fa-solid fa-forward play"></i>
                     </div>
                 </div>
             
