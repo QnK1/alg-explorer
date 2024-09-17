@@ -116,6 +116,7 @@ body{
     line-height: 1.7rem;
     height: 5.75rem;
     overflow: visible;
+    letter-spacing: 0.05rem;
 }
 
 .alg-description{
@@ -243,11 +244,7 @@ canvas{
     text-shadow: calc(1.5 * -0.06ex) 0 0 var(--text1),
                                calc(1.5 * 0.06ex) 0 0 var(--text1); 
     position: relative;
-    transform: scale(1.12);
+    transform: scale(1.15);
 
     transition: transform 0.05s, text-shadow 0.05s;
-}
-
-.solve-comment{
-   
 }

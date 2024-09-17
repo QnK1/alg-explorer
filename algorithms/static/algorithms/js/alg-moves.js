@@ -16,7 +16,7 @@
     let currMove = 0;
 
     const resultLines = linesComments.map((e) => 
-        e[0].map((m) => `<span class="move" data-move="${currMove++}">${m}</span>`).join(" ") + " " + `<span class="solve-comment">${e[1]}</span>`
+        e[0].map((m) => `<span class="move" data-move="${currMove++}">${m}</span>`).join(" ") + " &nbsp;" + `<span class="solve-comment">${e[1]}</span>`
     );
 
     const result = resultLines.join("<br>");
