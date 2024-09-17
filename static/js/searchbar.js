@@ -17,6 +17,7 @@ window.addEventListener('load', () => {
     searchTags.forEach((tagEl) => {
         tagEl.addEventListener('mousedown', (e) => {
             e.preventDefault();
+            
             e.target.classList.toggle('search-tag-selected');
             e.target.dataset.selected = e.target.dataset.selected === "1" ? 0 : 1;
 

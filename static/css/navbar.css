@@ -145,6 +145,7 @@ a{
     font-weight: 400;
     font-size: 0.98rem;
     margin-bottom: 2.5%;
+    opacity: 0.95;
 }
 
 #search-tags{
@@ -170,11 +171,11 @@ a{
 }
 
 .search-tag:hover{
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 255, 255, 0.95);
 }
 
 .search-tag-selected{
-    color: rgba(255, 255, 255, 0.92);
+    color: rgba(255, 255, 255, 0.95);
 }
 
 .display-none{

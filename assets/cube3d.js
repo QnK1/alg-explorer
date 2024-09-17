@@ -25,9 +25,8 @@ const materials = {
 const scene = new THREE.Scene();
 
 
-			
-
-
+let currMoveIndex = 0;
+const moveElements = [...document.querySelectorAll('.move')];
 
 const ambientLight = new THREE.AmbientLight( 'white', 3);
     scene.add( ambientLight );
@@ -50,7 +49,6 @@ const constants = {
 
 const group = new THREE.Group();
 let speedFactor = 1;
-
 
 const Cube = {
     pieces: {
@@ -610,12 +608,24 @@ const Cube = {
     isPaused: false,
     stack: [],
     currTop: -1,
+    prevTop: -1,
     
     move(type, ex_next){
         if(this.animating || (typeof type !== "string") || !(type in this.move_steps))
             return;
-            
-        
+
+        let symbolIndex;        
+        if(this.currTop < this.prevTop || this.prevTop == -1){
+            symbolIndex = this.stack.length - this.currTop - 2;
+        }
+        else{
+            symbolIndex = this.stack.length - this.currTop - 1;
+        }
+
+        console.log(symbolIndex);
+        moveElements[symbolIndex].classList.add('current-move');
+        this.prevTop = this.currTop;
+
         this.animating = true;
         const self = this;
         let totalRotaion = 0;
@@ -668,6 +678,8 @@ const Cube = {
                 self.updateFaces();
                 group.clear();
                 self.animating = false;
+
+                moveElements[symbolIndex].classList.remove('current-move');
 
                 if(!self.isPaused && ex_next){
                     if(ex_next === "forward" && self.currTop >= 0){
@@ -722,7 +734,7 @@ const Cube = {
 
     playBack(){
         if(this.currTop < this.stack.length - 1 && !this.animating){
-            speedFactor = 12;
+            speedFactor = 10;
         this.isPaused = false;
             this.move(this.reverseMoveSign(this.stack[++this.currTop]), "back");
         }
@@ -742,7 +754,6 @@ const Cube = {
             return;
 
         this.stack = alg.trim().replace(/\/\*[\s\S]*?\*\/|(?<=[^:])\/\/.*|^\/\/.*/g, '').trim().split(/[\s]+/).reverse();
-        console.log(this.stack.join(" "));
         this.currTop = this.stack.length - 1;
     },
 
@@ -772,6 +783,7 @@ const cubeState = algCard.dataset.cubeState;
 Cube.loadState(cubeState);
 Cube.init();
 Cube.loadAlg(algContent);
+
 
 renderer.render(scene, camera);
 
@@ -806,7 +818,3 @@ playBackBtn.addEventListener('click', () => {
 
 
 cubeContainer.appendChild(renderer.domElement);
-
-
-
-

@@ -22,12 +22,15 @@
                             <h5 class="alg-tag">#{{tag}}</h5>
                         {% endfor %}
                     </div>
-                    
-                    <h4 class="owner-name">added by <a href="">{{alg.owner.username}}</a></h4>
+
                     <h4 class="alg-description">{{alg.description}}</h4>
+                    <h4 class="owner-name">added by <a href="">{{alg.owner.username}}</a></h4>
                     <div class="alg-content">
                         {{alg.scramble}} <br>
-                        {{alg.content|linebreaksbr}}
+                        <div class="solve-content">
+                            {{alg.content|linebreaksbr}}
+                        </div>
+                        
                         {% comment %} {{alg.content|truncatechars:140|linebreaksbr}} {% endcomment %}
                     </div>
                 </div>
@@ -77,7 +80,6 @@
                     </div>
                     
                     <div class="alg-cube">
-                        <div class="loader display-none"></div>
 
                     </div>
 
@@ -119,7 +121,9 @@
 {% endif %}
     <script src="{% static 'algorithms/js/fit-alg-lines.js' %}"></script>
     <script>const algContent = "{{alg.content|escapejs}}";</script>
+    <script src="{% static 'algorithms/js/alg-moves.js' %}"></script>
     <script src="{% static 'algorithms/js/cube3d-bundle.js' %}"></script>
+    
 {% endblock scripts %}
 
 
