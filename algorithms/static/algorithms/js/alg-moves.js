@@ -4,10 +4,14 @@
     
     const solveLines = solveText.split('<br>');
 
-    let linesComments = solveLines.map((l) => [
-        l.trim().replace(/\/\*[\s\S]*?\*\/|(?<=[^:])\/\/.*|^\/\/.*/g, '').trim().split(/[\s]+/),
-        l.match(/\/\*[\s\S]*?\*\/|(?<=[^:])\/\/.*|^\/\/.*/g)[0],
-    ]);
+    let com;
+    let linesComments = solveLines.map((l) => {
+        com = l.match(/\/\*[\s\S]*?\*\/|(?<=[^:])\/\/.*|^\/\/.*/g);
+        return [
+            l.trim().replace(/\/\*[\s\S]*?\*\/|(?<=[^:])\/\/.*|^\/\/.*/g, '').trim().split(/[\s]+/),
+            com ? com[0] : "",
+        ];
+    });
 
     let currMove = 0;
 

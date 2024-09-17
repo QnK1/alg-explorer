@@ -622,7 +622,6 @@ const Cube = {
             symbolIndex = this.stack.length - this.currTop - 1;
         }
 
-        console.log(symbolIndex);
         moveElements[symbolIndex].classList.add('current-move');
         this.prevTop = this.currTop;
 
