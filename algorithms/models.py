@@ -41,6 +41,10 @@ class Algorithm(models.Model):
     saved_count = models.IntegerField(default=0, blank=True, null=True)
     
     
+    class Meta:
+        ordering = ['-heart_count', '-date_added']
+    
+    
     def updateHeartCount(self):
         users = self.users_hearts.all()
         count = users.count()

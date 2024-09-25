@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block includes %}
+    <link rel="stylesheet" type="text/css" href="{% static 'algorithms/css/home_login.css' %}">
+{% endblock includes %}
+
+{% block content %}
+
+<div id="home-login-lines"></div>
+
+<div id="content">
+    
+    <div id="home-row-1" class="home-row">
+        <div class="home-card" id="home-profile-card">
+            {% comment %} <img src="{{request.user.profile.image.url}}" alt=""> {% endcomment %}
+        </div>
+        <div class="home-card" id="home-solves-card"></div>
+        <div class="home-card" id="home-saved-card"></div>
+    </div>
+
+    <div id="home-row-2" class="home-row">
+        <div class="home-card" id="home-generate-card"></div>
+        <div class="home-card" id="home-trending-card"></div>
+    </div>
+    
+</div>
+
+{% endblock content %}
+
+
+{% block scripts %}
+
+{% endblock scripts %}
+
+
+

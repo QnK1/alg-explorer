@@ -1,0 +1,69 @@
+body{
+    background: no-repeat 0% 0% / cover url("/static/algorithms/backgrounds/home_login-gradient.svg");
+}
+
+#home-login-lines{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -5;
+    width: 100vw;
+    height: 100vh;
+    background: no-repeat 0% 0% / cover url("/static/backgrounds/bg-lines.svg");
+}
+
+#content{
+    margin-top: 2%;
+    height: 92%;
+    width: 100%;
+    min-width: 0;
+    color: var(--text1);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1%;
+}
+
+.home-row{
+    width: 94%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5%;
+}
+
+#home-row-1{
+    height: 40%;
+}
+
+#home-row-2{
+    height: 60%;
+}
+
+.home-card{
+    height: 95%;
+    border: 1px solid blue;
+    border-radius: 3%;
+}
+
+#home-profile-card{
+    width: 25%;
+}
+
+#home-solves-card{
+    width: 50%;
+}
+
+#home-saved-card{
+    width: 25%;
+}
+
+#home-generate-card{
+    width: 30%;
+}
+
+#home-trending-card{
+    width: 70%;
+}

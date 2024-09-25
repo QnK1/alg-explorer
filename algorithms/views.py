@@ -13,27 +13,35 @@ from profiles.forms import CustomUserCreationForm
 # Create your views here.
 
 def getAlgsMain(request):
-    if request.method == "POST":
-        form = CustomUserCreationForm(request.POST)
-        if form.is_valid():
-            login(request, form.save())
-            messages.success(request, "User account was created!")
-            return redirect("algs-main")
+    if not request.user.is_authenticated:
+        if request.method == "POST":
+            form = CustomUserCreationForm(request.POST)
+            if form.is_valid():
+                login(request, form.save())
+                messages.success(request, "User account was created!")
+                return redirect("algs-main")
+            else:
+                messages.error(request, "Registration failed")
+                        
         else:
-            messages.error(request, "Registration failed")
+            form = CustomUserCreationForm()
             
-            
-    else:
-        form = CustomUserCreationForm()
-        
-    search_url = reverse('explore-algs')
+        search_url = reverse('explore-algs')
 
-    context = {
-        'form' : form,
-        'curr_url' : search_url,
-        'alltags' : Tag.objects.all(),
-    }
-    return render(request, 'algorithms/home.html', context)
+        context = {
+            'form' : form,
+            'curr_url' : search_url,
+            'alltags' : Tag.objects.all(),
+        }
+        return render(request, 'algorithms/home.html', context)
+    else:
+        search_url = reverse('explore-algs')
+        
+        context = {
+            'curr_url' : search_url,
+            'alltags' : Tag.objects.all(),
+        }
+        return render(request, 'algorithms/home_login.html', context)
 
 
 def getExplore(request):
