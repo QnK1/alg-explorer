@@ -27,7 +27,7 @@ def getAlgsMain(request):
             form = CustomUserCreationForm()
             
         search_url = reverse('explore-algs')
-
+        
         context = {
             'form' : form,
             'curr_url' : search_url,
@@ -37,9 +37,14 @@ def getAlgsMain(request):
     else:
         search_url = reverse('explore-algs')
         
+        my_solves = Algorithm.objects.all().order_by('-date_added')
+        solves_count = my_solves.count()
+        my_solves_showcase = my_solves[:min(2, solves_count)]
+        
         context = {
             'curr_url' : search_url,
             'alltags' : Tag.objects.all(),
+            'my_solves_showcase' : my_solves_showcase,
         }
         return render(request, 'algorithms/home_login.html', context)
 

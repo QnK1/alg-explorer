@@ -44,26 +44,98 @@ body{
 
 .home-card{
     height: 95%;
-    border: 1px solid blue;
-    border-radius: 3%;
+    /* border: 1px solid blue; */
+    border-radius: 5.5%;
+    padding: 0.65% 1.5%;
 }
 
 #home-profile-card{
     width: 25%;
+    border: 0.2rem solid rgba(70, 58, 208, 0.1);
+    background: linear-gradient(180deg, rgba(70,58,208,0.35) 0%, rgba(86,86,194,0.35) 11%, rgba(101,114,180,0.35) 34%, rgba(94,116,190,0.35) 50%, rgba(87,119,202,0.35) 70%, rgba(59,76,120,0.35) 86%, rgba(26,26,26,0.35) 100%);
+}
+
+#home-profile-card .home-card-title{
+    text-align: center;
+}
+
+#home-profile-card-picture{
+    padding-top: 26%;
+    height: 0;
+    width: 26%;
+    position: relative;
+}
+
+#home-profile-card-picture img{
+    border-radius: 100%;
+    vertical-align: top;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.9;
+}
+
+#profile-info{
+    margin-top: 9.5%;
+    display: flex;
+    gap: 7%;
+    justify-content: center;
+    position: relative;
+
+}
+
+#username{
+    font-weight: 300;
+    font-size: 1.35rem;
+    opacity: 0.85;
+    position: relative;
+    top: 0.85rem;
 }
 
 #home-solves-card{
     width: 50%;
+    border: 0.2rem solid rgba(4, 178, 53, 0.047);
+    background: linear-gradient(180deg, rgba(4,178,53,0.15) 0%, rgba(26,26,26,0.3) 100%);
 }
 
 #home-saved-card{
     width: 25%;
+    border: 0.2rem solid #82432814;
+    background: linear-gradient(180deg, rgba(128,54,40,0.18) 0%, rgba(130,67,40,0.18) 50%, rgba(26,26,26,0.18) 100%);
 }
 
 #home-generate-card{
     width: 30%;
+    border: 0.2rem solid rgba(155, 143, 106, 0.1);
+    background: linear-gradient(180deg, rgba(155,143,106,0.15) 0%, rgba(128,117,85,0.15) 34%, rgba(61,59,50,0.15) 84%, rgba(22,22,22,0.15) 100%);
+}
+
+#generate-img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8.5%;
+}
+
+#home-generate-card img{
+    width: 40%;
+    opacity: 0.8;
+}
+
+#home-generate-card .home-card-title{
+    text-align: center;
 }
 
 #home-trending-card{
     width: 70%;
+    border: 0.2rem solid rgba(114, 54, 165, 0.15);
+    background: linear-gradient(180deg, rgba(114,54,165,0.22) 0%, rgba(94,56,129,0.22) 48%, rgba(70,58,87,0.22) 81%, rgba(26,26,26,0.22) 100%);
+}
+
+.home-card-title{
+    font-size: 2.25rem;
+    font-weight: 400;
+    opacity: 0.88;
 }

@@ -52,7 +52,6 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    
 }
 
 .alg-card::after{
