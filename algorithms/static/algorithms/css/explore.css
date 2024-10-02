@@ -55,6 +55,11 @@ body{
     justify-content: center;
 }
 
+.alg-card:hover{
+    background: rgba(150, 149, 149, 0.1);
+    transition: background 0.02s ease-in-out;
+}
+
 .alg-card::after{
     content: "";
     position: absolute;

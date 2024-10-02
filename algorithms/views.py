@@ -37,14 +37,24 @@ def getAlgsMain(request):
     else:
         search_url = reverse('explore-algs')
         
-        my_solves = Algorithm.objects.all().order_by('-date_added')
+        my_solves = request.user.profile.algorithm_set.order_by('-date_added')
         solves_count = my_solves.count()
         my_solves_showcase = my_solves[:min(2, solves_count)]
+        
+        my_saved = request.user.profile.saved_algs.all()
+        saved_count = my_saved.count()
+        my_saved_showcase = my_saved[:min(3, saved_count)]
+        
+        trending_solves = Algorithm.objects.all()
+        trending_count = trending_solves.count()
+        trending_showcase = trending_solves[:min(4, trending_count)]
         
         context = {
             'curr_url' : search_url,
             'alltags' : Tag.objects.all(),
             'my_solves_showcase' : my_solves_showcase,
+            'my_saved_showcase' : my_saved_showcase,
+            'trending_showcase' : trending_showcase,
         }
         return render(request, 'algorithms/home_login.html', context)
 

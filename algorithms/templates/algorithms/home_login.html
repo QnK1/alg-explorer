@@ -31,9 +31,15 @@
                 {% if my_solves_showcase.count %}
                     <div class="home-my-solves">
                         {% for solve in my_solves_showcase %}
-                        <div class="home-my-solve">
+                            <div class="home-my-solve">
+                                <div class="my-solve-content">
+                                    <h4 class="my-solve-username">{{solve.solver}}</h4>
+                                    <h4 class="my-solve-description">{{solve.description}}</h4>
 
-                        </div>
+                                    <img src="{{solve.image.url}}" alt="Solve cube image">
+                                </div>
+                                
+                            </div>
                         {% endfor %}
                     </div>
                     
@@ -45,6 +51,24 @@
         <div class="home-card" id="home-saved-card">
             <div class="home-card-content">
                 <h2 class="home-card-title">Saved</h2>
+                {% if not my_saved_showcase %}
+                    <h3 class="no-solves-text">You haven't saved any solves yet.</h3>
+                {% else %}
+                    <div class="saved-solves">
+                        {% for solve in my_saved_showcase %}
+                            <div class="saved-solve">
+                                <div class="saved-solve-content">
+                                    <div class="saved-solve-info">
+                                        <h4 class="saved-solver">{{solve.solver}}</h4>
+                                        <h4 class="saved-description">{{solve.description}}</h4>
+                                    </div>
+                                    <i class="fa-solid fa-bookmark"></i>
+                                    
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -62,6 +86,15 @@
         <div class="home-card" id="home-trending-card">
             <div class="home-card-content">
                 <h2 class="home-card-title">Trending solves</h2>
+                {% if not trending_showcase %}
+                    <h3 class="no-solves-text">There are no trending solves.</h3>
+                {% else %}
+                    <div class="trending-solves">
+                        {% for solve in trending_showcase %}
+
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
         </div>
     </div>
