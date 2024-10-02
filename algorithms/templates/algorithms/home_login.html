@@ -26,11 +26,14 @@
             <h2 class="home-card-title">My solves</h2>
 
             {% if my_solves_showcase.count %}
-                {% for solve in my_solves_showcase %}
-                <div class="home-my-solve">
+                <div class="home-my-solves">
+                    {% for solve in my_solves_showcase %}
+                    <div class="home-my-solve">
 
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                
             {% else %}
                 <h3 class="no-solves-text">You haven't uploaded any solves yet.</h3>
             {% endif %}

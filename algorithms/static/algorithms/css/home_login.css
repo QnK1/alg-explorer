@@ -100,6 +100,48 @@ body{
     background: linear-gradient(180deg, rgba(4,178,53,0.15) 0%, rgba(26,26,26,0.3) 100%);
 }
 
+.no-solves-text{
+    text-align: center;
+    font-weight: 400;
+    opacity: 0.75;
+    font-size: 1em;
+    margin-top: 6%;
+}
+
+.home-my-solves{
+    margin-top: 2.6%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 65%;
+}
+
+.home-my-solve{
+    position: relative;
+    width: 35%; 
+    height: 100%;
+    padding: 0.6% 1.5%;
+    background: linear-gradient(121deg, rgba(78,78,78,1) 0%, rgba(40,40,40,1) 25%, rgba(20,20,20,1) 54%, rgba(6,6,6,1) 75%);
+    border-radius: 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-my-solve::after{
+    content: "";
+    position: absolute;
+    display: block;
+    border-radius: 2rem;
+
+    height: 102.5%;
+    width: 102%;
+    
+    background: linear-gradient(70deg, rgba(158,65,191,0.7) 44%, rgba(0,18,178,0.7) 80%, rgba(4,178,53,0.7) 93%);
+    z-index: -1;
+}
+
 #home-saved-card{
     width: 25%;
     border: 0.2rem solid #82432814;
