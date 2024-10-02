@@ -12,46 +12,57 @@
     
     <div id="home-row-1" class="home-row">
         <div class="home-card" id="home-profile-card">
-            <h2 class="home-card-title">Your Profile</h2>
-            <div id="profile-info">
-                <div id="home-profile-card-picture">
-                    <img src="{{request.user.profile.image.url}}" alt="User profile picture">
+            <div class="home-card-content">
+                <h2 class="home-card-title">Your Profile</h2>
+                <div id="profile-info">
+                    <div id="home-profile-card-picture">
+                        <img src="{{request.user.profile.image.url}}" alt="User profile picture">
+                    </div>
+                    <h3 id="username">{{request.user.profile.username}}</h3>
                 </div>
-                <h3 id="username">{{request.user.profile.username}}</h3>
             </div>
             
             
         </div>
         <div class="home-card" id="home-solves-card">
-            <h2 class="home-card-title">My solves</h2>
+            <div class="home-card-content">
+                <h2 class="home-card-title">My solves</h2>
 
-            {% if my_solves_showcase.count %}
-                <div class="home-my-solves">
-                    {% for solve in my_solves_showcase %}
-                    <div class="home-my-solve">
+                {% if my_solves_showcase.count %}
+                    <div class="home-my-solves">
+                        {% for solve in my_solves_showcase %}
+                        <div class="home-my-solve">
 
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
+                    
+                {% else %}
+                    <h3 class="no-solves-text">You haven't uploaded any solves yet.</h3>
+                {% endif %}
                 </div>
-                
-            {% else %}
-                <h3 class="no-solves-text">You haven't uploaded any solves yet.</h3>
-            {% endif %}
         </div>
         <div class="home-card" id="home-saved-card">
-            <h2 class="home-card-title">Saved</h2>
+            <div class="home-card-content">
+                <h2 class="home-card-title">Saved</h2>
+            </div>
         </div>
     </div>
 
     <div id="home-row-2" class="home-row">
         <div class="home-card" id="home-generate-card">
-            <h2 class="home-card-title">Generate</h2>
-            <div id="generate-img-container">
-                <img src="{% static 'algorithms/img/generate-image.svg' %}" alt="">
+            <div class="home-card-content">
+                <h2 class="home-card-title">Generate</h2>
+                <div id="generate-img-container">
+                    <img src="{% static 'algorithms/img/generate-image.svg' %}" alt="">
+                </div>
             </div>
+            
         </div>
         <div class="home-card" id="home-trending-card">
-            <h2 class="home-card-title">Trending solves</h2>
+            <div class="home-card-content">
+                <h2 class="home-card-title">Trending solves</h2>
+            </div>
         </div>
     </div>
     

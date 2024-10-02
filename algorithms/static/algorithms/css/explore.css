@@ -46,7 +46,8 @@ body{
     width: 95%; 
     height: 38.5%;
     padding: 0.6% 1.5%;
-    background: linear-gradient(121deg, rgba(78,78,78,1) 0%, rgba(40,40,40,1) 25%, rgba(20,20,20,1) 54%, rgba(6,6,6,1) 75%);
+    /* background: linear-gradient(121deg, rgba(78,78,78,1) 0%, rgba(40,40,40,1) 25%, rgba(20,20,20,1) 54%, rgba(6,6,6,1) 75%); */
+    background: rgba(0, 0, 0, 0.3);
     border-radius: 2rem;
 
     display: flex;
@@ -60,11 +61,24 @@ body{
     display: block;
     border-radius: 2rem;
 
-    height: 102.5%;
-    width: 100.35%;
+    /* height: 102.5%;
+    width: 100.35%; */
+    height: 100%;
+    width: 100%;
+
+    padding: 0.2%;
     
     background: linear-gradient(70deg, rgba(158,65,191,0.7) 44%, rgba(0,18,178,0.7) 80%, rgba(4,178,53,0.7) 93%);
     z-index: -1;
+
+    -webkit-mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    mask: 
+        linear-gradient(#fff 0 0) content-box, 
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
 }
 
 .alg-card-content{
