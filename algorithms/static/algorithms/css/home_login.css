@@ -167,7 +167,7 @@ body{
     position: relative;
     width: 35%; 
     height: 100%;
-    padding: 1.1% 2.5%;
+    padding: 1.2% 2.7%;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 1.2rem;
 
@@ -217,6 +217,9 @@ body{
     width: 100%;
     text-align: left;
     opacity: 0.9;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
 }
 
 .my-solve-description{
@@ -225,11 +228,14 @@ body{
     width: 100%;
     text-align: left;
     opacity: 0.9;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
 }
 
 .my-solve-content img{
-    width: 24%;
-    margin-top: 5.7%;
+    width: 23%;
+    margin-top: 6.2%;
     transform: rotate(-125deg);
     opacity: 0.9;
 }
@@ -275,7 +281,7 @@ body{
 
     height: 100%;
     width: 100%;
-    padding: 0.05rem;
+    padding: 0.072rem;
     
     background: linear-gradient(70deg, rgba(158,65,191,0.6) 44%, rgba(0,18,178,0.6) 80%, rgba(4,178,53,0.6) 93%);
     z-index: -1;
@@ -295,7 +301,7 @@ body{
 }
 
 .saved-solve:nth-child(3)::after{
-    background: linear-gradient(180deg, rgba(13,45,158,0.7) 0%, rgba(68,93,154,0.7) 50%, rgba(239,5,5,0.7) 100%);
+    background: linear-gradient(180deg, rgba(13,45,158,0.67) 0%, rgba(68,93,154,0.67) 50%, rgba(239,5,5,0.67) 100%);
 }
 
 .saved-solve-content{
@@ -335,7 +341,7 @@ body{
 }
 
 .saved-solve-content i{
-    opacity: 0.85;
+    color: #d9d9d9;
 }
 
 #home-generate-card{
@@ -395,6 +401,7 @@ body{
     border-radius: 0.9rem;
     z-index: 0;
     background: rgba(0, 0, 0, 0.2);
+    padding: 1.1% 1.6%;
 }
 
 .trending-solve::after{
@@ -407,7 +414,7 @@ body{
     width: 100%;
     padding: 0.075rem;
     
-    background: linear-gradient(70deg, rgba(158,65,191,0.6) 44%, rgba(0,18,178,0.6) 80%, rgba(4,178,53,0.6) 93%);
+    background: linear-gradient(70deg, rgba(158,65,191,0.5) 44%, rgba(0,18,178,0.5) 80%, rgba(4,178,53,0.5) 93%);
     z-index: -1;
 
     -webkit-mask: 
@@ -418,6 +425,56 @@ body{
         linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
+}
+
+.trending-solve:nth-child(2):after{
+    background: linear-gradient(28deg, rgba(253,211,4,0.55) 16%, rgba(224,37,14,0.55) 55%, rgba(173,4,253,0.55) 82%);
+}
+
+.trending-solve:nth-child(3)::after{
+    background: linear-gradient(180deg, rgba(13,45,158,0.5) 0%, rgba(68,93,154,0.5) 50%, rgba(239,5,5,0.5) 100%);
+}
+
+.trending-solve-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.trending-solve-left{
+    height: 100%;
+    width: 77%;
+}
+
+.trending-solve-username{
+    font-weight: 400;
+    font-size: 1.35rem;
+    width: 100%;
+    text-align: left;
+    opacity: 0.9;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+.trending-solve-description{
+    font-weight: 300;
+    font-size: 0.93rem;
+    width: 100%;
+    text-align: left;
+    opacity: 0.9;
+    overflow: hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.trending-solve-content img{
+    width: 15.5%;
+    transform: rotate(-125deg);
+    opacity: 0.9;
 }
 
 .no-solves-text{

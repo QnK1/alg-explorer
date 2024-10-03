@@ -92,7 +92,15 @@
                     <div class="trending-solves">
                         {% for solve in trending_showcase %}
                             <div class="trending-solve">
-                                
+                                <div class="trending-solve-content">
+                                    <div class="trending-solve-left">
+                                        <h4 class="trending-solve-username">{{solve.solver}}</h4>
+                                        <h4 class="trending-solve-description">{{solve.description}}</h4>
+                                    </div>
+                                    
+
+                                    <img src="{{solve.image.url}}" alt="Solve cube image">
+                                </div>
                             </div>
                         {% endfor %}
                     </div>
