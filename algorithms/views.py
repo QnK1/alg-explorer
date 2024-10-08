@@ -103,19 +103,23 @@ def getMyAlgs(request):
     search_url = f'&search_query={search_query}' if search_query != '' else ''
     curr_queries = tags_url + search_url
     
-    curr_url = reverse('my-algs')
+    curr_url = reverse('explore-algs')
     
+    curr_page = int(request.GET.get('page')) if request.GET.get('page') is not None else 1
     context = {
-        'title' : 'My Algorithms',
         'algs' : algs,
         'search_query' : search_query,
         'tags_query' : tags_query,
         'custom_range' : custom_range,
         'curr_queries' : curr_queries,
         'curr_url' : curr_url,
+        'curr_page' : curr_page,
+        'last_page' : last_page,
+        'next_page' : curr_page + 1,
+        'prev_page' : curr_page - 1,
         'alltags' : Tag.objects.all(),
     }
-    return render(request, 'algorithms/my_algs.html', context)
+    return render(request, 'algorithms/my_solves.html', context)
 
 
 @login_required(login_url='login')

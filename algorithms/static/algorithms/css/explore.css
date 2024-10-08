@@ -34,6 +34,7 @@ body{
     text-align: left;
     letter-spacing: 0.4rem;
     margin-top: 0;
+    height: 10.6%;
 }
 
 #explore-title span{
@@ -183,6 +184,7 @@ body{
 .page-controls-container{
     margin-top: auto;
     margin-bottom: 0.85%;
+    height: 2.5%;
 }
 
 .page-controls{

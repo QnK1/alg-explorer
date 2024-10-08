@@ -54,6 +54,10 @@ body{
     justify-content: center;
 }
 
+.home-card:hover{
+    cursor: pointer;
+}
+
 .home-card::after{
     content: '';
     position: absolute;
@@ -80,11 +84,19 @@ body{
 
 #home-profile-card{
     width: 25%;
-    background: linear-gradient(180deg, rgba(70,58,208,0.35) 0%, rgba(86,86,194,0.35) 11%, rgba(101,114,180,0.35) 34%, rgba(94,116,190,0.35) 50%, rgba(87,119,202,0.35) 70%, rgba(59,76,120,0.35) 86%, rgba(35,35,35,0.35) 100%);
+    background: linear-gradient(180deg, rgba(70,58,208,0.3) 0%, rgba(86,86,194,0.3) 11%, rgba(101,114,180,0.3) 34%, rgba(94,116,190,0.3) 50%, rgba(87,119,202,0.3) 70%, rgba(59,76,120,0.3) 86%, rgba(35,35,35,0.3) 100%);
 }
 
 #home-profile-card::after{
-    background: linear-gradient(180deg, rgba(70,58,208,0.4) 0%, rgba(86,86,194,0.4) 11%, rgba(101,114,180,0.4) 34%, rgba(94,116,190,0.4) 50%, rgba(87,119,202,0.4) 70%, rgba(59,76,120,0.4) 86%, rgba(35,35,35,0.4) 100%);
+    background: linear-gradient(180deg, rgba(70,58,208,0.35) 0%, rgba(86,86,194,0.35) 11%, rgba(101,114,180,0.35) 34%, rgba(94,116,190,0.35) 50%, rgba(87,119,202,0.35) 70%, rgba(59,76,120,0.35) 86%, rgba(35,35,35,0.35) 100%);
+}
+
+#home-profile-card:hover{
+    background: linear-gradient(180deg, rgba(70,58,208,0.6) 0%, rgba(86,86,194,0.6) 11%, rgba(101,114,180,0.6) 34%, rgba(94,116,190,0.6) 50%, rgba(87,119,202,0.6) 70%, rgba(59,76,120,0.6) 86%, rgba(35,35,35,0.6) 100%);
+}
+
+#home-profile-card:hover::after{
+    background: linear-gradient(180deg, rgba(70,58,208,0.65) 0%, rgba(86,86,194,0.65) 11%, rgba(101,114,180,0.65) 34%, rgba(94,116,190,0.65) 50%, rgba(87,119,202,0.65) 70%, rgba(59,76,120,0.65) 86%, rgba(35,35,35,0.65) 100%);
 }
 
 #home-profile-card .home-card-title{
@@ -141,6 +153,14 @@ body{
 
 #home-solves-card::after{
     background: linear-gradient(180deg, rgba(4,178,53,0.18) 0%, rgba(35,35,35,0.35) 100%);
+}
+
+#home-solves-card:hover{
+    background: linear-gradient(180deg, rgba(4,178,53,0.35) 0%, rgba(35,35,35,0.6) 100%);
+}
+
+#home-solves-card:hover::after{
+    background: linear-gradient(180deg, rgba(4,178,53,0.38) 0%, rgba(35,35,35,0.65) 100%);
 }
 
 .no-solves-text{
@@ -249,6 +269,14 @@ body{
     background: linear-gradient(180deg, rgba(128,54,40,0.21) 0%, rgba(130,67,40,0.21) 50%, rgba(35,35,35,0.21) 100%);
 }
 
+#home-saved-card:hover{
+    background: linear-gradient(180deg, rgba(128,54,40,0.48) 0%, rgba(130,67,40,0.48) 50%, rgba(35,35,35,0.48) 100%);
+}
+
+#home-saved-card:hover::after{
+    background: linear-gradient(180deg, rgba(128,54,40,0.51) 0%, rgba(130,67,40,0.51) 50%, rgba(35,35,35,0.51) 100%);
+}
+
 .saved-solves{
     margin-top: 3%;
     
@@ -353,6 +381,14 @@ body{
     background: linear-gradient(180deg, rgba(155,143,106,0.18) 0%, rgba(128,117,85,0.18) 34%, rgba(61,59,50,0.18) 84%, rgba(30,30,30,0.18) 100%);
 }
 
+#home-generate-card:hover{
+    background: linear-gradient(180deg, rgba(155,143,106,0.55) 0%, rgba(128,117,85,0.55) 34%, rgba(61,59,50,0.55) 84%, rgba(30,30,30,0.55) 100%);
+}
+
+#home-generate-card:hover::after{
+    background: linear-gradient(180deg, rgba(155,143,106,0.56) 0%, rgba(128,117,85,0.56) 34%, rgba(61,59,50,0.56) 84%, rgba(30,30,30,0.56) 100%);
+}
+
 #generate-img-container{
     display: flex;
     align-items: center;
@@ -376,6 +412,14 @@ body{
 
 #home-trending-card::after{
     background: linear-gradient(180deg, rgba(114,54,165,0.26) 0%, rgba(94,56,129,0.26) 48%, rgba(70,58,87,0.26) 81%, rgba(35,35,35,0.26) 100%);
+}
+
+#home-trending-card:hover{
+    background: linear-gradient(180deg, rgba(114,54,165,0.53) 0%, rgba(94,56,129,0.53) 48%, rgba(70,58,87,0.53) 81%, rgba(35,35,35,0.53) 100%);
+}
+
+#home-trending-card:hover::after{
+    background: linear-gradient(180deg, rgba(114,54,165,0.55) 0%, rgba(94,56,129,0.55) 48%, rgba(70,58,87,0.55) 81%, rgba(35,35,35,0.55) 100%);
 }
 
 .trending-solves{

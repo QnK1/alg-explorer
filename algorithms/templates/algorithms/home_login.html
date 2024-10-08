@@ -11,7 +11,7 @@
 <div id="content">
     
     <div id="home-row-1" class="home-row">
-        <div class="home-card" id="home-profile-card">
+        <a class="home-card" id="home-profile-card">
             <div class="home-card-content">
                 <h2 class="home-card-title">Your Profile</h2>
                 <div id="profile-info">
@@ -23,8 +23,8 @@
             </div>
             
             
-        </div>
-        <div class="home-card" id="home-solves-card">
+        </a>
+        <a class="home-card" id="home-solves-card" href="{% url 'my-algs' %}">
             <div class="home-card-content">
                 <h2 class="home-card-title">My solves</h2>
 
@@ -47,8 +47,8 @@
                     <h3 class="no-solves-text">You haven't uploaded any solves yet.</h3>
                 {% endif %}
                 </div>
-        </div>
-        <div class="home-card" id="home-saved-card">
+        </a>
+        <a class="home-card" id="home-saved-card">
             <div class="home-card-content">
                 <h2 class="home-card-title">Saved</h2>
                 {% if not my_saved_showcase %}
@@ -70,11 +70,11 @@
                     </div>
                 {% endif %}
             </div>
-        </div>
+        </a>
     </div>
 
     <div id="home-row-2" class="home-row">
-        <div class="home-card" id="home-generate-card">
+        <a class="home-card" id="home-generate-card">
             <div class="home-card-content">
                 <h2 class="home-card-title">Generate</h2>
                 <div id="generate-img-container">
@@ -82,8 +82,8 @@
                 </div>
             </div>
             
-        </div>
-        <div class="home-card" id="home-trending-card">
+        </a>
+        <a class="home-card" id="home-trending-card" href="{% url 'explore-algs' %}">
             <div class="home-card-content">
                 <h2 class="home-card-title">Trending solves</h2>
                 {% if not trending_showcase %}
@@ -106,7 +106,7 @@
                     </div>
                 {% endif %}
             </div>
-        </div>
+        </a>
     </div>
     
 </div>

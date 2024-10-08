@@ -1,0 +1,59 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block includes %}
+    <link rel="stylesheet" type="text/css" href="{% static 'algorithms/css/my_solves.css' %}">
+{% endblock includes %}
+
+{% block content %}
+
+<div id="mysolves-bg-lines"></div>
+
+<div id="content">
+    
+    <h2 id="mysolves-title">My solves/<span>{{curr_page}}</span></h2>
+
+    {% for alg in algs %}
+        <a href="{% url 'alg' alg.id %}" class="alg-card" data-id="{{alg.id}}">
+            <div class="alg-card-content">
+                <div class="alg-card-text">
+                    <div class="alg-title-row">
+                        <h3 class="solver-name">{{alg.solver}}</h3>
+                        {% for tag in alg.tags.all|slice:":3" %}
+                            <h5 class="alg-tag">#{{tag}}</h5>
+                        {% endfor %}
+                    </div>
+                    
+                    <h4 class="alg-description">{{alg.description}}</h4>
+                    <div class="alg-content">
+                        {{alg.scramble}} <br>
+                        {{alg.content|linebreaksbr}}
+                        {% comment %} {{alg.content|truncatechars:140|linebreaksbr}} {% endcomment %}
+                    </div>
+                </div>
+
+                
+
+                <div class="alg-card-cube">
+                    <img class="alg-cube" src="{{alg.image.url}}" alt="">
+                </div>
+            
+            </div>
+        </a>
+        
+    {% endfor %}
+
+
+
+    {% include 'algorithms/page-controls.html' with custom_range=custom_range curr_queries=curr_queries curr_page=curr_page %}
+    
+</div>
+
+{% endblock content %}
+
+{% block scripts %}
+
+{% comment %} <script src="{% static 'algorithms/js/fit-alg-lines.js' %}"></script> {% endcomment %}
+{% endblock scripts %}
+
+
+
