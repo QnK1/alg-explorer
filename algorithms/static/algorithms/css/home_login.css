@@ -56,6 +56,7 @@ body{
 
 .home-card:hover{
     cursor: pointer;
+    transition: background 0.05s ease-in-out;
 }
 
 .home-card::after{
@@ -219,7 +220,7 @@ body{
     mask-composite: exclude;
 }
 
-.home-my-solve:nth-child(2):after{
+.home-my-solve:nth-child(2)::after{
     background: linear-gradient(28deg, rgba(253,211,4,0.6) 16%, rgba(224,37,14,0.6) 55%, rgba(173,4,253,0.6) 82%);
 }
 

@@ -10,38 +10,74 @@
 
 <div id="content">
     
-    <h2 id="mysolves-title">My solves/<span>{{curr_page}}</span></h2>
+    <div id="title-line">
+        <h2 id="mysolves-title">My solves/<span>{{curr_page}}</span></h2>
 
-    {% for alg in algs %}
-        <a href="{% url 'alg' alg.id %}" class="alg-card" data-id="{{alg.id}}">
-            <div class="alg-card-content">
-                <div class="alg-card-text">
-                    <div class="alg-title-row">
-                        <h3 class="solver-name">{{alg.solver}}</h3>
-                        {% for tag in alg.tags.all|slice:":3" %}
-                            <h5 class="alg-tag">#{{tag}}</h5>
-                        {% endfor %}
+        <div id="add-solve">
+            <i class="fa-regular fa-square-plus"></i>
+            <h5>add new</h5>
+        </div>
+        
+    </div>
+    
+
+    <div id="mysolves-container">
+    
+        {% for alg in algs %}
+            <a href="{% url 'alg' alg.id %}" class="alg-card" data-id="{{alg.id}}">
+                <div class="alg-card-content">
+                    <div class="alg-card-text">
+                        <div class="alg-title-row">
+                            <h3 class="solver-name">{{alg.solver}}</h3>
+                            {% for tag in alg.tags.all|slice:":2" %}
+                                <h5 class="alg-tag">#{{tag}}</h5>
+                            {% endfor %}
+
+                            <i class="fa-solid fa-pen"></i>
+                            
+                            
+                        </div>
+                        
+                        <h4 class="alg-description">{{alg.description}}</h4>
+                        <div class="alg-content">
+                            {{alg.scramble}} <br>
+                            {{alg.content|linebreaksbr}}
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-bottom">
+                        <div class="info-row">
+                            <div class="alg-card-cube">
+                                <img class="alg-cube" src="{{alg.image.url}}" alt="">
+                            </div>
+
+                            <div class="alg-info">
+                                <div class="hearts-info">
+                                    <i class="fa-regular fa-heart"></i>
+                                    <h5>{{alg.heart_count}}</h5>
+                                </div>
+
+                                <div class="tags-info">
+                                    {% for tag in alg.tags.all|slice:":3" %}
+                                        <h5 class="alg-tag">#{{tag}}</h5>
+                                    {% endfor %}
+                                </div>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="date-row">
+                            {{alg.date_added|date:"d/m/y"}}
+                        </div>
                     </div>
                     
-                    <h4 class="alg-description">{{alg.description}}</h4>
-                    <div class="alg-content">
-                        {{alg.scramble}} <br>
-                        {{alg.content|linebreaksbr}}
-                        {% comment %} {{alg.content|truncatechars:140|linebreaksbr}} {% endcomment %}
-                    </div>
-                </div>
-
                 
-
-                <div class="alg-card-cube">
-                    <img class="alg-cube" src="{{alg.image.url}}" alt="">
                 </div>
+            </a>
             
-            </div>
-        </a>
-        
-    {% endfor %}
-
+        {% endfor %}
+    </div>
 
 
     {% include 'algorithms/page-controls.html' with custom_range=custom_range curr_queries=curr_queries curr_page=curr_page %}
@@ -52,7 +88,7 @@
 
 {% block scripts %}
 
-{% comment %} <script src="{% static 'algorithms/js/fit-alg-lines.js' %}"></script> {% endcomment %}
+<script src="{% static 'algorithms/js/fit-alg-lines-myalgs.js' %}"></script>
 {% endblock scripts %}
 
 
