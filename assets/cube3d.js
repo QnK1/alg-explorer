@@ -610,7 +610,7 @@ const Cube = {
     currTop: -1,
     prevTop: -1,
     
-    move(type, ex_next){
+    move(type, ex_next, instant = false){
         if(this.animating || (typeof type !== "string") || !(type in this.move_steps))
             return;
 
@@ -623,6 +623,7 @@ const Cube = {
         }
 
         moveElements[symbolIndex].classList.add('current-move');
+        moveElements[symbolIndex].classList.toggle('done-move');
         this.prevTop = this.currTop;
 
         this.animating = true;

@@ -262,3 +262,8 @@ canvas{
 
     transition: transform 0.05s, text-shadow 0.05s;
 }
+
+.done-move{
+    text-shadow: calc(1.5 * -0.06ex) 0 0 var(--text1),
+                               calc(1.5 * 0.06ex) 0 0 var(--text1); 
+}
