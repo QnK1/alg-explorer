@@ -1,6 +1,6 @@
 **Alg Explorer**
 
-This project is a website meant to let speedcubers upload and explore reconstructions of world-class solves as well as share their own achievments.
+This project is a website meant to let speedcubers upload and explore reconstructions of world-class Rubik's Cube solves as well as share their own achievments. Its main features include the ability to post reconstructions and play them move by move using a 3D player.
 
 **Preview**
 ![image](https://github.com/user-attachments/assets/bc566a36-a06b-4869-958b-0d87f7ee78f3)
