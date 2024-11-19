@@ -1,4 +1,4 @@
-Alg Explorer
+**Alg Explorer**
 
 This project is a website meant to let speedcubers upload and explore reconstructions of world-class solves as well as share their own achievments.
 
@@ -9,5 +9,6 @@ This project is a website meant to let speedcubers upload and explore reconstruc
 ![image](https://github.com/user-attachments/assets/e3de37b3-3aca-4995-9fce-6bac68531d9f)
 
 **Running the project**
+
 The project uses Python 3.12.4.
 You can run the project by executing ```pip install -r requirements.txt``` in the project directory and then running ```python manage.py runserver```. The default port is 8000.
